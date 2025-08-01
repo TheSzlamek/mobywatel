@@ -1,51 +1,149 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Logowanie mObywatel - Demo</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-<!-- saved from url=(0040)https://xobywatel-theszlamek.vercel.app/ -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjoiIiwic2hvcnRfbmFtZSI6IiIsInRoZW1lX2NvbG9yIjoiI2Y1ZjZmYiIsImJhY2tncm91bmRfY29sb3IiOiIjZjVmNmZiIiwiZGlzcGxheSI6InN0YW5kYWxvbmUifQ==">
-    <title>mObywatel</title>
-    
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <link rel="stylesheet" href="./mObywatel_files/id.css">
-    <link rel="stylesheet" href="./mObywatel_files/main.css">
-    <link rel="icon" type="image/x-icon" href="./mObywatel_files/logo_large.png">
-    <link rel="apple-touch-icon" href="./mObywatel_files/logo_large.png">
-    <link rel="shortcut icon" href="./mObywatel_files/logo_large.png">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no">
-    <meta name="mobile-web-app-capable" content="yes">
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #eaf2fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-container {
+      background: white;
+      border-radius: 16px;
+      padding: 40px;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.05);
+      text-align: left;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .logo img {
+      width: 40px;
+      height: 40px;
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    h2 {
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 5px;
+      color: #444;
+    }
+
+    .password-input {
+      display: flex;
+      align-items: center;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 8px;
+    }
+
+    .password-input input {
+      border: none;
+      outline: none;
+      flex: 1;
+      font-size: 16px;
+    }
+
+    .eye-icon {
+      cursor: pointer;
+      font-size: 18px;
+      color: #666;
+    }
+
+    .forgot {
+      font-size: 14px;
+      color: #0057b7;
+      text-decoration: none;
+    }
+
+    .login-button {
+      background-color: #0044a1;
+      color: white;
+      border: none;
+      padding: 15px;
+      font-size: 16px;
+      border-radius: 30px;
+      width: 100%;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer img {
+      height: 20px;
+    }
+  </style>
 </head>
 <body>
-    <div class="background"></div>
-    <div class="container">
-        <div class="top_grid">
-            <img class="logo" src="./mObywatel_files/logo_large.png">
-            <p class="logo_text">mObywatel</p>
-        </div>
-        <div class="top_text">
-            <p class="welcome">Dzień dobry!</p>
-            <p class="login_text">Zaloguj się do aplikacji.</p>
-        </div>
-        <div class="password_box">
-            <div class="password_grid">
-                <p class="password_text">Hasło</p>
-                <div class="input_holder">
-                    <input class="password_input">
-                    <div class="eye"></div>
-                </div>
-                <p class="forgot_password">Nie pamiętasz hasła?</p>
-            </div>
-        </div>
-        <div class="bottom">
-            <p class="login">Zaloguj się</p>
-            <div class="data">
-                <img class="logo_other" style="height: 20px;" src="./mObywatel_files/coi.png">
-                <img class="logo_other" src="./mObywatel_files/mc.png">
-                <p class="version">wersja 4.52.0 (13)</p>
-            </div>
-        </div>
+  <div class="login-container">
+    <div class="logo">
+      <img src="mob-icon.png" alt="Logo" />
+      <h1>mObywatel</h1>
     </div>
-    <script src="./mObywatel_files/id.js.pobierz"></script>
-    <script src="./mObywatel_files/manifest.js.pobierz"></script>
-    <script src="./mObywatel_files/cache.js.pobierz"></script>
-</body></html>
+    <h2>Dzień dobry!</h2>
+    <p>Zaloguj się do aplikacji.</p>
+
+    <div class="form-group">
+      <label for="password">Hasło</label>
+      <div class="password-input">
+        <input type="password" id="password" />
+        <span class="eye-icon">👁️</span>
+      </div>
+      <a href="#" class="forgot">Nie pamiętasz hasła?</a>
+    </div>
+
+    <button class="login-button">Zaloguj się</button>
+
+    <footer>
+      <img src="coi-logo.png" alt="COI" />
+      <span>wersja 4.52.0 (13)</span>
+    </footer>
+  </div>
+</body>
+</html>
