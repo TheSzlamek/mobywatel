@@ -2,9 +2,11 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>mObywatel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Logowanie - mObywatel</title>
+  <link rel="icon" href="e2227d71-523e-4bd7-a9a0-280901a18608.png" />
   <style>
+    /* Twój styl */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -25,7 +27,7 @@
       flex-direction: column;
       justify-content: flex-start;
       align-items: center;
-      padding: 24px 16px 100px; /* miejsce na przycisk i stopkę */
+      padding: 24px 16px 100px;
     }
 
     .container {
@@ -115,6 +117,13 @@
       margin-top: 10px;
     }
 
+    .error-msg {
+      color: red;
+      font-size: 14px;
+      margin-top: 10px;
+      display: none;
+    }
+
     .bottom {
       position: fixed;
       bottom: 0;
@@ -172,34 +181,33 @@
   <div class="wrapper">
     <div class="container">
       <div class="header">
-        <img src="logo_large.png" alt="Logo Orzeł">
+        <img src="logo_large.png" alt="Godło" />
         <h1>mObywatel</h1>
       </div>
 
       <h2>Dzień dobry!</h2>
-      <p class="subtitle">Zaloguj się do aplikacji.</p>
+      <p class="subtitle">Zaloguj się do aplikacji</p>
 
       <div class="form-box">
         <label for="password">Hasło</label>
         <div class="input-wrap">
-          <input type="password" id="password">
-          <button onclick="togglePassword()" aria-label="Pokaż hasło">
-            <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <path d="M12 5c-7 0-11 7-11 7s4 7 11 7 11-7 11-7-4-7-11-7zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-8a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
-            </svg>
+          <input type="password" id="password" placeholder="" />
+          <button onclick="togglePassword()" type="button">
+            <svg viewBox="0 0 24 24"><path d="M12 5c-7 0-11 7-11 7s4 7 11 7 11-7 11-7-4-7-11-7zm0 12c-2.8 0-5-2.2-5-5s2.2-5 5-5 5 2.2 5 5-2.2 5-5 5zm0-8c-1.7 0-3 1.3-3 3s1.3 3 3 3 3-1.3 3-3-1.3-3-3-3z"/></svg>
           </button>
         </div>
+        <div id="error" class="error-msg">Nieprawidłowe hasło</div>
         <a href="#" class="forgot-link">Nie pamiętasz hasła?</a>
       </div>
     </div>
   </div>
 
   <div class="bottom">
-    <button class="login-button">Zaloguj się</button>
+    <button class="login-button" onclick="checkPassword()">Zaloguj się</button>
     <footer>
       <div class="footer-left">
-        <img src="coi.png" alt="COI">
-        <img src="mc.png" alt="Ministerstwo Cyfryzacji">
+        <img src="coi.png" alt="COI" />
+        <img src="mc.png" alt="MC" />
       </div>
       <div>wersja 4.52.0 (13)</div>
     </footer>
@@ -207,15 +215,17 @@
 
   <script>
     function togglePassword() {
-      const input = document.getElementById("password");
-      const icon = document.getElementById("eyeIcon");
+      const input = document.getElementById('password');
+      input.type = input.type === 'password' ? 'text' : 'password';
+    }
 
-      if (input.type === "password") {
-        input.type = "text";
-        icon.innerHTML = '<path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7zm11 3a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>';
+    function checkPassword() {
+      const input = document.getElementById('password').value.trim();
+      const error = document.getElementById('error');
+      if (input === '123') {
+        window.location.href = 'panel.html';
       } else {
-        input.type = "password";
-        icon.innerHTML = '<path d="M12 5c-7 0-11 7-11 7s4 7 11 7 11-7 11-7-4-7-11-7zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-8a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>';
+        error.style.display = 'block';
       }
     }
   </script>
