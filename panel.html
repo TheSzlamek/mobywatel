@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pulpit - mObywatel</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f6f9fc;
+      color: #111;
+    }
+
+    .container {
+      padding: 16px;
+      padding-bottom: 100px;
+    }
+
+    .top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .top-row img {
+      height: 30px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 24px 0 12px;
+    }
+
+    .section-header h2 {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .section-header button {
+      background-color: #e4edfb;
+      color: #0057b8;
+      border: none;
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .card {
+      background: linear-gradient(135deg, #e6f0fb, #d3e6f8);
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-top: auto;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .service {
+      background: white;
+      border-radius: 20px;
+      padding: 16px 8px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .service img {
+      width: 32px;
+      height: 32px;
+      margin-bottom: 8px;
+    }
+
+    .service p {
+      font-size: 14px;
+      color: #333;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 72px;
+      background: white;
+      border-top: 1px solid #ddd;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      z-index: 100;
+    }
+
+    .bottom-nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 12px;
+      color: #333;
+    }
+
+    .bottom-nav-item img {
+      width: 24px;
+      height: 24px;
+      margin-bottom: 4px;
+    }
+
+    .bottom-nav-item.active {
+      color: #0057b8;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="top-row">
+      <img src="e2227d71-523e-4bd7-a9a0-280901a18608.png" alt="logo" />
+      <img src="bell.svg" alt="bell" />
+    </div>
+
+    <div class="section-header">
+      <h2>Dokumenty</h2>
+      <div>
+        <button>Dodaj</button>
+        <button>Wszystkie</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="file-KWfrvzQhqFf9a128Jq1nS4.png" alt="mDowód" />
+      <div class="card-title">mDowód</div>
+    </div>
+
+    <div class="section-header">
+      <h2>Usługi</h2>
+      <button>Wszystkie</button>
+    </div>
+
+    <div class="services">
+      <div class="service">
+        <img src="ikona1.png" alt="ikona" />
+        <p>Bezpiecznie w sieci</p>
+      </div>
+      <div class="service">
+        <img src="ikona2.png" alt="ikona" />
+        <p>Historia pojazdu</p>
+      </div>
+      <div class="service">
+        <img src="ikona3.png" alt="ikona" />
+        <p>Zastrzeż PESEL</p>
+      </div>
+      <div class="service">
+        <img src="ikona4.png" alt="ikona" />
+        <p>Firma</p>
+      </div>
+      <div class="service">
+        <img src="ikona5.png" alt="ikona" />
+        <p>Punkty</p>
+      </div>
+      <div class="service">
+        <img src="ikona6.png" alt="ikona" />
+        <p>Mandaty</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-nav">
+    <div class="bottom-nav-item active">
+      <img src="home.svg" alt="home" />
+      <div>Pulpit</div>
+    </div>
+    <div class="bottom-nav-item">
+      <img src="doc.svg" alt="Dokumenty" />
+      <div>Dokumenty</div>
+    </div>
+    <div class="bottom-nav-item">
+      <img src="services.svg" alt="Usługi" />
+      <div>Usługi</div>
+    </div>
+    <div class="bottom-nav-item">
+      <img src="qr.svg" alt="Kod QR" />
+      <div>Kod QR</div>
+    </div>
+    <div class="bottom-nav-item">
+      <img src="more.svg" alt="Więcej" />
+      <div>Więcej</div>
+    </div>
+  </div>
+</body>
+</html>
