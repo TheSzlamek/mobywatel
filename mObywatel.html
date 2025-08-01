@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Logowanie mObywatel - Demo</title>
+  <title>Logowanie mObywatel</title>
   <style>
     * {
       margin: 0;
@@ -13,21 +13,21 @@
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: #eaf2fa;
+      background: linear-gradient(160deg, #e8f0fa, #dce9f5);
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      padding: 20px;
     }
 
     .login-container {
-      background: white;
-      border-radius: 16px;
-      padding: 40px;
+      background: #fff;
+      border-radius: 20px;
+      padding: 32px;
+      max-width: 450px;
       width: 100%;
-      max-width: 500px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.05);
-      text-align: left;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
     }
 
     .logo {
@@ -44,52 +44,55 @@
 
     h1 {
       font-size: 24px;
-      font-weight: bold;
+      font-weight: 700;
     }
 
     h2 {
       font-size: 28px;
       font-weight: 800;
-      margin-bottom: 10px;
+      margin: 10px 0;
     }
 
     p {
       font-size: 16px;
-      color: #333;
+      color: #444;
       margin-bottom: 30px;
     }
 
     .form-group label {
-      display: block;
       font-size: 14px;
-      margin-bottom: 5px;
-      color: #444;
+      display: block;
+      margin-bottom: 6px;
+      color: #333;
     }
 
     .password-input {
       display: flex;
       align-items: center;
-      background: #fff;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      padding: 10px;
+      border: 2px solid #0044a1;
+      border-radius: 12px;
+      padding: 12px;
       margin-bottom: 8px;
+      background: #fff;
     }
 
     .password-input input {
-      border: none;
-      outline: none;
       flex: 1;
+      border: none;
       font-size: 16px;
+      outline: none;
+      background: transparent;
     }
 
     .eye-icon {
-      cursor: pointer;
       font-size: 18px;
-      color: #666;
+      cursor: pointer;
+      color: #444;
     }
 
     .forgot {
+      display: inline-block;
+      margin-top: 6px;
       font-size: 14px;
       color: #0057b7;
       text-decoration: none;
@@ -98,42 +101,50 @@
     .login-button {
       background-color: #0044a1;
       color: white;
-      border: none;
-      padding: 15px;
       font-size: 16px;
-      border-radius: 30px;
+      border: none;
+      border-radius: 50px;
       width: 100%;
-      margin-top: 20px;
+      padding: 14px;
+      margin-top: 30px;
       cursor: pointer;
     }
 
     footer {
-      margin-top: 40px;
-      font-size: 12px;
+      margin-top: 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      font-size: 12px;
+      color: #444;
     }
 
     footer img {
       height: 20px;
+    }
+
+    @media (max-width: 500px) {
+      .login-container {
+        padding: 24px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="login-container">
     <div class="logo">
-      <img src="mob-icon.png" alt="Logo" />
+      <img src="mob-icon.png" alt="Godło" />
       <h1>mObywatel</h1>
     </div>
+
     <h2>Dzień dobry!</h2>
-    <p>Zaloguj się do aplikacji22222.</p>
+    <p>Zaloguj się do aplikacji.</p>
 
     <div class="form-group">
       <label for="password">Hasło</label>
       <div class="password-input">
         <input type="password" id="password" />
-        <span class="eye-icon">👁️</span>
+        <span class="eye-icon" onclick="togglePassword()">👁️</span>
       </div>
       <a href="#" class="forgot">Nie pamiętasz hasła?</a>
     </div>
@@ -141,9 +152,22 @@
     <button class="login-button">Zaloguj się</button>
 
     <footer>
-      <img src="coi-logo.png" alt="COI" />
-      <span>wersja 4.52.0 (13)</span>
+      <div>
+        <img src="coi-logo.png" alt="COI" />
+        <span>Ministerstwo Cyfryzacji</span>
+      </div>
+      <div>
+        wersja 4.52.0 (13)
+      </div>
     </footer>
   </div>
+
+  <script>
+    function togglePassword() {
+      const input = document.getElementById('password');
+      input.type = input.type === 'password' ? 'text' : 'password';
+    }
+  </script>
 </body>
 </html>
+
