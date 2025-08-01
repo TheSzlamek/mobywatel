@@ -3,80 +3,82 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>mObywatel - Logowanie</title>
+  <title>mObywatel</title>
   <style>
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(160deg, #e8f0fa, #dce9f5);
+      background: linear-gradient(180deg, #eef4fb, #dfeaf5);
       min-height: 100vh;
+      padding: 24px 16px;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      padding: 20px;
+      justify-content: flex-start;
     }
 
     .container {
       width: 100%;
-      max-width: 430px;
+      max-width: 400px;
+      text-align: left;
     }
 
-    .logo-header {
+    .header {
       display: flex;
       align-items: center;
       gap: 10px;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
 
-    .logo-header img {
+    .header img {
       width: 40px;
       height: 40px;
     }
 
-    .logo-header h1 {
-      font-size: 24px;
-      font-weight: 700;
+    .header h1 {
+      font-size: 20px;
+      font-weight: 600;
     }
 
     h2 {
       font-size: 28px;
       font-weight: 800;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     p.subtitle {
       font-size: 16px;
-      color: #444;
+      color: #555;
       margin-bottom: 24px;
     }
 
     .form-box {
       background: #fff;
       border-radius: 20px;
-      padding: 24px;
+      padding: 24px 20px;
       box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
       margin-bottom: 32px;
     }
 
-    .form-group label {
+    label {
       font-size: 14px;
-      margin-bottom: 6px;
+      color: #444;
       display: block;
+      margin-bottom: 6px;
     }
 
     .input-wrap {
       display: flex;
       align-items: center;
-      border: 2px solid #0044a1;
-      border-radius: 8px;
-      padding: 12px;
+      border: 2px solid #0057b8;
+      border-radius: 10px;
+      padding: 10px 14px;
       background: #fff;
-      margin-bottom: 8px;
     }
 
     .input-wrap input {
@@ -87,60 +89,70 @@
       background: transparent;
     }
 
-    .input-wrap span {
-      font-size: 18px;
+    .input-wrap button {
+      background: transparent;
+      border: none;
       cursor: pointer;
+      padding-left: 8px;
+    }
+
+    .input-wrap svg {
+      width: 24px;
+      height: 24px;
+      fill: #555;
     }
 
     .forgot-link {
-      color: #0057b7;
+      color: #0057b8;
       font-size: 14px;
       text-decoration: none;
+      display: inline-block;
+      margin-top: 10px;
     }
 
     .login-button {
-      background-color: #0044a1;
+      background-color: #00449e;
       color: white;
-      font-size: 16px;
+      font-size: 17px;
+      font-weight: 500;
       border: none;
-      border-radius: 50px;
+      border-radius: 40px;
       width: 100%;
-      padding: 14px;
+      padding: 16px;
       margin-top: 12px;
       cursor: pointer;
     }
 
     footer {
+      margin-top: 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-size: 12px;
-      color: #444;
-    }
-
-    footer img {
-      height: 24px;
-      vertical-align: middle;
-      margin-right: 6px;
+      color: #555;
     }
 
     .footer-left {
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 6px;
     }
 
-    @media (max-width: 500px) {
+    .footer-left img {
+      height: 22px;
+    }
+
+    @media (max-width: 420px) {
       .form-box {
-        padding: 16px;
+        padding: 20px 16px;
       }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="logo-header">
-      <img src="logo_large.png" alt="Orzeł logo" />
+    <div class="header">
+      <img src="logo_large.png" alt="Logo Orzeł">
       <h1>mObywatel</h1>
     </div>
 
@@ -148,22 +160,25 @@
     <p class="subtitle">Zaloguj się do aplikacji.</p>
 
     <div class="form-box">
-      <div class="form-group">
-        <label for="password">Hasło</label>
-        <div class="input-wrap">
-          <input type="password" id="password" />
-          <span onclick="togglePassword()">👁️</span>
-        </div>
-        <a href="#" class="forgot-link">Nie pamiętasz hasła?</a>
+      <label for="password">Hasło</label>
+      <div class="input-wrap">
+        <input type="password" id="password">
+        <button onclick="togglePassword()" aria-label="Pokaż hasło">
+          <!-- Ikona SVG oka -->
+          <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12 5c-7 0-11 7-11 7s4 7 11 7 11-7 11-7-4-7-11-7zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-8a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
+          </svg>
+        </button>
       </div>
+      <a href="#" class="forgot-link">Nie pamiętasz hasła?</a>
     </div>
 
     <button class="login-button">Zaloguj się</button>
 
     <footer>
       <div class="footer-left">
-        <img src="coi.png" alt="COI logo" />
-        <img src="mc.png" alt="Ministerstwo Cyfryzacji logo" />
+        <img src="coi.png" alt="COI">
+        <img src="mc.png" alt="Ministerstwo Cyfryzacji">
       </div>
       <div>wersja 4.52.0 (13)</div>
     </footer>
@@ -172,7 +187,15 @@
   <script>
     function togglePassword() {
       const input = document.getElementById("password");
-      input.type = input.type === "password" ? "text" : "password";
+      const icon = document.getElementById("eyeIcon");
+
+      if (input.type === "password") {
+        input.type = "text";
+        icon.innerHTML = '<path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7zm11 3a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>';
+      } else {
+        input.type = "password";
+        icon.innerHTML = '<path d="M12 5c-7 0-11 7-11 7s4 7 11 7 11-7 11-7-4-7-11-7zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-8a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>';
+      }
     }
   </script>
 </body>
