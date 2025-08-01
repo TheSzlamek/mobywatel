@@ -11,21 +11,26 @@
       padding: 0;
     }
 
-    body {
+    body, html {
+      height: 100%;
       font-family: 'Segoe UI', sans-serif;
       background: linear-gradient(180deg, #eef4fb, #dfeaf5);
-      min-height: 100vh;
-      padding: 24px 16px;
       display: flex;
       flex-direction: column;
-      align-items: center;
+    }
+
+    .wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
       justify-content: flex-start;
+      align-items: center;
+      padding: 24px 16px 100px; /* miejsce na przycisk i stopkę */
     }
 
     .container {
       width: 100%;
       max-width: 400px;
-      text-align: left;
     }
 
     .header {
@@ -110,6 +115,19 @@
       margin-top: 10px;
     }
 
+    .bottom {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(180deg, #eef4fb, #dfeaf5);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
     .login-button {
       background-color: #00449e;
       color: white;
@@ -118,13 +136,14 @@
       border: none;
       border-radius: 40px;
       width: 100%;
+      max-width: 400px;
       padding: 16px;
-      margin-top: 12px;
       cursor: pointer;
     }
 
     footer {
-      margin-top: 24px;
+      width: 100%;
+      max-width: 400px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -150,31 +169,33 @@
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <img src="logo_large.png" alt="Logo Orzeł">
-      <h1>mObywatel</h1>
-    </div>
-
-    <h2>Dzień dobry!</h2>
-    <p class="subtitle">Zaloguj się do aplikacji.</p>
-
-    <div class="form-box">
-      <label for="password">Hasło</label>
-      <div class="input-wrap">
-        <input type="password" id="password">
-        <button onclick="togglePassword()" aria-label="Pokaż hasło">
-          <!-- Ikona SVG oka -->
-          <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M12 5c-7 0-11 7-11 7s4 7 11 7 11-7 11-7-4-7-11-7zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-8a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
-          </svg>
-        </button>
+  <div class="wrapper">
+    <div class="container">
+      <div class="header">
+        <img src="logo_large.png" alt="Logo Orzeł">
+        <h1>mObywatel</h1>
       </div>
-      <a href="#" class="forgot-link">Nie pamiętasz hasła?</a>
+
+      <h2>Dzień dobry!</h2>
+      <p class="subtitle">Zaloguj się do aplikacji.</p>
+
+      <div class="form-box">
+        <label for="password">Hasło</label>
+        <div class="input-wrap">
+          <input type="password" id="password">
+          <button onclick="togglePassword()" aria-label="Pokaż hasło">
+            <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M12 5c-7 0-11 7-11 7s4 7 11 7 11-7 11-7-4-7-11-7zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-8a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
+            </svg>
+          </button>
+        </div>
+        <a href="#" class="forgot-link">Nie pamiętasz hasła?</a>
+      </div>
     </div>
+  </div>
 
+  <div class="bottom">
     <button class="login-button">Zaloguj się</button>
-
     <footer>
       <div class="footer-left">
         <img src="coi.png" alt="COI">
