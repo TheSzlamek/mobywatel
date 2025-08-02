@@ -186,19 +186,22 @@
 
     .nav-item {
       text-align: center;
-      color: #333;
+      color: #8a8f99;
       flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 4px;
       font-weight: 500;
+      font-size: 11px;
+      cursor: pointer;
     }
 
-    .nav-item img {
+    .nav-item svg {
       width: 22px;
       height: 22px;
       display: block;
+      flex-shrink: 0;
     }
 
     .nav-item.active {
@@ -279,28 +282,53 @@
   <!-- DOLNA NAWIGACJA -->
   <div class="bottom-nav">
     <div class="nav-item active">
-      <img src="nav1.png" alt="Pulpit">
+      <!-- Przykładowa ikona domu -->
+      <svg viewBox="0 0 24 24" aria-label="Pulpit" role="img" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 12L12 3l9 9v8a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-4H9v4a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8z"/>
+      </svg>
       <div>Pulpit</div>
     </div>
     <div class="nav-item">
-      <img src="nav2.png" alt="Dokumenty">
+      <!-- Dokumenty -->
+      <svg viewBox="0 0 24 24" aria-label="Dokumenty" role="img" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <path d="M14 2v6h6"/>
+      </svg>
       <div>Dokumenty</div>
     </div>
     <div class="nav-item">
-      <img src="nav3.png" alt="Usługi">
+      <!-- Usługi -->
+      <svg viewBox="0 0 24 24" aria-label="Usługi" role="img" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09c.7 0 1.25-.55 1.51-1a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06c.5.5 1.18.68 1.82.33h.09c.7 0 1.25-.55 1.51-1 .11-.28.28-.52.5-.74l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06c-.5.5-.68 1.18-.33 1.82v.09c.26.45.81 1 1.51 1H21a2 2 0 1 1 0 4h-.09c-.7 0-1.25.55-1.51 1z"/>
+      </svg>
       <div>Usługi</div>
     </div>
     <div class="nav-item">
-      <img src="nav4.png" alt="Kod QR">
+      <!-- Kod QR -->
+      <svg viewBox="0 0 24 24" aria-label="Kod QR" role="img" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="4" height="4"/>
+        <rect x="10" y="3" width="4" height="4"/>
+        <rect x="17" y="3" width="4" height="4"/>
+        <rect x="3" y="10" width="4" height="4"/>
+        <rect x="10" y="10" width="4" height="4"/>
+        <rect x="17" y="10" width="4" height="4"/>
+        <rect x="3" y="17" width="4" height="4"/>
+        <rect x="10" y="17" width="4" height="4"/>
+        <rect x="17" y="17" width="4" height="4"/>
+      </svg>
       <div>Kod QR</div>
     </div>
     <div class="nav-item">
-      <img src="nav5.png" alt="Więcej">
+      <!-- Więcej -->
+      <svg viewBox="0 0 24 24" aria-label="Więcej" role="img" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="5" r="1.5"/>
+        <circle cx="12" cy="12" r="1.5"/>
+        <circle cx="12" cy="19" r="1.5"/>
+      </svg>
       <div>Więcej</div>
     </div>
   </div>
 
 </body>
 </html>
-
-
