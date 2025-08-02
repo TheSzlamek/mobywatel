@@ -7,54 +7,70 @@
   <style>
     * { box-sizing: border-box; }
     body {
-      font-family: Arial, sans-serif;
+      font-family: system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Ubuntu,sans-serif;
       background: #f5f7fb;
       margin: 0;
       padding: 0;
+      -webkit-font-smoothing: antialiased;
     }
     .container {
-      max-width: 400px;
+      max-width: 480px;
       margin: 0 auto;
-      padding: 16px;
+      padding: 16px 16px 100px; /* dolny padding, żeby nie zasłaniała nawigacja */
     }
 
-    /* GÓRA */
+    /* GÓRNY PASEK */
     .top-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 16px;
+      padding-top: 8px;
     }
 
     .godlo {
       width: 32px;
       height: auto;
+      display: block;
     }
 
-    .ball-icon {
+    .bell-wrapper {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .bell-wrapper img {
       width: 24px;
       height: 24px;
+      display: block;
     }
 
     h2 {
       font-size: 20px;
-      margin: 20px 0 10px;
+      margin: 20px 0 6px;
+      font-weight: 600;
     }
 
     .buttons {
       display: flex;
       gap: 10px;
-      margin-bottom: 10px;
+      margin-bottom: 14px;
     }
 
     .buttons button {
-      padding: 6px 14px;
+      flex: 1;
+      padding: 8px 14px;
       border: none;
       border-radius: 18px;
       background-color: #e7f0fb;
       color: #0066cc;
-      font-weight: bold;
+      font-weight: 600;
       cursor: pointer;
+      font-size: 14px;
+      line-height: 1;
     }
 
     /* KARTA DOKUMENTU */
@@ -63,21 +79,28 @@
       border-radius: 16px;
       overflow: hidden;
       margin-bottom: 24px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      background: #f0f7ff;
     }
 
-    .card-mdowod img.bg {
-      width: 100%;
-      height: 110px;
-      object-fit: cover;
-      display: block;
+    .card-mdowod .top-bg {
+      background: linear-gradient(135deg,#a8d4ff 0%,#dcedff 100%);
+      height: 120px;
+      position: relative;
     }
 
-    .card-mdowod img.ikona {
+    .card-mdowod .ikona-wrapper {
       position: absolute;
-      top: 10px;
-      left: 10px;
+      top: 12px;
+      left: 12px;
       width: 28px;
+      height: 28px;
+    }
+
+    .card-mdowod .ikona-wrapper img {
+      width: 100%;
+      height: 100%;
+      display: block;
     }
 
     .card-mdowod .bottom {
@@ -85,39 +108,59 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 14px;
+      padding: 14px 16px;
     }
 
     .card-mdowod .bottom span {
-      font-weight: bold;
+      font-weight: 700;
+      font-size: 18px;
     }
 
-    .card-mdowod img.strzalka {
+    .card-mdowod .arrow {
       width: 14px;
+      height: auto;
+      display: block;
     }
 
     /* USŁUGI */
+    .services-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 4px;
+    }
+
     .services {
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
+      gap: 12px;
       justify-content: space-between;
+      margin-top: 8px;
     }
 
     .service {
       width: 30%;
       background: white;
       border-radius: 20px;
-      padding: 10px;
+      padding: 12px 6px;
       text-align: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.05);
       font-size: 12px;
+      line-height: 1.1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
     }
 
     .service img {
       width: 32px;
       height: 32px;
-      margin-bottom: 6px;
+      flex-shrink: 0;
+    }
+
+    .service div {
+      white-space: pre-line;
     }
 
     /* DOLNA NAWIGACJA */
@@ -129,25 +172,43 @@
       background: white;
       display: flex;
       justify-content: space-around;
-      border-top: 1px solid #ccc;
+      border-top: 1px solid #e2e8f0;
       padding: 6px 0;
+      font-size: 11px;
+      z-index: 10;
     }
 
     .nav-item {
       text-align: center;
-      font-size: 11px;
       color: #333;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      font-weight: 500;
     }
 
     .nav-item img {
       width: 22px;
       height: 22px;
-      margin-bottom: 4px;
+      display: block;
     }
 
     .nav-item.active {
       color: #0066cc;
-      font-weight: bold;
+      font-weight: 600;
+    }
+
+    /* drobne responsywności */
+    @media (max-width: 420px) {
+      .service {
+        width: 48%;
+      }
+      .buttons button {
+        font-size: 13px;
+        padding: 6px 12px;
+      }
     }
   </style>
 </head>
@@ -157,7 +218,9 @@
     <!-- GÓRNY PASEK -->
     <div class="top-bar">
       <img src="logo_rounded.png" alt="Godło" class="godlo">
-      <img src="ball.png" alt="Dzwonek" class="ball-icon">
+      <div class="bell-wrapper">
+        <img src="ball.png" alt="Powiadomienia">
+      </div>
     </div>
 
     <!-- DOKUMENTY -->
@@ -169,38 +232,77 @@
 
     <!-- KARTA mDowód -->
     <div class="card-mdowod">
-      <img src="card_background.png" class="bg" alt="Tło">
-      <img src="human.png" class="ikona" alt="Ikona">
+      <div class="top-bg">
+        <div class="ikona-wrapper">
+          <img src="human.png" alt="Ikona użytkownika">
+        </div>
+      </div>
       <div class="bottom">
         <span>mDowód</span>
-        <img src="right_arrow_sharp.png" class="strzalka" alt="Strzałka">
+        <img src="right_arrow_sharp.png" class="arrow" alt="Strzałka">
       </div>
     </div>
 
     <!-- USŁUGI -->
-    <h2>Usługi</h2>
-    <div class="buttons">
-      <button>Wszystkie</button>
+    <div class="services-header">
+      <h2 style="margin:0;">Usługi</h2>
+      <div class="buttons" style="margin:0; gap:0;">
+        <button style="padding:6px 16px;">Wszystkie</button>
+      </div>
     </div>
 
     <div class="services">
-      <div class="service"><img src="safe_in_web.png"><div>Bezpiecznie<br>w sieci</div></div>
-      <div class="service"><img src="vehicle.png"><div>Historia<br>pojazdu</div></div>
-      <div class="service"><img src="pesel.png"><div>Zastrzeż<br>PESEL</div></div>
-      <div class="service"><img src="business.png"><div>Firma</div></div>
-      <div class="service"><img src="penalties.png"><div>Punkty</div></div>
-      <div class="service"><img src="tickets.png"><div>Mandaty</div></div>
+      <div class="service">
+        <img src="safe_in_web.png" alt="Bezpiecznie w sieci">
+        <div>Bezpiecznie<br>w sieci</div>
+      </div>
+      <div class="service">
+        <img src="vehicle.png" alt="Historia pojazdu">
+        <div>Historia<br>pojazdu</div>
+      </div>
+      <div class="service">
+        <img src="pesel.png" alt="Zastrzeż PESEL">
+        <div>Zastrzeż<br>PESEL</div>
+      </div>
+      <div class="service">
+        <img src="business.png" alt="Firma">
+        <div>Firma</div>
+      </div>
+      <div class="service">
+        <img src="penalties.png" alt="Punkty">
+        <div>Punkty</div>
+      </div>
+      <div class="service">
+        <img src="tickets.png" alt="Mandaty">
+        <div>Mandaty</div>
+      </div>
     </div>
   </div>
 
   <!-- DOLNA NAWIGACJA -->
   <div class="bottom-nav">
-    <div class="nav-item active"><img src="nav1.png"><div>Pulpit</div></div>
-    <div class="nav-item"><img src="nav2.png"><div>Dokumenty</div></div>
-    <div class="nav-item"><img src="nav3.png"><div>Usługi</div></div>
-    <div class="nav-item"><img src="nav4.png"><div>Kod QR</div></div>
-    <div class="nav-item"><img src="nav5.png"><div>Więcej</div></div>
+    <div class="nav-item active">
+      <img src="nav1.png" alt="Pulpit">
+      <div>Pulpit</div>
+    </div>
+    <div class="nav-item">
+      <img src="nav2.png" alt="Dokumenty">
+      <div>Dokumenty</div>
+    </div>
+    <div class="nav-item">
+      <img src="nav3.png" alt="Usługi">
+      <div>Usługi</div>
+    </div>
+    <div class="nav-item">
+      <img src="nav4.png" alt="Kod QR">
+      <div>Kod QR</div>
+    </div>
+    <div class="nav-item">
+      <img src="nav5.png" alt="Więcej">
+      <div>Więcej</div>
+    </div>
   </div>
 
 </body>
 </html>
+
