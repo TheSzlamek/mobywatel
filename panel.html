@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pulpit - mObywatel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     * {
       box-sizing: border-box;
@@ -12,7 +13,7 @@
     }
 
     body {
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Inter', sans-serif;
       background-color: #f6f9fc;
       color: #111;
     }
@@ -30,7 +31,7 @@
     }
 
     .top-row img {
-      height: 30px;
+      height: 32px;
     }
 
     .section-header {
@@ -41,8 +42,8 @@
     }
 
     .section-header h2 {
-      font-size: 20px;
-      font-weight: 700;
+      font-size: 18px;
+      font-weight: 600;
     }
 
     .section-header button {
@@ -53,28 +54,33 @@
       padding: 6px 14px;
       font-size: 14px;
       font-weight: 500;
+      margin-left: 8px;
       cursor: pointer;
     }
 
     .card {
       background: linear-gradient(135deg, #e6f0fb, #d3e6f8);
-      border-radius: 16px;
-      padding: 16px;
-      margin-bottom: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-      display: flex;
-      flex-direction: column;
+      border-radius: 20px;
+      height: 120px;
+      position: relative;
+      margin-bottom: 16px;
+      overflow: hidden;
     }
 
     .card img {
-      width: 24px;
-      height: 24px;
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      width: 28px;
+      height: 28px;
     }
 
     .card-title {
-      font-size: 18px;
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      font-size: 16px;
       font-weight: 600;
-      margin-top: auto;
     }
 
     .services {
@@ -98,8 +104,9 @@
     }
 
     .service p {
-      font-size: 14px;
+      font-size: 13px;
       color: #333;
+      line-height: 1.2;
     }
 
     .bottom-nav {
@@ -137,11 +144,13 @@
 </head>
 <body>
   <div class="container">
+    <!-- Górny pasek -->
     <div class="top-row">
-      <img src="logo_large.png" alt="logo" />
-      <img src="bell.svg" alt="bell" />
+      <img src="godlo.png" alt="godło" />
+      <img src="bell.svg" alt="powiadomienia" />
     </div>
 
+    <!-- Dokumenty -->
     <div class="section-header">
       <h2>Dokumenty</h2>
       <div>
@@ -151,10 +160,11 @@
     </div>
 
     <div class="card">
-      <img src="card_background.png" alt="mDowód" />
+      <img src="icon_user.png" alt="ikona użytkownika" />
       <div class="card-title">mDowód</div>
     </div>
 
+    <!-- Usługi -->
     <div class="section-header">
       <h2>Usługi</h2>
       <button>Wszystkie</button>
@@ -162,35 +172,36 @@
 
     <div class="services">
       <div class="service">
-        <img src="ikona1.png" alt="ikona" />
-        <p>Bezpiecznie w sieci</p>
+        <img src="ikona1.png" alt="Bezpiecznie w sieci" />
+        <p>Bezpiecznie<br>w sieci</p>
       </div>
       <div class="service">
-        <img src="ikona2.png" alt="ikona" />
-        <p>Historia pojazdu</p>
+        <img src="ikona2.png" alt="Historia pojazdu" />
+        <p>Historia<br>pojazdu</p>
       </div>
       <div class="service">
-        <img src="ikona3.png" alt="ikona" />
-        <p>Zastrzeż PESEL</p>
+        <img src="ikona3.png" alt="Zastrzeż PESEL" />
+        <p>Zastrzeż<br>PESEL</p>
       </div>
       <div class="service">
-        <img src="ikona4.png" alt="ikona" />
+        <img src="ikona4.png" alt="Firma" />
         <p>Firma</p>
       </div>
       <div class="service">
-        <img src="ikona5.png" alt="ikona" />
+        <img src="ikona5.png" alt="Punkty" />
         <p>Punkty</p>
       </div>
       <div class="service">
-        <img src="ikona6.png" alt="ikona" />
+        <img src="ikona6.png" alt="Mandaty" />
         <p>Mandaty</p>
       </div>
     </div>
   </div>
 
+  <!-- Dolna nawigacja -->
   <div class="bottom-nav">
     <div class="bottom-nav-item active">
-      <img src="home.svg" alt="home" />
+      <img src="home.svg" alt="Pulpit" />
       <div>Pulpit</div>
     </div>
     <div class="bottom-nav-item">
@@ -212,3 +223,4 @@
   </div>
 </body>
 </html>
+
