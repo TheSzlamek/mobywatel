@@ -2,163 +2,214 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>mDowód</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background: #f5f6fa;
-      color: #333;
+      padding: 0;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f7fc;
+      color: #222;
+      padding-bottom: 80px;
     }
     .header {
+      display: flex;
+      align-items: center;
+      padding: 12px 16px;
       background: white;
-      padding: 0.5em;
-      position: relative;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-      text-align: center;
+      border-bottom: 1px solid #ddd;
     }
-    .header .back-button {
-      position: absolute;
-      left: 0.5em;
-      top: 0.5em;
-      background: none;
-      border: none;
-      color: #007bff;
-      font-size: 1em;
+    .header img {
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
       cursor: pointer;
     }
     .header h1 {
-      margin: 0;
-      font-size: 1.2em;
+      font-size: 18px;
+      font-weight: normal;
     }
-    .header .time {
-      display: block;
-      font-size: 0.8em;
+    .time {
+      text-align: center;
+      font-size: 13px;
       color: #555;
+      margin: 6px 0 12px;
     }
     .document {
-      background: url('background.jpg') no-repeat center center;
+      background: url("plate.png") no-repeat center center;
       background-size: cover;
-      margin: 1em;
-      padding: 1em;
       border-radius: 8px;
-      position: relative;
-      overflow: hidden;
+      margin: 0 16px;
+      padding: 16px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
-    .photo {
-      float: left;
-      margin-right: 1em;
+    .doc-content {
+      display: flex;
+      align-items: flex-start;
     }
-    .photo img {
+    .doc-photo {
       width: 100px;
-      height: auto;
-      border-radius: 4px;
-      display: block;
+      height: 130px;
+      border: 1px solid #ccc;
+      margin-right: 12px;
     }
-    .details {
-      overflow: hidden;
+    .doc-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
-    .details p {
-      margin: 0.4em 0;
+    .doc-data {
+      flex: 1;
+      font-size: 14px;
+      color: #222;
     }
-    .details strong {
-      display: block;
-      font-size: 1.1em;
+    .doc-data p {
+      margin-bottom: 6px;
+      line-height: 1.4;
     }
-    .details .label {
-      font-size: 0.8em;
-      color: #555;
+    .flag {
+      width: 40px;
+      margin-top: 8px;
     }
-    .badge {
-      display: flex;
-      align-items: center;
-      margin-top: 1em;
-    }
-    .badge img {
+    .eagle {
       width: 30px;
-      margin-right: 0.5em;
+      margin-top: 4px;
     }
-    .badge .rp {
-      font-size: 0.9em;
-    }
-    .flag-godlo {
-      position: absolute;
-      bottom: 1em;
-      left: 1em;
+    .valid {
       display: flex;
       align-items: center;
-    }
-    .flag-godlo img {
-      height: 25px;
-      margin-right: 0.5em;
-    }
-    .status {
-      margin-top: 1em;
-      padding: 0.5em;
-      background: #e6f7e6;
+      margin: 12px 0;
+      padding: 10px;
+      background: #e9f9ee;
+      border-radius: 6px;
+      font-size: 15px;
       color: #2e7d32;
-      border-radius: 4px;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
     }
-    .status .checkmark {
-      margin-right: 0.5em;
-      font-size: 1.2em;
+    .valid img {
+      width: 20px;
+      margin-right: 6px;
     }
-    .bottom-menu {
+    .actions {
       display: flex;
       justify-content: space-around;
-      background: white;
-      padding: 0.5em 0;
-      box-shadow: 0 -1px 4px rgba(0,0,0,0.1);
+      margin-top: 20px;
+    }
+    .action {
+      text-align: center;
+      font-size: 12px;
+      color: #222;
+    }
+    .action img {
+      width: 32px;
+      height: 32px;
+      margin-bottom: 4px;
+    }
+    .bottom-nav {
       position: fixed;
       bottom: 0;
-      width: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      border-top: 1px solid #ddd;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 8px 0;
     }
-    .bottom-menu button {
-      background: none;
-      border: none;
-      font-size: 0.9em;
-      color: #007bff;
-      cursor: pointer;
-      padding: 0.5em;
+    .bottom-item {
+      text-align: center;
+      font-size: 12px;
+      color: #222;
+    }
+    .bottom-item img {
+      width: 24px;
+      height: 24px;
+      margin-bottom: 4px;
+    }
+    .bottom-item.active {
+      color: #0052cc;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <header class="header">
-    <button class="back-button">← Wróć</button>
+  <!-- Pasek powrotu -->
+  <div class="header">
+    <img src="back_blue.png" alt="Wróć" onclick="history.back()">
     <h1>mDowód</h1>
-    <span class="time">14:29:15 02.08.2025</span>
-  </header>
+  </div>
+  <div class="time">
+    Czas: 14:29:15 02.08.2025
+  </div>
 
-  <main class="document">
-    <div class="photo">
-      <img src="xddddd.png" alt="Zdjęcie użytkownika">
+  <!-- Dokument -->
+  <div class="document">
+    <div class="doc-content">
+      <div class="doc-photo">
+        <img src="xdddddd.png" alt="Zdjęcie">
+      </div>
+      <div class="doc-data">
+        <p><strong>KACPER</strong><br><small>Imię (imiona)</small></p>
+        <p><strong>LIGĘSKA</strong><br><small>Nazwisko</small></p>
+        <p><strong>POLSKIE</strong><br><small>Obywatelstwo</small></p>
+        <p><strong>07.01.2007</strong><br><small>Data urodzenia</small></p>
+        <p><strong>07211712323</strong><br><small>Numer PESEL</small></p>
+        <img src="flag.webp" class="flag" alt="Flaga">
+        <img src="eagle.gif" class="eagle" alt="Godło">
+      </div>
     </div>
-    <div class="details">
-      <p><strong>KACPER</strong><span class="label">Imię (imiona)</span></p>
-      <p><strong>LIGĘSKA</strong><span class="label">Nazwisko</span></p>
-      <p><strong>POLSKIE</strong><span class="label">Obywatelstwo</span></p>
-      <p><strong>07.01.2007</strong><span class="label">Data urodzenia</span></p>
-      <p><strong>07211712323</strong><span class="label">Numer PESEL</span></p>
+    <div class="valid">
+      <img src="valid.png" alt="Ważny">
+      Dokument ważny
     </div>
-    <div class="flag-godlo">
-      <img src="flag.webp" alt="Flaga Polski">
-      <img src="eagle.gif" alt="Godło Polski">
-    </div>
-    <div class="status">
-      <span class="checkmark">✔</span> Dokument ważny
-    </div>
-  </main>
+  </div>
 
-  <nav class="bottom-menu">
-    <button>Potwierdź swoje dane</button>
-    <button>Dane dowodu osobistego</button>
-    <button>Zastrzeż PESEL</button>
-    <button>...</button>
-  </nav>
+  <!-- Akcje -->
+  <div class="actions">
+    <div class="action">
+      <img src="qr.png" alt="Potwierdź">
+      <div>Potwierdź<br>swoje dane</div>
+    </div>
+    <div class="action">
+      <img src="documents.png" alt="Dane dowodu">
+      <div>Dane dowodu<br>osobistego</div>
+    </div>
+    <div class="action">
+      <img src="lock_pesel.png" alt="Zastrzeż PESEL">
+      <div>Zastrzeż<br>PESEL</div>
+    </div>
+    <div class="action">
+      <img src="more.png" alt="Skróty">
+      <div>Pozostałe<br>skróty</div>
+    </div>
+  </div>
+
+  <!-- Dolna nawigacja -->
+  <div class="bottom-nav">
+    <div class="bottom-item active">
+      <img src="home.png" alt="Pulpit">
+      <div>Pulpit</div>
+    </div>
+    <div class="bottom-item">
+      <img src="documents.png" alt="Dokumenty">
+      <div>Dokumenty</div>
+    </div>
+    <div class="bottom-item">
+      <img src="services.png" alt="Usługi">
+      <div>Usługi</div>
+    </div>
+    <div class="bottom-item">
+      <img src="qr.png" alt="Kod QR">
+      <div>Kod QR</div>
+    </div>
+    <div class="bottom-item">
+      <img src="more.png" alt="Więcej">
+      <div>Więcej</div>
+    </div>
+  </div>
 </body>
 </html>
