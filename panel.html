@@ -25,23 +25,15 @@
     }
 
     .top-bar {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       position: relative;
+      height: 48px;
       padding: 20px 16px 6px;
-    }
-
-    .top-coat-of-arms {
-      width: 28px;
-      height: 28px;
-      margin-bottom: 4px;
     }
 
     .notifications {
       position: absolute;
       right: 16px;
-      top: 20px;
+      top: 0;
       width: 28px;
       height: 28px;
       cursor: pointer;
@@ -71,20 +63,27 @@
 
     .documents-header {
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
       align-items: center;
-      padding: 0 16px;
       margin-bottom: 16px;
+    }
+
+    .documents-header img {
+      width: 32px;
+      height: 32px;
+      margin-bottom: 4px;
     }
 
     .documents-header h2 {
       font-size: 20px;
       color: #111;
+      text-align: center;
     }
 
     .button-row {
       display: flex;
       gap: 10px;
+      margin-top: 10px;
     }
 
     .button-row button {
@@ -218,17 +217,17 @@
 </head>
 <body>
 
-  <!-- Pasek górny -->
+  <!-- Pasek górny z powiadomieniem -->
   <div class="top-bar">
-    <img class="top-coat-of-arms" src="logo_rounded.png" alt="Godło" />
     <div class="notifications" title="Powiadomienia">
       <img src="bell.png" alt="Powiadomienia" />
       <div class="notifications-badge">3</div>
     </div>
   </div>
 
-  <!-- Nagłówek Dokumenty i przyciski -->
+  <!-- Logo nad nagłówkiem Dokumenty -->
   <div class="documents-header">
+    <img src="logo_rounded.png" alt="Godło" />
     <h2>Dokumenty</h2>
     <div class="button-row">
       <button>Dodaj</button>
@@ -305,6 +304,7 @@
   </div>
 </body>
 </html>
+
 
 
 
