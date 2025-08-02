@@ -42,13 +42,29 @@
     .card {
       background: white;
       border-radius: 12px;
-      padding: 16px;
+      padding: 0;
       box-shadow: 0 2px 5px rgba(0,0,0,0.05);
       margin-bottom: 16px;
+      overflow: hidden;
     }
-    .card h3 {
-      margin: 12px 0 0;
+
+    .card-header {
+      background: #cfe9fb;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .card-header img {
+      height: 40px;
+    }
+
+    .card-title {
+      padding: 12px 16px;
       font-size: 16px;
+      font-weight: 600;
     }
 
     .services-grid {
@@ -56,6 +72,7 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
     }
+
     .service {
       background: white;
       border-radius: 20px;
@@ -64,17 +81,35 @@
       box-shadow: 0 2px 5px rgba(0,0,0,0.05);
       transition: transform 0.2s;
     }
+
     .service:hover {
       transform: scale(1.03);
     }
+
     .service img {
       height: 32px;
       margin-bottom: 8px;
     }
+
     .service span {
       display: block;
       font-size: 13px;
       color: #444;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px 0;
+    }
+
+    .top-bar img.logo {
+      height: 32px;
+    }
+
+    .top-bar img.bell {
+      height: 24px;
     }
 
     .bottom-nav {
@@ -130,7 +165,14 @@
 </head>
 <body>
 
+  <!-- Górny pasek -->
+  <div class="top-bar">
+    <img src="logo_rounded.png" class="logo" alt="Logo">
+    <img src="bell.png" class="bell" alt="Dzwonek">
+  </div>
+
   <div class="container">
+
     <!-- Dokumenty -->
     <div class="section-header">
       <h2>Dokumenty</h2>
@@ -139,9 +181,12 @@
         <a href="#">Wszystkie</a>
       </div>
     </div>
+
     <div class="card">
-      <img src="dowod.png" alt="mDowód" style="width:100%; border-radius: 12px; background: #cfe9fb; height: 120px;" />
-      <h3>mDowód</h3>
+      <div class="card-header">
+        <img src="human.png" alt="mDowód">
+      </div>
+      <div class="card-title">mDowód</div>
     </div>
 
     <!-- Usługi -->
@@ -149,16 +194,17 @@
       <h2>Usługi</h2>
       <a href="#">Wszystkie</a>
     </div>
+
     <div class="services-grid">
       <a class="service-link" href="https://google.com" target="_blank">
         <div class="service">
-          <img src="bezpiecznie.png" alt="Bezpiecznie w sieci" />
+          <img src="safe_in_web.png" alt="Bezpiecznie w sieci" />
           <span>Bezpiecznie<br>w sieci</span>
         </div>
       </a>
       <a class="service-link" href="https://google.com" target="_blank">
         <div class="service">
-          <img src="pojazd.png" alt="Historia pojazdu" />
+          <img src="vehicle.png" alt="Historia pojazdu" />
           <span>Historia<br>pojazdu</span>
         </div>
       </a>
@@ -170,26 +216,26 @@
       </a>
       <a class="service-link" href="https://google.com" target="_blank">
         <div class="service">
-          <img src="firma.png" alt="Firma" />
+          <img src="business.png" alt="Firma" />
           <span>Firma</span>
         </div>
       </a>
       <a class="service-link" href="https://google.com" target="_blank">
         <div class="service">
-          <img src="punkty.png" alt="Punkty" />
+          <img src="penalties.png" alt="Punkty" />
           <span>Punkty</span>
         </div>
       </a>
       <a class="service-link" href="https://google.com" target="_blank">
         <div class="service">
-          <img src="mandaty.png" alt="Mandaty" />
+          <img src="tickets.png" alt="Mandaty" />
           <span>Mandaty</span>
         </div>
       </a>
     </div>
   </div>
 
-  <!-- NAWIGACJA DOLNA -->
+  <!-- Nawigacja dolna -->
   <div class="bottom-nav">
     <div class="nav-item active">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
