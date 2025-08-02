@@ -23,6 +23,14 @@
       color: #111;
     }
 
+    /* Godło u góry strony */
+    .top-coat-of-arms {
+      width: 40px;
+      height: 40px;
+      display: block;
+      margin: 0 auto 12px auto;
+    }
+
     /* Powiadomienia - ikona dzwonka */
     .notifications {
       position: fixed;
@@ -65,18 +73,25 @@
     }
 
     .card-header {
-      background: #cfe6f9; /* Jasnoniebieskie tło */
-      height: 100px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      background: url("card_background.png") no-repeat center center;
+      background-size: cover;
+      height: 140px;
       position: relative;
-      padding: 0;
+      display: flex;
+      align-items: flex-start;
+      padding: 14px 16px;
+      gap: 10px;
+    }
+
+    .human-icon {
+      width: 36px;
+      height: 36px;
     }
 
     .coat-of-arms {
       width: 36px;
       height: 36px;
+      margin-top: 2px;
     }
 
     .card-bottom {
@@ -107,7 +122,6 @@
       filter: brightness(0.7);
     }
 
-    /* Przyciski wyrównane do prawej */
     .button-row {
       display: flex;
       gap: 10px;
@@ -189,6 +203,9 @@
     <div class="notifications-badge">3</div>
   </div>
 
+  <!-- Godło na samej górze -->
+  <img class="top-coat-of-arms" src="godlo.png" alt="Godło" />
+
   <h2>Dokumenty</h2>
   <div class="button-row">
     <button>Dodaj</button>
@@ -197,6 +214,7 @@
 
   <div class="card">
     <div class="card-header">
+      <img class="human-icon" src="human.png" alt="Ikona mDowodu" />
       <img class="coat-of-arms" src="godlo.png" alt="Godło" />
     </div>
     <div class="card-bottom">
@@ -263,4 +281,3 @@
   </div>
 </body>
 </html>
-
