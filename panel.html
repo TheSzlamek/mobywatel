@@ -1,224 +1,263 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<meta charset="UTF-8" />
-<title>eSzlamek - Dokumenty</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<style>
-  * {
-    box-sizing: border-box;
-  }
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background: #f4f7fc;
-    color: #000;
-  }
-  h2 {
-    font-size: 18px;
-    margin: 20px 20px 10px;
-  }
-  .notifications {
-    position: fixed;
-    top: 16px;
-    right: 20px;
-    cursor: pointer;
-  }
-  .notifications img {
-    width: 24px;
-    height: 24px;
-  }
-  .button-row {
-    display: flex;
-    justify-content: flex-end;
-    gap: 8px;
-    margin: 0 20px 10px;
-  }
-  .button-row button {
-    background: #e6f0ff;
-    color: #0052cc;
-    border: none;
-    border-radius: 16px;
-    padding: 6px 14px;
-    font-size: 14px;
-    cursor: pointer;
-  }
-  .card {
-    background: white;
-    border-radius: 16px;
-    overflow: hidden;
-    margin: 0 20px 20px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-  }
-  .card-header {
-    background: linear-gradient(#cfe7fb, #cfe7fb);
-    height: 120px;
-    position: relative;
-  }
-  .card-header::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('blue_lines_background.png') center/cover no-repeat;
-    opacity: 0.4;
-  }
-  .card-icons {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    display: flex;
-    gap: 8px;
-  }
-  .card-icons img {
-    width: 28px;
-    height: 28px;
-  }
-  .card-bottom {
-    padding: 14px 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .card-bottom span {
-    font-size: 16px;
-    font-weight: 600;
-  }
-  .card-bottom img {
-    width: 18px;
-    height: 18px;
-  }
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin: 0 20px 80px;
-  }
-  .service-tile {
-    background: white;
-    border-radius: 20px;
-    text-align: center;
-    padding: 16px 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  }
-  .service-tile img {
-    width: 36px;
-    height: 36px;
-    margin-bottom: 6px;
-  }
-  .service-tile span {
-    font-size: 13px;
-    line-height: 1.3;
-  }
-  .bottom-nav {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: white;
-    border-top: 1px solid #ddd;
-    display: flex;
-    justify-content: space-around;
-    padding: 6px 0;
-  }
-  .bottom-nav-item {
-    text-align: center;
-    font-size: 12px;
-    color: #222;
-  }
-  .bottom-nav-item img {
-    width: 24px;
-    height: 24px;
-    margin-bottom: 4px;
-  }
-  .bottom-nav-item.active {
-    color: #0052cc;
-    font-weight: bold;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <title>eSzlamek - Dokumenty</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f7fc;
+      position: relative;
+    }
+
+    h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #111;
+    }
+
+    /* Powiadomienia - ikona dzwonka */
+    .notifications {
+      position: fixed;
+      top: 16px;
+      right: 20px;
+      cursor: pointer;
+      width: 28px;
+      height: 28px;
+      z-index: 1000;
+    }
+
+    .notifications img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .notifications-badge {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      background: red;
+      color: white;
+      font-size: 12px;
+      font-weight: bold;
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      margin-bottom: 30px;
+    }
+
+    .card-header {
+      background: url("card_background.png") no-repeat center center;
+      background-size: cover;
+      height: 140px;
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      padding: 14px 16px;
+      gap: 10px;
+    }
+
+    .human-icon {
+      width: 36px;
+      height: 36px;
+    }
+
+    /* Godło obok ikony człowieka */
+    .coat-of-arms {
+      width: 36px;
+      height: 36px;
+      margin-top: 2px;
+    }
+
+    .card-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 16px;
+      background-color: #ffffff;
+    }
+
+    .card-bottom span {
+      font-size: 16px;
+      font-weight: 600;
+      color: #000000;
+    }
+
+    .arrow-icon {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Przyciski wyrównane do prawej */
+    .button-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 16px;
+      justify-content: flex-end; /* zmiana wyrównania */
+    }
+
+    .button-row button {
+      background-color: #e6f0ff;
+      color: #0052cc;
+      border: none;
+      border-radius: 16px;
+      padding: 6px 14px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .service-tile {
+      background: white;
+      border-radius: 20px;
+      text-align: center;
+      padding: 16px 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    .service-tile img {
+      width: 36px;
+      height: 36px;
+      margin-bottom: 8px;
+    }
+
+    .service-tile span {
+      font-size: 13px;
+      color: #333;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: white;
+      border-top: 1px solid #ddd;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 6px 0;
+    }
+
+    .bottom-nav-item {
+      text-align: center;
+      font-size: 12px;
+      color: #222;
+    }
+
+    .bottom-nav-item img {
+      width: 24px;
+      height: 24px;
+      margin-bottom: 4px;
+    }
+
+    .active {
+      color: #0052cc;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
 
-<div class="notifications">
-  <img src="notification_bell.png" alt="Powiadomienia">
-</div>
+  <!-- Ikona powiadomień -->
+  <div class="notifications" title="Powiadomienia">
+    <img src="notification_bell.png" alt="Powiadomienia" />
+    <div class="notifications-badge">3</div>
+  </div>
 
-<h2>Dokumenty</h2>
-<div class="button-row">
-  <button>Dodaj</button>
-  <button>Wszystkie</button>
-</div>
+  <h2>Dokumenty</h2>
+  <div class="button-row">
+    <button>Dodaj</button>
+    <button>Wszystkie</button>
+  </div>
 
-<div class="card">
-  <div class="card-header">
-    <div class="card-icons">
-      <img src="godlo.png" alt="Godło">
-      <img src="person_icon.png" alt="mDowód">
+  <div class="card">
+    <div class="card-header">
+      <img class="human-icon" src="human.png" alt="Ikona mDowodu" />
+      <img class="coat-of-arms" src="godlo.png" alt="Godło" />
+    </div>
+    <div class="card-bottom">
+      <span>mDowód</span>
+      <img src="right_arrow_sharp.png" class="arrow-icon" alt="Strzałka" />
     </div>
   </div>
-  <div class="card-bottom">
-    <span>mDowód</span>
-    <img src="arrow_right.png" alt="Strzałka">
-  </div>
-</div>
 
-<h2>Usługi</h2>
-<div class="button-row">
-  <button>Wszystkie</button>
-</div>
+  <h2>Usługi</h2>
+  <div class="button-row">
+    <button>Wszystkie</button>
+  </div>
 
-<div class="services-grid">
-  <div class="service-tile">
-    <img src="net_secure.png" alt="Bezpiecznie w sieci">
-    <span>Bezpiecznie<br>w sieci</span>
+  <div class="services-grid">
+    <div class="service-tile">
+      <img src="net_secure.png" alt="Bezpiecznie" />
+      <span>Bezpiecznie<br />w sieci</span>
+    </div>
+    <div class="service-tile">
+      <img src="car_history.png" alt="Historia pojazdu" />
+      <span>Historia<br />pojazdu</span>
+    </div>
+    <div class="service-tile">
+      <img src="lock_pesel.png" alt="Zastrzeż PESEL" />
+      <span>Zastrzeż<br />PESEL</span>
+    </div>
+    <div class="service-tile">
+      <img src="business.png" alt="Firma" />
+      <span>Firma</span>
+    </div>
+    <div class="service-tile">
+      <img src="points.png" alt="Punkty" />
+      <span>Punkty</span>
+    </div>
+    <div class="service-tile">
+      <img src="ticket.png" alt="Mandaty" />
+      <span>Mandaty</span>
+    </div>
   </div>
-  <div class="service-tile">
-    <img src="car_history.png" alt="Historia pojazdu">
-    <span>Historia<br>pojazdu</span>
-  </div>
-  <div class="service-tile">
-    <img src="lock_pesel.png" alt="Zastrzeż PESEL">
-    <span>Zastrzeż<br>PESEL</span>
-  </div>
-  <div class="service-tile">
-    <img src="business.png" alt="Firma">
-    <span>Firma</span>
-  </div>
-  <div class="service-tile">
-    <img src="points.png" alt="Punkty">
-    <span>Punkty</span>
-  </div>
-  <div class="service-tile">
-    <img src="ticket.png" alt="Mandaty">
-    <span>Mandaty</span>
-  </div>
-</div>
 
-<div class="bottom-nav">
-  <div class="bottom-nav-item active">
-    <img src="home.png" alt="Pulpit">
-    <div>Pulpit</div>
+  <div class="bottom-nav">
+    <div class="bottom-nav-item active">
+      <img src="home.png" alt="Pulpit" />
+      <div>Pulpit</div>
+    </div>
+    <div class="bottom-nav-item">
+      <img src="documents.png" alt="Dokumenty" />
+      <div>Dokumenty</div>
+    </div>
+    <div class="bottom-nav-item">
+      <img src="services.png" alt="Usługi" />
+      <div>Usługi</div>
+    </div>
+    <div class="bottom-nav-item">
+      <img src="qr.png" alt="Kod QR" />
+      <div>Kod QR</div>
+    </div>
+    <div class="bottom-nav-item">
+      <img src="more.png" alt="Więcej" />
+      <div>Więcej</div>
+    </div>
   </div>
-  <div class="bottom-nav-item">
-    <img src="documents.png" alt="Dokumenty">
-    <div>Dokumenty</div>
-  </div>
-  <div class="bottom-nav-item">
-    <img src="services.png" alt="Usługi">
-    <div>Usługi</div>
-  </div>
-  <div class="bottom-nav-item">
-    <img src="qr.png" alt="Kod QR">
-    <div>Kod QR</div>
-  </div>
-  <div class="bottom-nav-item">
-    <img src="more.png" alt="Więcej">
-    <div>Więcej</div>
-  </div>
-</div>
-
 </body>
 </html>
