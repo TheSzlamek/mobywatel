@@ -1,242 +1,202 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>eSzlamek</title>
   <style>
+    * { box-sizing: border-box; }
     body {
-      margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #f5f7fb;
-    }
-
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 16px;
-      background-color: #fff;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
-    }
-
-    header img {
-      height: 32px;
-    }
-
-    .container {
-      padding: 16px;
-    }
-
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-    }
-
-    .section-header h2 {
+      background: #f5f7fb;
       margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    /* GÓRA */
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .godlo {
+      width: 32px;
+      height: auto;
+    }
+
+    .bell {
+      font-size: 24px;
+    }
+
+    h2 {
       font-size: 20px;
+      margin: 20px 0 10px;
     }
 
-    .section-header button {
-      background-color: #e6f0fd;
-      color: #007bff;
+    .buttons {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .buttons button {
+      padding: 6px 14px;
       border: none;
-      border-radius: 16px;
-      padding: 6px 12px;
+      border-radius: 18px;
+      background-color: #e7f0fb;
+      color: #0066cc;
+      font-weight: bold;
       cursor: pointer;
-      font-size: 14px;
     }
 
-    /* Karta mDowód */
+    /* KARTA DOKUMENTU */
     .card-mdowod {
       position: relative;
-      width: 100%;
-      border-radius: 20px;
+      border-radius: 16px;
       overflow: hidden;
-      height: 120px;
-      background-color: #e3effb;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      margin-bottom: 24px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
-    .card-mdowod .card-bg {
-      position: absolute;
+    .card-mdowod img.bg {
       width: 100%;
-      height: 100%;
+      height: 110px;
       object-fit: cover;
     }
 
-    .card-mdowod .card-icon {
+    .card-mdowod img.ikona {
       position: absolute;
-      top: 12px;
-      left: 12px;
-      width: 24px;
-      height: 24px;
+      top: 10px;
+      left: 10px;
+      width: 28px;
     }
 
-    .card-mdowod .card-content {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
+    .card-mdowod .bottom {
       background: white;
-      padding: 12px 16px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 14px;
     }
 
-    .card-mdowod .card-title {
-      font-size: 16px;
-      font-weight: 600;
-      color: #000;
+    .card-mdowod .bottom span {
+      font-weight: bold;
     }
 
-    .card-mdowod .card-arrow {
-      width: 16px;
-      height: 16px;
+    .card-mdowod img.strzalka {
+      width: 14px;
     }
 
-    /* Usługi */
-    .uslugi-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
+    /* USŁUGI */
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: space-between;
     }
 
-    .usluga {
-      background-color: white;
+    .service {
+      width: 30%;
+      background: white;
       border-radius: 20px;
-      padding: 16px;
+      padding: 10px;
       text-align: center;
-      font-size: 14px;
-      color: #444;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      font-size: 12px;
     }
 
-    .usluga img {
+    .service img {
       width: 32px;
       height: 32px;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
-    /* Dolna nawigacja */
+    /* DOLNA NAWIGACJA */
     .bottom-nav {
       position: fixed;
       bottom: 0;
-      width: 100%;
+      left: 0;
+      right: 0;
+      background: white;
       display: flex;
       justify-content: space-around;
-      background-color: white;
-      padding: 8px 0;
-      box-shadow: 0 -1px 6px rgba(0, 0, 0, 0.05);
+      border-top: 1px solid #ccc;
+      padding: 6px 0;
     }
 
-    .bottom-nav .nav-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      font-size: 12px;
+    .nav-item {
+      text-align: center;
+      font-size: 11px;
       color: #333;
     }
 
-    .bottom-nav .nav-item img {
-      width: 20px;
-      height: 20px;
+    .nav-item img {
+      width: 22px;
+      height: 22px;
       margin-bottom: 4px;
     }
 
-    .bottom-nav .active {
-      color: #007bff;
+    .nav-item.active {
+      color: #0066cc;
+      font-weight: bold;
     }
-
   </style>
 </head>
 <body>
 
-  <header>
-    <img src="godlo.png" alt="Godło">
-    <div>
-      <img src="bell.png" alt="Dzwonek" width="24">
-    </div>
-  </header>
-
   <div class="container">
-    <div class="section-header">
-      <h2>Dokumenty</h2>
-      <div>
-        <button>Dodaj</button>
-        <button>Wszystkie</button>
-      </div>
+    <!-- GÓRNY PASEK -->
+    <div class="top-bar">
+      <img src="godlo.png" alt="Godło" class="godlo">
+      <span class="bell">🔔</span>
     </div>
 
-    <!-- Karta mDowód -->
-    <div class="card-mdowod">
-      <img class="card-bg" src="dowod-bg.png" alt="Tło mDowodu">
-      <img class="card-icon" src="card_background.png" alt="Ikona użytkownika">
-      <div class="card-content">
-        <span class="card-title">mDowód</span>
-        <img class="card-arrow" src="arrow.png" alt="Strzałka">
-      </div>
-    </div>
-
-    <div class="section-header">
-      <h2>Usługi</h2>
+    <!-- DOKUMENTY -->
+    <h2>Dokumenty</h2>
+    <div class="buttons">
+      <button>Dodaj</button>
       <button>Wszystkie</button>
     </div>
 
-    <div class="uslugi-grid">
-      <div class="usluga">
-        <img src="siec.png" alt="Bezpiecznie">
-        Bezpiecznie w sieci
+    <!-- KARTA mDowód -->
+    <div class="card-mdowod">
+      <img src="card_background.png" class="bg" alt="Tło">
+      <img src="ikona-mdowod.png" class="ikona" alt="Ikona">
+      <div class="bottom">
+        <span>mDowód</span>
+        <img src="strzalka.png" class="strzalka" alt="Strzałka">
       </div>
-      <div class="usluga">
-        <img src="auto.png" alt="Historia pojazdu">
-        Historia pojazdu
-      </div>
-      <div class="usluga">
-        <img src="tarcza.png" alt="Zastrzeż PESEL">
-        Zastrzeż PESEL
-      </div>
-      <div class="usluga">
-        <img src="firma.png" alt="Firma">
-        Firma
-      </div>
-      <div class="usluga">
-        <img src="policja.png" alt="Punkty">
-        Punkty
-      </div>
-      <div class="usluga">
-        <img src="mandaty.png" alt="Mandaty">
-        Mandaty
-      </div>
+    </div>
+
+    <!-- USŁUGI -->
+    <h2>Usługi</h2>
+    <div class="buttons">
+      <button>Wszystkie</button>
+    </div>
+
+    <div class="services">
+      <div class="service"><img src="ikona1.png"><div>Bezpiecznie<br>w sieci</div></div>
+      <div class="service"><img src="ikona2.png"><div>Historia<br>pojazdu</div></div>
+      <div class="service"><img src="ikona3.png"><div>Zastrzeż<br>PESEL</div></div>
+      <div class="service"><img src="ikona4.png"><div>Firma</div></div>
+      <div class="service"><img src="ikona5.png"><div>Punkty</div></div>
+      <div class="service"><img src="ikona6.png"><div>Mandaty</div></div>
     </div>
   </div>
 
-  <!-- Dolna nawigacja -->
+  <!-- DOLNA NAWIGACJA -->
   <div class="bottom-nav">
-    <div class="nav-item active">
-      <img src="home.png" alt="Pulpit">
-      Pulpit
-    </div>
-    <div class="nav-item">
-      <img src="docs.png" alt="Dokumenty">
-      Dokumenty
-    </div>
-    <div class="nav-item">
-      <img src="uslugi.png" alt="Usługi">
-      Usługi
-    </div>
-    <div class="nav-item">
-      <img src="qr.png" alt="Kod QR">
-      Kod QR
-    </div>
-    <div class="nav-item">
-      <img src="wiecej.png" alt="Więcej">
-      Więcej
-    </div>
+    <div class="nav-item active"><img src="nav1.png"><div>Pulpit</div></div>
+    <div class="nav-item"><img src="nav2.png"><div>Dokumenty</div></div>
+    <div class="nav-item"><img src="nav3.png"><div>Usługi</div></div>
+    <div class="nav-item"><img src="nav4.png"><div>Kod QR</div></div>
+    <div class="nav-item"><img src="nav5.png"><div>Więcej</div></div>
   </div>
 
 </body>
