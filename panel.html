@@ -7,170 +7,79 @@
   <style>
     * { box-sizing: border-box; }
     body {
-      font-family: system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Ubuntu,sans-serif;
+      font-family: system-ui, sans-serif;
       background: #f5f7fb;
       margin: 0;
       padding: 0;
-      -webkit-font-smoothing: antialiased;
     }
     .container {
       max-width: 480px;
       margin: 0 auto;
       padding: 16px 16px 100px;
     }
-
-    .top-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-top: 8px;
+    h2 {
+      font-size: 20px;
+      margin: 16px 0 8px;
     }
-
-    .godlo {
-      width: 32px;
-      height: auto;
-      display: block;
-    }
-
-    .bell-wrapper {
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .bell-wrapper img {
-      width: 24px;
-      height: 24px;
-      display: block;
-    }
-
     .section-header {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      margin-top: 18px;
+      align-items: center;
+      margin-bottom: 12px;
     }
-
     .section-header h2 {
-      font-size: 20px;
       margin: 0;
-      font-weight: 600;
     }
-
-    .btn-group {
-      display: flex;
-      gap: 10px;
-    }
-
-    .btn {
-      padding: 8px 16px;
-      border: none;
-      border-radius: 18px;
-      background-color: #e7f0fb;
+    .section-header a {
+      background: #e4efff;
       color: #0066cc;
-      font-weight: 600;
-      cursor: pointer;
       font-size: 14px;
-      line-height: 1;
-      white-space: nowrap;
+      padding: 6px 12px;
+      border-radius: 999px;
+      text-decoration: none;
     }
 
-    .card-mdowod {
-      position: relative;
-      border-radius: 16px;
-      overflow: hidden;
-      margin: 16px 0 28px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      background: #f0f7ff;
-    }
-
-    .card-mdowod .top-bg {
-      background: linear-gradient(135deg,#a8d4ff 0%,#dcedff 100%);
-      height: 120px;
-      position: relative;
-    }
-
-    .card-mdowod .ikona-wrapper {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      width: 28px;
-      height: 28px;
-    }
-
-    .card-mdowod .ikona-wrapper img {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
-
-    .card-mdowod .bottom {
+    .card {
       background: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 14px 16px;
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      margin-bottom: 16px;
+    }
+    .card h3 {
+      margin: 12px 0 0;
+      font-size: 16px;
     }
 
-    .card-mdowod .bottom span {
-      font-weight: 700;
-      font-size: 18px;
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
     }
-
-    .card-mdowod .arrow {
-      width: 14px;
-      height: auto;
-      display: block;
-    }
-
-    .services-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: 4px;
-    }
-
-    .services {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 8px;
-    }
-
     .service {
-      flex: 1 1 calc(33.333% - 8px);
       background: white;
       border-radius: 20px;
-      padding: 12px 6px;
+      padding: 16px 8px;
       text-align: center;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.05);
-      font-size: 12px;
-      line-height: 1.1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      min-width: 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
-
     .service img {
-      width: 32px;
       height: 32px;
-      flex-shrink: 0;
+      margin-bottom: 8px;
+    }
+    .service span {
+      display: block;
+      font-size: 13px;
+      color: #444;
     }
 
-    .service div {
-      white-space: pre-line;
-    }
-
+    /* --- Dolna nawigacja --- */
     .bottom-nav {
       position: fixed;
       bottom: 0;
       left: 0;
       right: 0;
-      background: white;
+      background: #fff;
       display: flex;
       justify-content: space-around;
       border-top: 1px solid #e2e8f0;
@@ -192,15 +101,21 @@
       cursor: pointer;
     }
 
-    .nav-item img {
-      width: 28px;
-      height: 28px;
-      object-fit: contain;
-      display: block;
+    .nav-item svg {
+      width: 24px;
+      height: 24px;
+      stroke: #000;
+      stroke-width: 1.8;
+      fill: none;
+    }
+
+    .nav-item.active svg {
+      fill: #004d99;
+      stroke: none;
     }
 
     .nav-item.active {
-      color: #0066cc;
+      color: #004d99;
       font-weight: 600;
     }
   </style>
@@ -208,91 +123,93 @@
 <body>
 
   <div class="container">
-    <!-- GÓRNY PASEK -->
-    <div class="top-bar">
-      <img src="logo_rounded.png" alt="Godło" class="godlo">
-      <div class="bell-wrapper">
-        <img src="bell.png" alt="Powiadomienia">
-      </div>
-    </div>
-
-    <!-- DOKUMENTY -->
+    <!-- Dokumenty -->
     <div class="section-header">
       <h2>Dokumenty</h2>
-      <div class="btn-group">
-        <button class="btn">Dodaj</button>
-        <button class="btn">Wszystkie</button>
+      <div>
+        <a href="#">Dodaj</a>
+        <a href="#">Wszystkie</a>
       </div>
     </div>
-
-    <div class="card-mdowod">
-      <div class="top-bg">
-        <div class="ikona-wrapper">
-          <img src="human.png" alt="Ikona użytkownika">
-        </div>
-      </div>
-      <div class="bottom">
-        <span>mDowód</span>
-        <img src="right_arrow_sharp.png" class="arrow" alt="Strzałka">
-      </div>
+    <div class="card">
+      <img src="#" alt="mDowód" style="width:100%; border-radius: 12px; background: #cfe9fb; height: 120px;" />
+      <h3>mDowód</h3>
     </div>
 
-    <!-- USŁUGI -->
-    <div class="services-header">
+    <!-- Usługi -->
+    <div class="section-header">
       <h2>Usługi</h2>
-      <div class="btn-group">
-        <button class="btn">Wszystkie</button>
-      </div>
+      <a href="#">Wszystkie</a>
     </div>
-
-    <div class="services">
+    <div class="services-grid">
       <div class="service">
-        <img src="safe_in_web.png" alt="Bezpiecznie w sieci">
-        <div>Bezpiecznie<br>w sieci</div>
+        <img src="#" alt="Bezpiecznie w sieci" />
+        <span>Bezpiecznie<br>w sieci</span>
       </div>
       <div class="service">
-        <img src="vehicle.png" alt="Historia pojazdu">
-        <div>Historia<br>pojazdu</div>
+        <img src="#" alt="Historia pojazdu" />
+        <span>Historia<br>pojazdu</span>
       </div>
       <div class="service">
-        <img src="pesel.png" alt="Zastrzeż PESEL">
-        <div>Zastrzeż<br>PESEL</div>
+        <img src="#" alt="Zastrzeż PESEL" />
+        <span>Zastrzeż<br>PESEL</span>
       </div>
       <div class="service">
-        <img src="business.png" alt="Firma">
-        <div>Firma</div>
+        <img src="#" alt="Firma" />
+        <span>Firma</span>
       </div>
       <div class="service">
-        <img src="penalties.png" alt="Punkty">
-        <div>Punkty</div>
+        <img src="#" alt="Punkty" />
+        <span>Punkty</span>
       </div>
       <div class="service">
-        <img src="tickets.png" alt="Mandaty">
-        <div>Mandaty</div>
+        <img src="#" alt="Mandaty" />
+        <span>Mandaty</span>
       </div>
     </div>
   </div>
 
-  <!-- DOLNA NAWIGACJA Z OBRAZAMI -->
+  <!-- NAWIGACJA DOLNA -->
   <div class="bottom-nav">
     <div class="nav-item active">
-      <img src="img1.png" alt="Pulpit">
+      <!-- Home icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M3 12L12 3l9 9v7a1 1 0 0 1-1 1h-4v-4a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v4H4a1 1 0 0 1-1-1v-7z"/>
+      </svg>
       <div>Pulpit</div>
     </div>
     <div class="nav-item">
-      <img src="img2.png" alt="Dokumenty">
+      <!-- User -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <circle cx="12" cy="8" r="4"/>
+        <path d="M5.5 21a8.38 8.38 0 0 1 13 0"/>
+      </svg>
       <div>Dokumenty</div>
     </div>
     <div class="nav-item">
-      <img src="folder.png" alt="Usługi">
+      <!-- Folder -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M3 6a2 2 0 0 1 2-2h5l2 2h9a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+      </svg>
       <div>Usługi</div>
     </div>
     <div class="nav-item">
-      <img src="img4.png" alt="Kod QR">
+      <!-- QR -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <rect x="3" y="3" width="5" height="5"/>
+        <rect x="16" y="3" width="5" height="5"/>
+        <rect x="3" y="16" width="5" height="5"/>
+        <path d="M16 16h1v1h-1zm2 2h1v1h-1zm-4 0h1v1h-1zm0-4h1v1h-1z"/>
+      </svg>
       <div>Kod QR</div>
     </div>
     <div class="nav-item">
-      <img src="img5.png" alt="Więcej">
+      <!-- More -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <circle cx="5" cy="12" r="1.5"/>
+        <circle cx="12" cy="12" r="1.5"/>
+        <circle cx="19" cy="12" r="1.5"/>
+      </svg>
       <div>Więcej</div>
     </div>
   </div>
