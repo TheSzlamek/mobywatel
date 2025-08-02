@@ -56,7 +56,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 120px;
+      width: 140px;
       flex-shrink: 0;
     }
     .photo {
@@ -76,12 +76,23 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      font-size: 12px;
       margin-top: 5px;
     }
-    .emblems img {
-      height: 20px;
-      margin: 2px 0;
+    .emblems .flag {
+      height: 30px; /* POWIĘKSZONA FLAGA */
+      margin-bottom: 8px;
+    }
+    .emblems .eagle-text {
+      display: flex;
+      align-items: center;
+    }
+    .emblems .eagle {
+      height: 28px; /* POWIĘKSZONE GODŁO */
+      margin-right: 5px;
+    }
+    .emblems span {
+      font-size: 13px;
+      line-height: 1.2;
     }
     .right {
       display: flex;
@@ -152,9 +163,11 @@
         <img src="xddddd.png" alt="Zdjęcie">
       </div>
       <div class="emblems">
-        <img src="flag.webp" alt="Flaga">
-        <img src="eagle.gif" alt="Orzeł">
-        <span>Rzeczpospolita<br>Polska</span>
+        <img class="flag" src="flag.webp" alt="Flaga">
+        <div class="eagle-text">
+          <img class="eagle" src="eagle.gif" alt="Orzeł">
+          <span>Rzeczpospolita<br>Polska</span>
+        </div>
       </div>
     </div>
     <div class="right">
@@ -208,3 +221,4 @@
   </script>
 </body>
 </html>
+
