@@ -57,14 +57,28 @@
     }
     .doc-photo {
       width: 100px;
-      height: 130px;
-      border: 1px solid #ccc;
       margin-right: 12px;
+      flex-shrink: 0;
     }
     .doc-photo img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
+      display: block;
+      border: 1px solid #ccc;
+    }
+    .doc-symbols {
+      margin-top: 8px;
+      text-align: center;
+    }
+    .doc-symbols img {
+      height: 24px;
+      display: block;
+      margin: 4px auto;
+    }
+    .doc-symbols span {
+      display: block;
+      font-size: 12px;
+      color: #333;
     }
     .doc-data {
       flex: 1;
@@ -78,19 +92,6 @@
     .doc-data strong {
       font-size: 16px;
       display: block;
-    }
-    .doc-symbols {
-      display: flex;
-      align-items: center;
-      margin-top: 8px;
-    }
-    .doc-symbols img {
-      height: 24px;
-      margin-right: 6px;
-    }
-    .doc-symbols span {
-      font-size: 13px;
-      color: #333;
     }
     .valid-card {
       background: white;
@@ -154,15 +155,19 @@
     <img src="back_blue.png" alt="Wróć" onclick="history.back()">
     <h1>mDowód</h1>
   </div>
-  <div class="time" id="time">
-  </div>
+  <div class="time" id="time"></div>
 
   <!-- Dokument -->
   <div class="document">
     <div class="doc-inner">
       <div class="doc-content">
         <div class="doc-photo">
-          <img src="xddddd.png" alt="Zdjęcie">
+          <img src="xdddddd.png" alt="Zdjęcie">
+          <div class="doc-symbols">
+            <img src="flag.webp" alt="Flaga">
+            <img src="eagle.gif" alt="Godło">
+            <span>Rzeczpospolita Polska</span>
+          </div>
         </div>
         <div class="doc-data">
           <p><strong>KACPER</strong><small>Imię (imiona)</small></p>
@@ -170,11 +175,6 @@
           <p><strong>POLSKIE</strong><small>Obywatelstwo</small></p>
           <p><strong>07.01.2007</strong><small>Data urodzenia</small></p>
           <p><strong>07211712323</strong><small>Numer PESEL</small></p>
-          <div class="doc-symbols">
-            <img src="flag.webp" alt="Flaga">
-            <img src="eagle.gif" alt="Godło">
-            <span>Rzeczpospolita Polska</span>
-          </div>
         </div>
       </div>
     </div>
@@ -244,4 +244,5 @@
   </script>
 </body>
 </html>
+
 
