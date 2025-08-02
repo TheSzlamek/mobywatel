@@ -54,17 +54,30 @@
     }
 
     .card-header {
-      background: url("card_background.png") no-repeat center center;
-      background-size: cover;
+      background: linear-gradient(to bottom right, #e6f1fb, #cdddee);
       height: 120px;
+      position: relative;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+    }
+
+    .logo-corner {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #e60000;
+      border-radius: 6px;
+      padding: 4px;
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
+      width: 28px;
+      height: 28px;
     }
 
-    .card-header img {
-      height: 40px;
+    .logo-corner img {
+      width: 16px;
+      height: 16px;
     }
 
     .card-title {
@@ -197,7 +210,9 @@
 
     <div class="card">
       <div class="card-header">
-        <img src="human.png" alt="mDowód">
+        <div class="logo-corner">
+          <img src="human.png" alt="mDowód">
+        </div>
       </div>
       <div class="card-title">mDowód</div>
     </div>
@@ -302,3 +317,4 @@
 
 </body>
 </html>
+
