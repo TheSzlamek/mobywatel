@@ -28,16 +28,16 @@
       color: #0070f3;
     }
     .title {
-      text-align: center;
+      text-align: left;
       font-size: 18px;
       font-weight: 600;
-      margin-top: 4px;
+      margin: 10px 10px 0 10px;
     }
     .time {
-      text-align: center;
+      text-align: left;
       font-size: 14px;
       color: #555;
-      margin-bottom: 10px;
+      margin: 0 10px 10px 10px;
     }
     .card {
       background: url('plate.png') no-repeat center;
@@ -45,6 +45,7 @@
       border-radius: 8px;
       margin: 0 10px;
       padding: 12px;
+      max-width: 350px; /* ograniczamy szerokość */
     }
     .card-content {
       display: flex;
@@ -80,7 +81,7 @@
     .symbols .row {
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 6px;
     }
     .symbols img.eagle {
       width: 20px;
@@ -88,10 +89,11 @@
     .symbols .rp {
       font-size: 12px;
       color: #333;
+      line-height: 1.2;
     }
     .symbols img.flag {
       width: 48px;
-      margin-top: 4px;
+      margin-left: 0;
     }
     .status {
       display: flex;
@@ -103,6 +105,7 @@
       border-radius: 8px;
       font-weight: 500;
       color: #008000;
+      max-width: 350px;
     }
     .status img {
       width: 20px;
@@ -198,5 +201,6 @@
   </script>
 </body>
 </html>
+
 
 
