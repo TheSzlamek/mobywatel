@@ -72,25 +72,26 @@
     }
     .symbols {
       display: flex;
-      align-items: flex-start;
-      gap: 6px;
-      margin: 6px 0;
-    }
-    .symbols .column {
-      display: flex;
       flex-direction: column;
       align-items: flex-start;
+      gap: 4px;
+      margin: 6px 0;
     }
-    .symbols img.flag {
-      width: 48px;
+    .symbols .row {
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
     .symbols img.eagle {
       width: 20px;
     }
     .symbols .rp {
       font-size: 12px;
-      line-height: 1.1;
       color: #333;
+    }
+    .symbols img.flag {
+      width: 48px;
+      margin-top: 4px;
     }
     .status {
       display: flex;
@@ -152,11 +153,11 @@
         <div><strong>07.01.2007</strong></div>
         <div class="label">Data urodzenia</div>
         <div class="symbols">
-          <img src="flag.webp" alt="Flaga" class="flag">
-          <div class="column">
+          <div class="row">
             <img src="eagle.gif" alt="Godło" class="eagle">
-            <div class="rp">Rzeczpospolita<br>Polska</div>
+            <div class="rp">Rzeczpospolita Polska</div>
           </div>
+          <img src="flag.webp" alt="Flaga" class="flag">
         </div>
         <div><strong>07211712323</strong></div>
         <div class="label">Numer PESEL</div>
@@ -197,4 +198,5 @@
   </script>
 </body>
 </html>
+
 
