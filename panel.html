@@ -58,31 +58,52 @@
       cursor: pointer;
     }
 
-    .card {
-      background: linear-gradient(135deg, #e6f0fb, #d3e6f8);
+    /* === KARTA mDowód === */
+    .card-mdowod {
+      width: 100%;
+      height: 100px;
       border-radius: 20px;
-      height: 120px;
+      background: linear-gradient(135deg, #e6f0fb, #d3e6f8);
       position: relative;
-      margin-bottom: 16px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       overflow: hidden;
     }
 
-    .card img {
+    .card-mdowod::before {
+      content: "";
       position: absolute;
-      top: 12px;
-      left: 12px;
+      inset: 0;
+      background-image: repeating-radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 1px, transparent 5px);
+      opacity: 0.1;
+    }
+
+    .icon-badge {
       width: 28px;
       height: 28px;
+      background-color: #d61e1e;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
     }
 
-    .card-title {
-      position: absolute;
-      bottom: 12px;
-      left: 12px;
+    .icon-badge img {
+      width: 16px;
+      height: 16px;
+    }
+
+    .mdowod-title {
       font-size: 16px;
       font-weight: 600;
+      color: #000;
+      z-index: 1;
     }
 
+    /* === USŁUGI === */
     .services {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -109,6 +130,7 @@
       line-height: 1.2;
     }
 
+    /* === DOLNE MENU === */
     .bottom-nav {
       position: fixed;
       bottom: 0;
@@ -146,7 +168,7 @@
   <div class="container">
     <!-- Górny pasek -->
     <div class="top-row">
-      <img src="logo_rounded.png" alt="godło" />
+      <img src="godlo.png" alt="godło" />
       <img src="bell.svg" alt="powiadomienia" />
     </div>
 
@@ -159,9 +181,12 @@
       </div>
     </div>
 
-    <div class="card">
-      <img src="card_background.png" alt="ikona użytkownika" />
-      <div class="card-title">mDowód</div>
+    <!-- mDowód -->
+    <div class="card-mdowod">
+      <div class="icon-badge">
+        <img src="card_background.png" alt="ikona użytkownika" />
+      </div>
+      <div class="mdowod-title">mDowód</div>
     </div>
 
     <!-- Usługi -->
@@ -172,7 +197,7 @@
 
     <div class="services">
       <div class="service">
-        <img src="safe_in_web.png" alt="Bezpiecznie w sieci" />
+        <img src="ikona1.png" alt="Bezpiecznie w sieci" />
         <p>Bezpiecznie<br>w sieci</p>
       </div>
       <div class="service">
@@ -223,4 +248,5 @@
   </div>
 </body>
 </html>
+
 
