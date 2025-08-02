@@ -16,7 +16,7 @@
     .container {
       max-width: 480px;
       margin: 0 auto;
-      padding: 16px 16px 100px; /* dolny padding, żeby nie zasłaniała nawigacja */
+      padding: 16px 16px 100px;
     }
 
     /* GÓRNY PASEK */
@@ -39,7 +39,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
     }
 
     .bell-wrapper img {
@@ -48,21 +47,27 @@
       display: block;
     }
 
-    h2 {
+    /* SEKCJA NAGŁÓWKOWA */
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 18px;
+    }
+
+    .section-header h2 {
       font-size: 20px;
-      margin: 20px 0 6px;
+      margin: 0;
       font-weight: 600;
     }
 
-    .buttons {
+    .btn-group {
       display: flex;
       gap: 10px;
-      margin-bottom: 14px;
     }
 
-    .buttons button {
-      flex: 1;
-      padding: 8px 14px;
+    .btn {
+      padding: 8px 16px;
       border: none;
       border-radius: 18px;
       background-color: #e7f0fb;
@@ -71,6 +76,7 @@
       cursor: pointer;
       font-size: 14px;
       line-height: 1;
+      white-space: nowrap;
     }
 
     /* KARTA DOKUMENTU */
@@ -78,7 +84,7 @@
       position: relative;
       border-radius: 16px;
       overflow: hidden;
-      margin-bottom: 24px;
+      margin: 16px 0 28px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       background: #f0f7ff;
     }
@@ -134,12 +140,11 @@
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      justify-content: space-between;
       margin-top: 8px;
     }
 
     .service {
-      width: 30%;
+      flex: 1 1 calc(33.333% - 8px);
       background: white;
       border-radius: 20px;
       padding: 12px 6px;
@@ -151,6 +156,7 @@
       flex-direction: column;
       align-items: center;
       gap: 4px;
+      min-width: 0;
     }
 
     .service img {
@@ -199,17 +205,6 @@
       color: #0066cc;
       font-weight: 600;
     }
-
-    /* drobne responsywności */
-    @media (max-width: 420px) {
-      .service {
-        width: 48%;
-      }
-      .buttons button {
-        font-size: 13px;
-        padding: 6px 12px;
-      }
-    }
   </style>
 </head>
 <body>
@@ -224,10 +219,12 @@
     </div>
 
     <!-- DOKUMENTY -->
-    <h2>Dokumenty</h2>
-    <div class="buttons">
-      <button>Dodaj</button>
-      <button>Wszystkie</button>
+    <div class="section-header">
+      <h2>Dokumenty</h2>
+      <div class="btn-group">
+        <button class="btn">Dodaj</button>
+        <button class="btn">Wszystkie</button>
+      </div>
     </div>
 
     <!-- KARTA mDowód -->
@@ -245,9 +242,9 @@
 
     <!-- USŁUGI -->
     <div class="services-header">
-      <h2 style="margin:0;">Usługi</h2>
-      <div class="buttons" style="margin:0; gap:0;">
-        <button style="padding:6px 16px;">Wszystkie</button>
+      <h2>Usługi</h2>
+      <div class="btn-group">
+        <button class="btn">Wszystkie</button>
       </div>
     </div>
 
@@ -305,4 +302,5 @@
 
 </body>
 </html>
+
 
