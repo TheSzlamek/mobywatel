@@ -1,221 +1,200 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>mDowód</title>
-<style>
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: system-ui, sans-serif;
-    background: #f1f3f6;
-    color: #000;
-  }
-  .header {
-    display: flex;
-    align-items: center;
-    padding: 12px;
-    background: #fff;
-    border-bottom: 1px solid #ddd;
-  }
-  .header img {
-    width: 20px;
-    margin-right: 8px;
-  }
-  .header h1 {
-    font-size: 16px;
-    font-weight: 500;
-  }
-  .time {
-    text-align: center;
-    font-size: 13px;
-    color: #666;
-    margin: 8px 0;
-  }
-  .card {
-    background: url('plate.png') no-repeat center/cover;
-    border-radius: 10px;
-    margin: 10px;
-    padding: 16px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-  .left {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-right: 12px;
-  }
-  .left img.photo {
-    width: 100px;
-    border-radius: 4px;
-    margin-bottom: 8px;
-  }
-  .symbols {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .symbols img.flag {
-    width: 50px;
-    margin-bottom: 4px;
-  }
-  .symbols img.eagle {
-    width: 20px;
-    margin-bottom: 2px;
-  }
-  .symbols .rp {
-    font-size: 12px;
-    color: #333;
-  }
-  .right {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .field {
-    margin: 4px 0;
-  }
-  .field div {
-    font-weight: 500;
-    font-size: 17px;
-  }
-  .field span {
-    font-size: 14px;
-    color: #777;
-  }
-  .valid {
-    display: flex;
-    align-items: center;
-    background: #fff;
-    border-radius: 10px;
-    padding: 12px;
-    margin: 10px;
-    font-size: 16px;
-    font-weight: 500;
-    color: #16a34a;
-  }
-  .valid img {
-    width: 20px;
-    margin-right: 8px;
-  }
-  .actions {
-    display: flex;
-    justify-content: space-around;
-    padding: 12px 10px;
-    flex-wrap: wrap;
-  }
-  .actions div {
-    width: 24%;
-    text-align: center;
-    font-size: 12px;
-    color: #333;
-  }
-  .actions div img {
-    width: 28px;
-    margin-bottom: 4px;
-  }
-  .footer-nav {
-    display: flex;
-    justify-content: space-around;
-    border-top: 1px solid #ddd;
-    background: #fff;
-    padding: 8px 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-  }
-  .footer-nav div {
-    text-align: center;
-    font-size: 11px;
-    color: #555;
-  }
-  .footer-nav div img {
-    width: 20px;
-    margin-bottom: 2px;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>mDowód</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f0f3f8;
+      color: #333;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      background: white;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .header img {
+      width: 24px;
+      margin-right: 8px;
+    }
+    .header span {
+      font-size: 16px;
+      font-weight: 500;
+      color: #0070f3;
+    }
+    .title {
+      text-align: center;
+      font-size: 18px;
+      font-weight: 600;
+      margin-top: 4px;
+    }
+    .time {
+      text-align: center;
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 10px;
+    }
+    .card {
+      background: url('plate.png') no-repeat center;
+      background-size: cover;
+      border-radius: 8px;
+      margin: 0 10px;
+      padding: 12px;
+    }
+    .card-content {
+      display: flex;
+      gap: 10px;
+    }
+    .photo {
+      width: 90px;
+      height: 110px;
+      border-radius: 4px;
+      background: #ccc;
+    }
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+    .info {
+      flex: 1;
+      font-size: 14px;
+    }
+    .info .label {
+      font-size: 11px;
+      color: #777;
+    }
+    .symbols {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      margin: 6px 0;
+    }
+    .symbols .column {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .symbols img.flag {
+      width: 48px;
+    }
+    .symbols img.eagle {
+      width: 20px;
+    }
+    .symbols .rp {
+      font-size: 12px;
+      line-height: 1.1;
+      color: #333;
+    }
+    .status {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #fff;
+      margin: 10px;
+      padding: 10px;
+      border-radius: 8px;
+      font-weight: 500;
+      color: #008000;
+    }
+    .status img {
+      width: 20px;
+      height: 20px;
+    }
+    .footer {
+      display: flex;
+      justify-content: space-around;
+      background: #fff;
+      padding: 10px 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      box-shadow: 0 -1px 3px rgba(0,0,0,0.1);
+    }
+    .footer div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 10px;
+      color: #333;
+    }
+    .footer img {
+      width: 20px;
+      margin-bottom: 4px;
+    }
+  </style>
 </head>
 <body>
-<div class="header">
-  <img src="back_blue.png" alt="Wróć">
-  <h1>mDowód</h1>
-</div>
-<div class="time" id="clock"></div>
-<div class="card">
-  <div class="left">
-    <img src="xddddd.png" alt="Zdjęcie" class="photo">
-    <div class="symbols">
-      <img src="flag.webp" alt="Flaga" class="flag">
-      <img src="eagle.gif" alt="Godło" class="eagle">
-      <div class="rp">Rzeczpospolita Polska</div>
+  <div class="header">
+    <img src="back_blue.png" alt="Wróć" />
+    <span>Wróć</span>
+  </div>
+  <div class="title">mDowód</div>
+  <div class="time" id="time"></div>
+  <div class="card">
+    <div class="card-content">
+      <div class="photo">
+        <img src="xddddd.png" alt="Zdjęcie" />
+      </div>
+      <div class="info">
+        <div><strong>KACPER</strong></div>
+        <div class="label">Imię (imiona)</div>
+        <div><strong>LIGĘSKA</strong></div>
+        <div class="label">Nazwisko</div>
+        <div><strong>POLSKIE</strong></div>
+        <div class="label">Obywatelstwo</div>
+        <div><strong>07.01.2007</strong></div>
+        <div class="label">Data urodzenia</div>
+        <div class="symbols">
+          <img src="flag.webp" alt="Flaga" class="flag">
+          <div class="column">
+            <img src="eagle.gif" alt="Godło" class="eagle">
+            <div class="rp">Rzeczpospolita<br>Polska</div>
+          </div>
+        </div>
+        <div><strong>07211712323</strong></div>
+        <div class="label">Numer PESEL</div>
+      </div>
     </div>
   </div>
-  <div class="right">
-    <div class="field"><div>KACPER</div><span>Imię (imiona)</span></div>
-    <div class="field"><div>LIGĘSKA</div><span>Nazwisko</span></div>
-    <div class="field"><div>POLSKIE</div><span>Obywatelstwo</span></div>
-    <div class="field"><div>07.01.2007</div><span>Data urodzenia</span></div>
-    <div class="field"><div>07211712323</div><span>Numer PESEL</span></div>
+  <div class="status">
+    <img src="valid.png" alt="Ważny" />
+    Dokument ważny
   </div>
-</div>
-<div class="valid">
-  <img src="valid.png" alt="OK">
-  Dokument ważny
-</div>
-<div class="actions">
-  <div>
-    <img src="valid.png" alt="">
-    Potwierdź swoje dane
+  <div class="footer">
+    <div>
+      <img src="icon_confirm.png" alt="">
+      Potwierdź<br>swoje dane
+    </div>
+    <div>
+      <img src="icon_id.png" alt="">
+      Dane<br>dowodu
+    </div>
+    <div>
+      <img src="icon_lock.png" alt="">
+      Zastrzeż<br>PESEL
+    </div>
+    <div>
+      <img src="icon_more.png" alt="">
+      Pozostałe<br>skróty
+    </div>
   </div>
-  <div>
-    <img src="valid.png" alt="">
-    Dane dowodu osobistego
-  </div>
-  <div>
-    <img src="valid.png" alt="">
-    Zastrzeż PESEL
-  </div>
-  <div>
-    <img src="valid.png" alt="">
-    Pozostałe skróty
-  </div>
-</div>
-<div class="footer-nav">
-  <div>
-    <img src="valid.png" alt="">
-    Pulpit
-  </div>
-  <div>
-    <img src="valid.png" alt="">
-    Dokumenty
-  </div>
-  <div>
-    <img src="valid.png" alt="">
-    Usługi
-  </div>
-  <div>
-    <img src="valid.png" alt="">
-    Kod QR
-  </div>
-  <div>
-    <img src="valid.png" alt="">
-    Więcej
-  </div>
-</div>
-
-<script>
-function updateClock() {
-  const now = new Date();
-  const pad = n => String(n).padStart(2, '0');
-  const text = `Czas: ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())} ${pad(now.getDate())}.${pad(now.getMonth()+1)}.${now.getFullYear()}`;
-  document.getElementById('clock').textContent = text;
-}
-setInterval(updateClock, 1000);
-updateClock();
-</script>
+  <script>
+    function updateTime() {
+      const el = document.getElementById('time');
+      const now = new Date();
+      const pad = n => n < 10 ? '0' + n : n;
+      el.textContent = `Czas: ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())} ${pad(now.getDate())}.${pad(now.getMonth()+1)}.${now.getFullYear()}`;
+    }
+    setInterval(updateTime, 1000);
+    updateTime();
+  </script>
 </body>
 </html>
+
