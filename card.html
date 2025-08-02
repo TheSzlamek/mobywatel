@@ -55,7 +55,7 @@
     .left {
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start; /* WAŻNE: wyrównuje wszystko do lewej */
       width: 140px;
       flex-shrink: 0;
     }
@@ -75,11 +75,11 @@
     .emblems {
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start; /* też do lewej */
       margin-top: 5px;
     }
     .emblems .flag {
-      height: 30px; /* POWIĘKSZONA FLAGA */
+      height: 30px;
       margin-bottom: 8px;
     }
     .emblems .eagle-text {
@@ -87,7 +87,7 @@
       align-items: center;
     }
     .emblems .eagle {
-      height: 28px; /* POWIĘKSZONE GODŁO */
+      height: 28px;
       margin-right: 5px;
     }
     .emblems span {
@@ -221,4 +221,3 @@
   </script>
 </body>
 </html>
-
