@@ -38,18 +38,26 @@
       color: #555;
     }
     .document {
-      background: white;
+      background: url('background.jpg') no-repeat center center;
+      background-size: cover;
       margin: 1em;
       padding: 1em;
       border-radius: 8px;
       position: relative;
+      overflow: hidden;
+    }
+    .photo {
+      float: left;
+      margin-right: 1em;
     }
     .photo img {
       width: 100px;
       height: auto;
       border-radius: 4px;
       display: block;
-      margin-bottom: 1em;
+    }
+    .details {
+      overflow: hidden;
     }
     .details p {
       margin: 0.4em 0;
@@ -73,6 +81,17 @@
     }
     .badge .rp {
       font-size: 0.9em;
+    }
+    .flag-godlo {
+      position: absolute;
+      bottom: 1em;
+      left: 1em;
+      display: flex;
+      align-items: center;
+    }
+    .flag-godlo img {
+      height: 25px;
+      margin-right: 0.5em;
     }
     .status {
       margin-top: 1em;
@@ -126,9 +145,9 @@
       <p><strong>07.01.2007</strong><span class="label">Data urodzenia</span></p>
       <p><strong>07211712323</strong><span class="label">Numer PESEL</span></p>
     </div>
-    <div class="badge">
-      <img src="poland_flag.png" alt="Flaga Polski">
-      <div class="rp">Rzeczpospolita Polska</div>
+    <div class="flag-godlo">
+      <img src="flag.png" alt="Flaga Polski">
+      <img src="godlo.png" alt="Godło Polski">
     </div>
     <div class="status">
       <span class="checkmark">✔</span> Dokument ważny
