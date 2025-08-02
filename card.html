@@ -8,73 +8,53 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #f0f3f8;
-      color: #333;
+      background-color: #f5f7fa;
     }
     .header {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       padding: 10px;
-      background: white;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      background: #fff;
+      border-bottom: 1px solid #ddd;
     }
-    .header img {
-      width: 24px;
-      margin-right: 8px;
+    .header .back {
+      display: flex;
+      align-items: center;
     }
-    .header span {
-      font-size: 16px;
-      font-weight: 500;
-      color: #0070f3;
+    .header .back img {
+      width: 20px;
+      height: 20px;
+      margin-right: 5px;
     }
-    .title {
-      text-align: left;
+    .header h1 {
       font-size: 18px;
-      font-weight: 600;
-      margin: 10px 10px 0 10px;
+      margin: 0;
+    }
+    .header .help img {
+      width: 20px;
+      height: 20px;
     }
     .time {
-      text-align: left;
+      text-align: center;
       font-size: 14px;
       color: #555;
-      margin: 0 10px 10px 10px;
+      margin: 10px 0;
     }
     .card {
-      background: url('plate.png') no-repeat center;
-      background-size: cover;
-      border-radius: 8px;
+      position: relative;
+      background: url('plate.png') no-repeat center/cover;
       margin: 0 10px;
-      padding: 12px;
-      max-width: 350px;
-    }
-    .card-content {
-      display: flex;
-      gap: 10px;
-    }
-    .side-symbols {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 6px;
-      margin-right: 4px;
-    }
-    .side-symbols img.flag {
-      width: 42px;
-    }
-    .side-symbols img.eagle {
-      width: 20px;
-    }
-    .side-symbols .rp {
-      font-size: 11px;
-      line-height: 1.1;
+      border-radius: 8px;
+      padding: 10px;
       color: #333;
     }
     .photo {
-      width: 90px;
-      height: 110px;
+      width: 100px;
+      height: 120px;
       border-radius: 4px;
       overflow: hidden;
-      background: #ccc;
+      margin-bottom: 10px;
     }
     .photo img {
       width: 100%;
@@ -82,121 +62,138 @@
       object-fit: cover;
     }
     .info {
-      flex: 1;
-      font-size: 14px;
+      display: flex;
+      flex-direction: column;
+      font-size: 16px;
+      margin-bottom: 10px;
     }
-    .info .label {
-      font-size: 11px;
-      color: #777;
+    .info div {
+      margin: 2px 0;
     }
-    .status {
+    .emblems {
       display: flex;
       align-items: center;
-      gap: 6px;
-      background: #fff;
-      margin: 10px;
-      padding: 10px;
-      border-radius: 8px;
-      font-weight: 500;
-      color: #008000;
-      max-width: 350px;
+      margin-bottom: 10px;
     }
-    .status img {
+    .emblems img {
+      height: 24px;
+      margin-right: 5px;
+    }
+    .pesel {
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .valid {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 10px 0;
+      color: #2e7d32;
+      font-weight: bold;
+    }
+    .valid img {
       width: 20px;
       height: 20px;
+      margin-right: 5px;
     }
     .footer {
       display: flex;
       justify-content: space-around;
+      padding: 10px;
       background: #fff;
-      padding: 10px 0;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      box-shadow: 0 -1px 3px rgba(0,0,0,0.1);
+      border-top: 1px solid #ddd;
     }
     .footer div {
       display: flex;
       flex-direction: column;
       align-items: center;
-      font-size: 10px;
+      font-size: 12px;
       color: #333;
     }
-    .footer img {
-      width: 20px;
-      margin-bottom: 4px;
+    .footer div img {
+      width: 24px;
+      height: 24px;
+      margin-bottom: 3px;
     }
   </style>
 </head>
 <body>
   <div class="header">
-    <img src="back_blue.png" alt="Wróć" />
-    <span>Wróć</span>
-  </div>
-  <div class="title">mDowód</div>
-  <div class="time" id="time"></div>
-  <div class="card">
-    <div class="card-content">
-      
-      <!-- LEWA KOLUMNA Z SYMBOLAMI -->
-      <div class="side-symbols">
-        <img src="flag.webp" alt="Flaga" class="flag">
-        <img src="eagle.gif" alt="Godło" class="eagle">
-        <div class="rp">Rzeczpospolita<br>Polska</div>
-      </div>
-
-      <!-- ZDJĘCIE I DANE -->
-      <div class="photo">
-        <img src="xddddd.png" alt="Zdjęcie" />
-      </div>
-      <div class="info">
-        <div><strong>KACPER</strong></div>
-        <div class="label">Imię (imiona)</div>
-        <div><strong>LIGĘSKA</strong></div>
-        <div class="label">Nazwisko</div>
-        <div><strong>POLSKIE</strong></div>
-        <div class="label">Obywatelstwo</div>
-        <div><strong>07.01.2007</strong></div>
-        <div class="label">Data urodzenia</div>
-        <div><strong>07211712323</strong></div>
-        <div class="label">Numer PESEL</div>
-      </div>
+    <div class="back">
+      <img src="back_arrow.png" alt="Wróć">
+      <span>Wróć</span>
+    </div>
+    <h1>mDowód</h1>
+    <div class="help">
+      <img src="help.png" alt="?">
     </div>
   </div>
-  <div class="status">
-    <img src="valid.png" alt="Ważny" />
+
+  <div class="time" id="clock">Czas: --:--:-- --.--.--</div>
+
+  <div class="card">
+    <div class="photo">
+      <img src="xdxdd.png" alt="Zdjęcie">
+    </div>
+    <div class="info">
+      <div><strong>KACPER</strong><br><small>Imię (imiona)</small></div>
+      <div><strong>LIGĘSKA</strong><br><small>Nazwisko</small></div>
+      <div><strong>POLSKIE</strong><br><small>Obywatelstwo</small></div>
+      <div><strong>07.01.2007</strong><br><small>Data urodzenia</small></div>
+      <div class="pesel">07211712323<br><small>Numer PESEL</small></div>
+    </div>
+    <div class="emblems">
+      <img src="flag.webp" alt="Flaga">
+      <img src="eagle.gif" alt="Orzeł">
+      <span style="font-size:12px;line-height:1.2;">
+        Rzeczpospolita<br>Polska
+      </span>
+    </div>
+  </div>
+
+  <div class="valid">
+    <img src="valid.png" alt="Valid">
     Dokument ważny
   </div>
+
   <div class="footer">
     <div>
-      <img src="icon_confirm.png" alt="">
+      <img src="valid.png" alt="">
       Potwierdź<br>swoje dane
     </div>
     <div>
-      <img src="icon_id.png" alt="">
+      <img src="valid.png" alt="">
       Dane<br>dowodu
     </div>
     <div>
-      <img src="icon_lock.png" alt="">
+      <img src="valid.png" alt="">
       Zastrzeż<br>PESEL
     </div>
     <div>
-      <img src="icon_more.png" alt="">
+      <img src="valid.png" alt="">
       Pozostałe<br>skróty
     </div>
   </div>
+
   <script>
-    function updateTime() {
-      const el = document.getElementById('time');
+    function updateClock() {
       const now = new Date();
-      const pad = n => n < 10 ? '0' + n : n;
-      el.textContent = `Czas: ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())} ${pad(now.getDate())}.${pad(now.getMonth()+1)}.${now.getFullYear()}`;
+      const pad = (n) => n.toString().padStart(2, "0");
+      const timeStr = 
+        pad(now.getHours()) + ":" + 
+        pad(now.getMinutes()) + ":" + 
+        pad(now.getSeconds()) + " " + 
+        pad(now.getDate()) + "." + 
+        pad(now.getMonth() + 1) + "." + 
+        now.getFullYear();
+      document.getElementById("clock").textContent = "Czas: " + timeStr;
     }
-    setInterval(updateTime, 1000);
-    updateTime();
+    setInterval(updateClock, 1000);
+    updateClock();
   </script>
 </body>
 </html>
+
 
 
 
