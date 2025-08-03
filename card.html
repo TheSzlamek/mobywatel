@@ -42,9 +42,74 @@
       margin: 10px 0;
     }
     .card {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      background: #e0e7ef url('plate.png') no-repeat center center;
+      background-size: cover;
       margin: 0 10px;
       border-radius: 8px;
+      padding: 15px;
+      color: #333;
+    }
+    .left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 140px;
+      flex-shrink: 0;
+    }
+    .photo {
+      width: 100px;
+      height: 120px;
+      border-radius: 4px;
       overflow: hidden;
+      margin-bottom: 10px;
+      background: #fff;
+    }
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .emblems {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-top: 5px;
+      margin-left: 8px;
+    }
+    .emblems .flag {
+      height: 30px;
+      margin-bottom: 8px;
+    }
+    .emblems .eagle-text {
+      display: flex;
+      align-items: center;
+    }
+    .emblems .eagle {
+      height: 28px;
+      margin-right: 5px;
+    }
+    .emblems span {
+      font-size: 13px;
+      line-height: 1.2;
+    }
+    .right {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex: 1;
+      padding-left: 15px;
+      font-size: 16px;
+    }
+    .right div {
+      margin: 4px 0;
+    }
+    .pesel {
+      font-size: 18px;
+      font-weight: bold;
     }
     .valid {
       display: flex;
@@ -95,7 +160,25 @@
   <div class="time" id="clock">Czas: --:--:-- --.--.--</div>
 
   <div class="card">
-    <img src="plate.png" alt="mDowód" style="width: 100%; border-radius: 8px;">
+    <div class="left">
+      <div class="photo">
+        <img src="xddddd.png" alt="Zdjęcie">
+      </div>
+      <div class="emblems">
+        <img class="flag" src="flag.webp" alt="Flaga">
+        <div class="eagle-text">
+          <img class="eagle" src="eagle.gif" alt="Orzeł">
+          <span>Rzeczpospolita<br>Polska</span>
+        </div>
+      </div>
+    </div>
+    <div class="right">
+      <div><strong>KACPER</strong><br><small>Imię (imiona)</small></div>
+      <div><strong>LIGĘSKA</strong><br><small>Nazwisko</small></div>
+      <div><strong>POLSKIE</strong><br><small>Obywatelstwo</small></div>
+      <div><strong>07.01.2007</strong><br><small>Data urodzenia</small></div>
+      <div class="pesel">07211712323<br><small>Numer PESEL</small></div>
+    </div>
   </div>
 
   <div class="valid">
@@ -140,4 +223,3 @@
   </script>
 </body>
 </html>
-
