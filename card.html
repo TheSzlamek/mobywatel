@@ -42,14 +42,16 @@
       margin: 10px 0;
     }
     .card-container {
-      background: #fff url('plate.png') no-repeat center center;
-      background-size: cover;
+      background: #fff;
       border-radius: 12px;
       margin: 0 10px;
-      padding: 15px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      overflow: hidden;
     }
     .card {
+      background: url('plate.png') no-repeat center center;
+      background-size: cover;
+      padding: 15px;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
@@ -114,23 +116,22 @@
       font-size: 18px;
       font-weight: bold;
     }
-    .valid-inline {
+    .valid-bar {
       display: flex;
       align-items: center;
-      justify-content: center;
       background: #fff;
-      border-radius: 12px;
-      margin-top: 10px;
-      padding: 8px 12px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      font-weight: bold;
-      font-size: 15px;
-      color: #2e7d32;
+      padding: 10px 15px;
+      border-top: 1px solid #eee;
     }
-    .valid-inline img {
+    .valid-bar img {
       width: 20px;
       height: 20px;
-      margin-right: 6px;
+      margin-right: 8px;
+    }
+    .valid-bar span {
+      font-weight: bold;
+      color: #2e7d32;
+      font-size: 15px;
     }
     .actions {
       display: flex;
@@ -193,9 +194,9 @@
         <div class="pesel">07211712323<br><small>Numer PESEL</small></div>
       </div>
     </div>
-    <div class="valid-inline">
+    <div class="valid-bar">
       <img src="valid.png" alt="Valid">
-      Dokument ważny
+      <span>Dokument ważny</span>
     </div>
   </div>
 
@@ -236,5 +237,6 @@
   </script>
 </body>
 </html>
+
 
 
