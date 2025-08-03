@@ -41,16 +41,19 @@
       color: #555;
       margin: 10px 0;
     }
+    .card-container {
+      background: #fff url('plate.png') no-repeat center center;
+      background-size: cover;
+      border-radius: 12px;
+      margin: 0 10px;
+      padding: 15px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
     .card {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       align-items: flex-start;
-      background: #e0e7ef url('plate.png') no-repeat center center;
-      background-size: cover;
-      margin: 0 10px;
-      border-radius: 8px;
-      padding: 15px;
       color: #333;
     }
     .left {
@@ -111,20 +114,16 @@
       font-size: 18px;
       font-weight: bold;
     }
-    .valid-box {
+    .valid-inline {
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 15px 10px;
-      background: #fff;
-      border-radius: 12px;
-      padding: 10px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      font-weight: bold;
+      margin-top: 10px;
       color: #2e7d32;
+      font-weight: bold;
       font-size: 15px;
     }
-    .valid-box img {
+    .valid-inline img {
       width: 20px;
       height: 20px;
       margin-right: 6px;
@@ -133,6 +132,10 @@
       display: flex;
       justify-content: space-around;
       margin: 15px 10px;
+      background: #fff;
+      padding: 10px 0;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
     .action {
       display: flex;
@@ -141,18 +144,12 @@
       font-size: 12px;
       color: #333;
       text-align: center;
-      width: 60px;
+      width: 70px;
     }
-    .action .icon {
-      background: #fff;
-      border-radius: 50%;
-      padding: 10px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      margin-bottom: 5px;
-    }
-    .action .icon img {
+    .action img {
       width: 24px;
       height: 24px;
+      margin-bottom: 5px;
     }
   </style>
 </head>
@@ -170,48 +167,49 @@
 
   <div class="time" id="clock">Czas: --:--:-- --.--.--</div>
 
-  <div class="card">
-    <div class="left">
-      <div class="photo">
-        <img src="xddddd.png" alt="Zdjęcie">
-      </div>
-      <div class="emblems">
-        <img class="flag" src="flag.webp" alt="Flaga">
-        <div class="eagle-text">
-          <img class="eagle" src="eagle.gif" alt="Orzeł">
-          <span>Rzeczpospolita<br>Polska</span>
+  <div class="card-container">
+    <div class="card">
+      <div class="left">
+        <div class="photo">
+          <img src="xddddd.png" alt="Zdjęcie">
+        </div>
+        <div class="emblems">
+          <img class="flag" src="flag.webp" alt="Flaga">
+          <div class="eagle-text">
+            <img class="eagle" src="eagle.gif" alt="Orzeł">
+            <span>Rzeczpospolita<br>Polska</span>
+          </div>
         </div>
       </div>
+      <div class="right">
+        <div><strong>KACPER</strong><br><small>Imię (imiona)</small></div>
+        <div><strong>LIGĘSKA</strong><br><small>Nazwisko</small></div>
+        <div><strong>POLSKIE</strong><br><small>Obywatelstwo</small></div>
+        <div><strong>07.01.2007</strong><br><small>Data urodzenia</small></div>
+        <div class="pesel">07211712323<br><small>Numer PESEL</small></div>
+      </div>
     </div>
-    <div class="right">
-      <div><strong>KACPER</strong><br><small>Imię (imiona)</small></div>
-      <div><strong>LIGĘSKA</strong><br><small>Nazwisko</small></div>
-      <div><strong>POLSKIE</strong><br><small>Obywatelstwo</small></div>
-      <div><strong>07.01.2007</strong><br><small>Data urodzenia</small></div>
-      <div class="pesel">07211712323<br><small>Numer PESEL</small></div>
+    <div class="valid-inline">
+      <img src="valid.png" alt="Valid">
+      Dokument ważny
     </div>
-  </div>
-
-  <div class="valid-box">
-    <img src="valid.png" alt="Valid">
-    Dokument ważny
   </div>
 
   <div class="actions">
     <div class="action">
-      <div class="icon"><img src="confirm.png" alt=""></div>
+      <img src="valid.png" alt="">
       Potwierdź<br>swoje dane
     </div>
     <div class="action">
-      <div class="icon"><img src="idcard.png" alt=""></div>
+      <img src="valid.png" alt="">
       Dane<br>dowodu
     </div>
     <div class="action">
-      <div class="icon"><img src="lock.png" alt=""></div>
+      <img src="valid.png" alt="">
       Zastrzeż<br>PESEL
     </div>
     <div class="action">
-      <div class="icon"><img src="more.png" alt=""></div>
+      <img src="valid.png" alt="">
       Pozostałe<br>skróty
     </div>
   </div>
