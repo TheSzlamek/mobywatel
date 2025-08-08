@@ -9,22 +9,20 @@
       margin: 0;
       font-family: Arial, sans-serif;
       background-color: #f5f7fa;
-      color: #000;
     }
-    /* Górny pasek */
     .header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 8px 12px;
+      padding: 10px;
       background: #fff;
       border-bottom: 1px solid #ddd;
-      font-size: 15px;
     }
     .header .back {
       display: flex;
       align-items: center;
       color: #007aff;
+      font-weight: 500;
     }
     .header .back img {
       width: 20px;
@@ -32,54 +30,50 @@
       margin-right: 5px;
     }
     .header h1 {
-      font-size: 17px;
+      font-size: 18px;
       margin: 0;
-      font-weight: 500;
     }
     .header .help img {
       width: 20px;
       height: 20px;
     }
-
-    /* Czas */
     .time {
       text-align: center;
-      font-size: 13px;
+      font-size: 14px;
       color: #555;
       margin: 10px 0;
     }
-
-    /* Kontener karty */
     .card-container {
       background: #fff;
-      border-radius: 16px;
+      border-radius: 12px;
       margin: 0 10px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
       overflow: hidden;
-      border: 1px solid #ddd;
     }
     .card {
+      background: url('data:image/png;base64,{{TLO}}') no-repeat center center;
+      background-size: cover;
       padding: 15px;
       display: flex;
       flex-direction: row;
+      justify-content: space-between;
       align-items: flex-start;
+      color: #333;
     }
-    /* Lewa kolumna */
     .left {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      width: 110px;
+      width: 140px;
       flex-shrink: 0;
     }
     .photo {
-      width: 90px;
-      height: 110px;
+      width: 100px;
+      height: 120px;
       border-radius: 4px;
       overflow: hidden;
       margin-bottom: 10px;
       background: #fff;
-      border: 1px solid #ccc;
     }
     .photo img {
       width: 100%;
@@ -90,9 +84,11 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+      margin-top: 5px;
+      margin-left: 8px;
     }
     .emblems .flag {
-      height: 26px;
+      height: 30px;
       margin-bottom: 8px;
     }
     .emblems .eagle-text {
@@ -100,36 +96,28 @@
       align-items: center;
     }
     .emblems .eagle {
-      height: 26px;
+      height: 28px;
       margin-right: 5px;
     }
     .emblems span {
-      font-size: 12px;
+      font-size: 13px;
       line-height: 1.2;
     }
-
-    /* Prawa kolumna */
     .right {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       flex: 1;
       padding-left: 15px;
-      font-size: 15px;
+      font-size: 16px;
     }
     .right div {
-      margin: 5px 0;
-    }
-    .right strong {
-      font-weight: 600;
-    }
-    .right small {
-      font-size: 12px;
-      color: #555;
+      margin: 4px 0;
     }
     .pesel {
-      font-size: 17px;
+      font-size: 18px;
       font-weight: bold;
     }
-
-    /* Pasek ważności */
     .valid-bar {
       display: flex;
       align-items: center;
@@ -145,17 +133,15 @@
     .valid-bar span {
       font-weight: bold;
       color: #2e7d32;
-      font-size: 14px;
+      font-size: 15px;
     }
-
-    /* Dolne przyciski */
     .actions {
       display: flex;
       justify-content: space-around;
       margin: 15px 10px;
       background: #fff;
       padding: 10px 0;
-      border-radius: 16px;
+      border-radius: 12px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
     .action {
@@ -177,12 +163,12 @@
 <body>
   <div class="header">
     <div class="back">
-      <img src="back_arrow.png" alt="Wróć">
+      <img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDA3YWZmIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+PHBhdGggZD0iTTExLjUgNC41TDEwLjA4IDZsNC4yNyA0LjI3SDIuNVYxMC41aDEyLjM1TDExLjUgNC41eiIvPjwvc3ZnPg==" alt="Wróć">
       <span>Wróć</span>
     </div>
     <h1>mDowód</h1>
     <div class="help">
-      <img src="help.png" alt="?">
+      <img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDA3YWZmIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+PHBhdGggZD0iTTExIDZBNSA1IDAgMCAwIDYgMTF2MSBoMnYtMSBhMyAzIDAgMSAxIDYgMHYxaDJ2LTEgYTUgNSAwIDAgMC01LTV6bS0xIDEwYTEgMSAwIDEgMCAwIDJoLTEuNWEuNS41IDAgMCAwIDAgMWg0YS41LjUgMCAwIDAgMC0xaC0xLjVhMSAxIDAgMCAwIDAtMnoiLz48L3N2Zz4=" alt="?">
     </div>
   </div>
 
@@ -192,12 +178,12 @@
     <div class="card">
       <div class="left">
         <div class="photo">
-          <img src="twoje_zdjecie.png" alt="Zdjęcie">
+          <img src="data:image/png;base64,{{ZDJECIE}}" alt="Zdjęcie">
         </div>
         <div class="emblems">
-          <img class="flag" src="flaga.png" alt="Flaga">
+          <img class="flag" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjMwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeT0iMTAiIHdpZHRoPSIzMCIgaGVpZ2h0PSIxMCIgZmlsbD0iI2ZmMDAwMCIvPjwvc3ZnPg==" alt="Flaga">
           <div class="eagle-text">
-            <img class="eagle" src="orzel.png" alt="Orzeł">
+            <img class="eagle" src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjRkZGIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyOCIgaGVpZ2h0PSIyOCI+PHBhdGggZD0iTTIwIDEySDExbDItN2wtNSA3aDRsLTYgN2g0bC0yIDdsNSA3bC0yLTdoOWwtMi03aDRsLTYtN3oiLz48L3N2Zz4=" alt="Orzeł">
             <span>Rzeczpospolita<br>Polska</span>
           </div>
         </div>
@@ -211,26 +197,26 @@
       </div>
     </div>
     <div class="valid-bar">
-      <img src="check.png" alt="Valid">
+      <img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMmU3ZDMyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+PHBhdGggZD0iTTggMTMuMTdsLTQuMTctNC4xNy0xLjQxIDEuNDFsNS41OCA1LjU4IDEyLTEyLTEuNDEtMS40MUw4IDEzLjE3eiIvPjwvc3ZnPg==" alt="Valid">
       <span>Dokument ważny</span>
     </div>
   </div>
 
   <div class="actions">
     <div class="action">
-      <img src="icon1.png" alt="">
+      <img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDA3YWZmIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCI+PHBhdGggZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTAgMThhOCA4IDAgMSAxIDAtMTZBIDggOCAwIDAgMSAxMiAyem0xLTEzdi04aC0ydjhoMnptMCA0aC0ydjJoMnYtMnoiLz48L3N2Zz4=" alt="">
       Potwierdź<br>swoje dane
     </div>
     <div class="action">
-      <img src="icon2.png" alt="">
-      Dane<br>dowodu osobistego
+      <img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDA3YWZmIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCI+PHJlY3QgeD0iNCIgeT0iNCIgd2lkdGg9IjE2IiBoZWlnaHQ9IjMiLz48cmVjdCB4PSI0IiB5PSIxMCIgd2lkdGg9IjE2IiBoZWlnaHQ9IjMiLz48cmVjdCB4PSI0IiB5PSIxNiIgd2lkdGg9IjE2IiBoZWlnaHQ9IjMiLz48L3N2Zz4=" alt="">
+      Dane<br>dowodu
     </div>
     <div class="action">
-      <img src="icon3.png" alt="">
+      <img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDA3YWZmIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCI+PHBhdGggZD0iTTIwIDZoLTl2Nmg2djRoM3YtMTBoMiIvPjwvc3ZnPg==" alt="">
       Zastrzeż<br>PESEL
     </div>
     <div class="action">
-      <img src="icon4.png" alt="">
+      <img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDA3YWZmIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCI+PHBhdGggZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTAgMThhOCA4IDAgMSAxIDAtMTZBIDggOCAwIDAgMSAxMiAyem0xLTEzdi04aC0ydjhoMnptMCA0aC0ydjJoMnYtMnoiLz48L3N2Zz4=" alt="">
       Pozostałe<br>skróty
     </div>
   </div>
@@ -253,7 +239,3 @@
   </script>
 </body>
 </html>
-
-
-
-
