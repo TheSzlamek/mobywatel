@@ -9,18 +9,22 @@
       margin: 0;
       font-family: Arial, sans-serif;
       background-color: #f5f7fa;
+      color: #000;
     }
+    /* Górny pasek */
     .header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 10px;
+      padding: 8px 12px;
       background: #fff;
       border-bottom: 1px solid #ddd;
+      font-size: 15px;
     }
     .header .back {
       display: flex;
       align-items: center;
+      color: #007aff;
     }
     .header .back img {
       width: 20px;
@@ -28,50 +32,54 @@
       margin-right: 5px;
     }
     .header h1 {
-      font-size: 18px;
+      font-size: 17px;
       margin: 0;
+      font-weight: 500;
     }
     .header .help img {
       width: 20px;
       height: 20px;
     }
+
+    /* Czas */
     .time {
       text-align: center;
-      font-size: 14px;
+      font-size: 13px;
       color: #555;
       margin: 10px 0;
     }
+
+    /* Kontener karty */
     .card-container {
       background: #fff;
-      border-radius: 12px;
+      border-radius: 16px;
       margin: 0 10px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
       overflow: hidden;
+      border: 1px solid #ddd;
     }
     .card {
-      background: url('plate.png') no-repeat center center;
-      background-size: cover;
       padding: 15px;
       display: flex;
       flex-direction: row;
-      justify-content: space-between;
       align-items: flex-start;
-      color: #333;
     }
+    /* Lewa kolumna */
     .left {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      width: 140px;
+      width: 110px;
       flex-shrink: 0;
     }
     .photo {
-      width: 100px;
-      height: 120px;
+      width: 90px;
+      height: 110px;
       border-radius: 4px;
       overflow: hidden;
       margin-bottom: 10px;
       background: #fff;
+      border: 1px solid #ccc;
     }
     .photo img {
       width: 100%;
@@ -82,11 +90,9 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      margin-top: 5px;
-      margin-left: 8px;
     }
     .emblems .flag {
-      height: 30px;
+      height: 26px;
       margin-bottom: 8px;
     }
     .emblems .eagle-text {
@@ -94,28 +100,36 @@
       align-items: center;
     }
     .emblems .eagle {
-      height: 28px;
+      height: 26px;
       margin-right: 5px;
     }
     .emblems span {
-      font-size: 13px;
+      font-size: 12px;
       line-height: 1.2;
     }
+
+    /* Prawa kolumna */
     .right {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
       flex: 1;
       padding-left: 15px;
-      font-size: 16px;
+      font-size: 15px;
     }
     .right div {
-      margin: 4px 0;
+      margin: 5px 0;
+    }
+    .right strong {
+      font-weight: 600;
+    }
+    .right small {
+      font-size: 12px;
+      color: #555;
     }
     .pesel {
-      font-size: 18px;
+      font-size: 17px;
       font-weight: bold;
     }
+
+    /* Pasek ważności */
     .valid-bar {
       display: flex;
       align-items: center;
@@ -131,15 +145,17 @@
     .valid-bar span {
       font-weight: bold;
       color: #2e7d32;
-      font-size: 15px;
+      font-size: 14px;
     }
+
+    /* Dolne przyciski */
     .actions {
       display: flex;
       justify-content: space-around;
       margin: 15px 10px;
       background: #fff;
       padding: 10px 0;
-      border-radius: 12px;
+      border-radius: 16px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
     .action {
@@ -176,12 +192,12 @@
     <div class="card">
       <div class="left">
         <div class="photo">
-          <img src="xddddd.png" alt="Zdjęcie">
+          <img src="twoje_zdjecie.png" alt="Zdjęcie">
         </div>
         <div class="emblems">
-          <img class="flag" src="flag.webp" alt="Flaga">
+          <img class="flag" src="flaga.png" alt="Flaga">
           <div class="eagle-text">
-            <img class="eagle" src="eagle.gif" alt="Orzeł">
+            <img class="eagle" src="orzel.png" alt="Orzeł">
             <span>Rzeczpospolita<br>Polska</span>
           </div>
         </div>
@@ -195,26 +211,26 @@
       </div>
     </div>
     <div class="valid-bar">
-      <img src="valid.png" alt="Valid">
+      <img src="check.png" alt="Valid">
       <span>Dokument ważny</span>
     </div>
   </div>
 
   <div class="actions">
     <div class="action">
-      <img src="valid.png" alt="">
+      <img src="icon1.png" alt="">
       Potwierdź<br>swoje dane
     </div>
     <div class="action">
-      <img src="valid.png" alt="">
-      Dane<br>dowodu
+      <img src="icon2.png" alt="">
+      Dane<br>dowodu osobistego
     </div>
     <div class="action">
-      <img src="valid.png" alt="">
+      <img src="icon3.png" alt="">
       Zastrzeż<br>PESEL
     </div>
     <div class="action">
-      <img src="valid.png" alt="">
+      <img src="icon4.png" alt="">
       Pozostałe<br>skróty
     </div>
   </div>
@@ -237,6 +253,7 @@
   </script>
 </body>
 </html>
+
 
 
 
