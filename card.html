@@ -1,367 +1,332 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pl">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>mDowód — mock (SAMPLE)</title>
-<style>
-:root{
-  --bg:#f4f6fb;
-  --card:#fff;
-  --muted:#6b7280;
-  --accent:#1f6feb;
-  --accent-soft:#eaf3ff;
-  --success:#2e7d32;
-  --radius:14px;
-  --shadow: 0 8px 24px rgba(16,24,40,0.06);
-  --maxw:420px;
-}
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
-  font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
-  background:var(--bg);
-  color:#0f1724;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  line-height:1.35;
-}
-.container{max-width:var(--maxw);margin:0 auto;padding-left:8px;padding-right:8px;}
-.small{font-size:13px;color:var(--muted);}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>mDowód</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f5f7fa;
+    }
 
-/* HEADER */
-.header{
-  position:sticky;top:0;z-index:40;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:12px 8px;background:var(--card);border-bottom:1px solid rgba(15,23,42,0.04)
-}
-.header .left{display:flex;align-items:center;gap:10px}
-.header .back{display:flex;align-items:center;gap:8px;color:var(--accent);cursor:pointer;font-weight:700}
-.header h1{margin:0;font-size:17px;font-weight:700}
-.header .help{width:34px;height:34px;display:flex;align-items:center;justify-content:center;border-radius:50%}
+    /* Górny pasek */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px;
+      background: #fff;
+      border-bottom: 1px solid #ddd;
+    }
+    .header .back {
+      display: flex;
+      align-items: center;
+      font-size: 15px;
+      color: #007bff;
+    }
+    .header .back img {
+      width: 20px;
+      height: 20px;
+      margin-right: 5px;
+    }
+    .header h1 {
+      font-size: 18px;
+      margin: 0;
+    }
+    .header .help img {
+      width: 20px;
+      height: 20px;
+    }
 
-/* CLOCK */
-.clock{ text-align:center;color:var(--muted);font-size:13px;margin:12px 0; }
+    /* Czas */
+    .time {
+      text-align: center;
+      font-size: 14px;
+      color: #555;
+      margin: 10px 0;
+    }
 
-/* TOP CARD */
-.card-top{
-  background:var(--card);
-  border-radius:var(--radius);
-  margin:0 8px;
-  box-shadow:var(--shadow);
-  overflow:hidden;
-  border:1px solid rgba(16,24,40,0.03);
-  position:relative;
-}
-.card-top::after{
-  content:"SAMPLE — DO NOT USE";
-  position:absolute;left:-8%;top:44%;
-  width:116%;text-align:center;
-  font-weight:800;font-size:14px;color:rgba(17,24,39,0.06);
-  transform:rotate(-16deg);
-  pointer-events:none;
-}
+    /* Karta dokumentu */
+    .card-container {
+      background: #fff;
+      border-radius: 12px;
+      margin: 0 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    .card {
+      background: url('plate.png') no-repeat center center;
+      background-size: cover;
+      padding: 15px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 140px;
+      flex-shrink: 0;
+    }
+    .photo {
+      width: 100px;
+      height: 120px;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 10px;
+      background: #fff;
+      border: 1px solid #ccc;
+    }
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .emblems {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-top: 5px;
+    }
+    .emblems .flag {
+      height: 20px;
+      margin-bottom: 5px;
+    }
+    .emblems .eagle-text {
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+    }
+    .emblems .eagle {
+      height: 20px;
+      margin-right: 4px;
+    }
+    .right {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex: 1;
+      padding-left: 15px;
+      font-size: 15px;
+    }
+    .right div {
+      margin: 4px 0;
+    }
+    .pesel {
+      font-size: 18px;
+      font-weight: bold;
+    }
 
-/* plate area (uses provided plate.png) */
-.card-plate{
-  display:flex; gap:18px; padding:18px; position:relative;
-  background-image: url('plate.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-}
+    /* Pasek "Dokument ważny" */
+    .valid-bar {
+      display: flex;
+      align-items: center;
+      background: #fff;
+      padding: 10px 15px;
+      border-top: 1px solid #eee;
+    }
+    .valid-bar img {
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+    }
+    .valid-bar span {
+      font-weight: bold;
+      color: #2e7d32;
+      font-size: 15px;
+    }
 
-/* left column */
-.card-left{width:136px;flex-shrink:0;display:flex;flex-direction:column;align-items:flex-start}
-.photo {
-  width:104px;height:124px;border-radius:8px;overflow:hidden;border:1px solid rgba(16,24,40,0.06);
-  background: linear-gradient(180deg,#fff,#f0f6ff); display:flex;align-items:center;justify-content:center;
-  box-shadow: 0 6px 18px rgba(16,24,40,0.04);
-}
-.photo img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(100%);}
+    /* Przyciski akcji */
+    .actions {
+      display: flex;
+      justify-content: space-around;
+      margin: 15px 10px;
+      background: #fff;
+      padding: 10px 0;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .action {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 12px;
+      color: #333;
+      text-align: center;
+      width: 70px;
+      text-decoration: none;
+    }
+    .action img {
+      width: 24px;
+      height: 24px;
+      margin-bottom: 5px;
+    }
 
-/* emblems */
-.emblems{margin-top:10px;display:flex;flex-direction:column;gap:8px}
-.flag{width:72px;height:44px;border-radius:6px;overflow:hidden}
-.flag img{width:100%;height:100%;object-fit:cover;display:block}
-.eagle-row{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:12px}
-.eagle-row img{height:18px}
+    /* Sekcja dolna jak na 2 screenie */
+    .info-card {
+      background: #fff;
+      border-radius: 12px;
+      margin: 15px 10px;
+      padding: 15px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      font-size: 14px;
+    }
+    .info-card div {
+      margin: 5px 0;
+    }
+    .info-title {
+      font-weight: bold;
+      font-size: 16px;
+    }
 
-/* right column */
-.card-right{flex:1;padding-right:6px;display:flex;flex-direction:column;justify-content:center}
-.card-right .name{font-size:20px;font-weight:800;margin-bottom:2px;letter-spacing:0.2px}
-.card-right .subtitle{font-size:13px;color:var(--muted);margin-bottom:8px}
-.card-right .item{margin:6px 0}
-.pesel{font-size:18px;font-weight:800;margin-top:6px}
-
-/* status */
-.status-bar{display:flex;align-items:center;gap:12px;padding:12px 16px;border-top:1px solid rgba(16,24,40,0.03);
-  background:linear-gradient(180deg,rgba(255,255,255,0.98),rgba(255,255,255,0.98));}
-.status-dot{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid var(--success);color:var(--success)}
-.status-text{color:var(--success);font-weight:800}
-
-/* SHORTCUTS */
-.shortcuts{
-  display:flex;justify-content:space-around;gap:8px;margin:14px 8px;padding:12px 8px;
-  background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);
-  align-items:center;flex-wrap:wrap;
-}
-.shortcut{width:86px;display:flex;flex-direction:column;align-items:center;gap:8px;text-decoration:none;color:inherit;cursor:pointer}
-.icon-circle{width:56px;height:56px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(16,24,40,0.06)}
-.shortcut img{width:28px;height:28px}
-.shortcut .label{font-size:13px;color:var(--muted);text-align:center;line-height:1.05}
-
-/* INFO CARD */
-.info-card{
-  margin:14px 8px 160px;
-  background:var(--card);border-radius:16px;box-shadow:var(--shadow);overflow:hidden;border:1px solid rgba(16,24,40,0.03);
-}
-.info-inner{padding:18px}
-.info-row{padding:14px 6px;display:flex;justify-content:space-between;align-items:center;gap:12px;border-bottom:1px solid rgba(16,24,40,0.04)}
-.info-row:last-child{border-bottom:none}
-.info-left{max-width:68%}
-.info-label{font-size:15px;color:var(--muted);margin-bottom:10px}
-.info-value{font-weight:900;font-size:34px;line-height:1;letter-spacing:0.3px}
-.info-value.small{font-size:20px;font-weight:800}
-.copy-pill{background:var(--accent-soft);color:var(--accent);border:none;padding:8px 14px;border-radius:18px;font-weight:700;cursor:pointer}
-.copy-pill:active{transform:scale(.98)}
-
-/* BOTTOM NAV */
-.bottom-nav{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:space-around;align-items:center;gap:8px;padding:8px 8px;background:var(--card);border-top:1px solid rgba(16,24,40,0.03);box-shadow:0 -6px 18px rgba(16,24,40,0.03);z-index:50}
-.bottom-item{display:flex;flex-direction:column;align-items:center;font-size:12px;color:var(--muted);text-decoration:none}
-.bottom-item.active{color:var(--accent)}
-.bottom-item img{width:24px;height:24px;margin-bottom:6px}
-
-/* TOAST */
-.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:140px;background:rgba(17,24,39,0.95);color:#fff;padding:10px 14px;border-radius:10px;font-size:14px;opacity:0;pointer-events:none;transition:opacity .15s,bottom .15s;z-index:999}
-.toast.show{opacity:1;bottom:160px;pointer-events:auto}
-
-/* responsive tweaks */
-@media (max-width:420px){
-  .info-value{font-size:30px}
-  .icon-circle{width:50px;height:50px}
-  .shortcut{width:76px}
-  .photo{width:94px;height:112px}
-}
-</style>
+    /* Dolny pasek */
+    .bottom-nav {
+      display: flex;
+      justify-content: space-around;
+      background: #fff;
+      border-top: 1px solid #ddd;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 5px 0;
+    }
+    .bottom-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 11px;
+      color: #333;
+    }
+    .bottom-item img {
+      width: 22px;
+      height: 22px;
+      margin-bottom: 2px;
+    }
+    .active {
+      color: #007bff;
+    }
+  </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="header container" role="banner" aria-label="Górny pasek">
-  <div class="left">
-    <div class="back" onclick="goBack()" role="button" aria-label="Wróć">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M15 18l-6-6 6-6" stroke="#1f6feb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span>Wróć</span>
+  <!-- Górny pasek -->
+  <div class="header">
+    <div class="back">
+      <img src="back_arrow.png" alt="Wróć">
+      Wróć
+    </div>
+    <h1>mDowód</h1>
+    <div class="help">
+      <img src="help.png" alt="?">
     </div>
   </div>
-  <h1>mDowód</h1>
-  <div class="help" title="Pomoc" aria-hidden="true">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#0f1724" stroke-opacity="0.6" stroke-width="1"/><path d="M9.5 9a2.5 2.5 0 1 1 5 0c0 2-3 2.25-3 4" stroke="#0f1724" stroke-opacity="0.6" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  </div>
-</header>
 
-<!-- CLOCK -->
-<div id="clock" class="clock container">Czas: --:--:-- --.--.----</div>
+  <div class="time" id="clock">Czas: --:--:-- --.--.--</div>
 
-<!-- TOP CARD -->
-<section class="card-top container" aria-label="Karta dowodu">
-  <div style="position:relative;">
-    <div class="card-plate">
-      <div class="card-left">
-        <figure class="photo" aria-hidden="true">
-          <!-- static photo file provided by you -->
-          <img src="xddddd.png" alt="Zdjęcie testowe (podmień plik xddddd.png)">
-        </figure>
-
+  <!-- Karta dokumentu -->
+  <div class="card-container">
+    <div class="card">
+      <div class="left">
+        <div class="photo">
+          <img src="xddddd.png" alt="Zdjęcie">
+        </div>
         <div class="emblems">
-          <div class="flag" aria-hidden="true">
-            <img src="flag.webp" alt="Flaga (TEST)">
-          </div>
-
-          <div class="eagle-row">
-            <img src="eagle.gif" alt="Godło (TEST)">
-            <div class="small">Rzeczpospolita<br>Polska</div>
+          <img class="flag" src="flag.webp" alt="Flaga">
+          <div class="eagle-text">
+            <img class="eagle" src="eagle.gif" alt="Orzeł">
+            <span>Rzeczpospolita<br>Polska</span>
           </div>
         </div>
       </div>
-
-      <div class="card-right" aria-hidden="true">
-        <!-- FIKCYJNE / TESTOWE DANE -->
-        <div class="item">
-          <div class="name">IMIĘ (TEST)</div>
-          <div class="subtitle">Imię (imiona)</div>
-        </div>
-
-        <div class="item">
-          <div class="name">NAZWISKO (TEST)</div>
-          <div class="subtitle">Nazwisko</div>
-        </div>
-
-        <div class="item">
-          <div class="name">POLSKIE</div>
-          <div class="subtitle">Obywatelstwo</div>
-        </div>
-
-        <div class="item">
-          <div class="name">01.01.2000</div>
-          <div class="subtitle">Data urodzenia</div>
-        </div>
-
-        <div class="item pesel">00000000000
-          <div class="subtitle" style="font-weight:400">Numer PESEL</div>
-        </div>
+      <div class="right">
+        <div><strong>KACPER</strong><br><small>Imię (imiona)</small></div>
+        <div><strong>LIGĘSKA</strong><br><small>Nazwisko</small></div>
+        <div><strong>POLSKIE</strong><br><small>Obywatelstwo</small></div>
+        <div><strong>07.01.2007</strong><br><small>Data urodzenia</small></div>
+        <div class="pesel">07211712323<br><small>Numer PESEL</small></div>
       </div>
     </div>
-
-    <!-- status area -->
-    <div class="status-bar">
-      <div class="status-dot" aria-hidden="true">
-        <img src="valid.png" alt="Valid" style="width:22px;height:22px">
-      </div>
-      <div class="status-text">Dokument ważny</div>
-    </div>
-
-    <!-- subtle watermark label -->
-    <div style="position:absolute;left:12px;top:10px;opacity:0.06;font-weight:900;font-size:13px;transform:rotate(-6deg);pointer-events:none;">
-      SAMPLE — DO NOT USE
+    <div class="valid-bar">
+      <img src="valid.png" alt="Valid">
+      <span>Dokument ważny</span>
     </div>
   </div>
-</section>
 
-<!-- SHORTCUTS -->
-<nav class="shortcuts container" role="navigation" aria-label="Skróty">
-  <a class="shortcut" href="https://google.com" target="_blank" rel="noreferrer">
-    <div class="icon-circle" aria-hidden="true"><img src="confirm.png" alt="Potwierdź"></div>
-    <div class="label">Potwierdź<br>swoje dane</div>
-  </a>
+  <!-- Przyciski akcji -->
+  <div class="actions">
+    <a href="https://google.com" class="action">
+      <img src="confirm.png" alt="">
+      Potwierdź<br>swoje dane
+    </a>
+    <a href="https://google.com" class="action">
+      <img src="card.png" alt="">
+      Dane<br>dowodu osobistego
+    </a>
+    <a href="https://google.com" class="action">
+      <img src="lock.png" alt="">
+      Zastrzeż<br>PESEL
+    </a>
+    <a href="https://google.com" class="action">
+      <img src="more.png" alt="">
+      Pozostałe<br>skróty
+    </a>
+  </div>
 
-  <a class="shortcut" href="https://google.com" target="_blank" rel="noreferrer">
-    <div class="icon-circle" aria-hidden="true"><img src="card.png" alt="Dane"></div>
-    <div class="label">Dane dowodu<br>osobistego</div>
-  </a>
+  <!-- Sekcja jak 2 screen -->
+  <div class="info-card">
+    <div><span class="info-title">Seria i numer:</span> PCR 154316</div>
+    <div><span class="info-title">Termin ważności:</span> 08.01.2035</div>
+    <div><span class="info-title">Data wydania:</span> 07.01.2025</div>
+    <div><span class="info-title">Imię ojca:</span> KAROL</div>
+    <div><span class="info-title">Imię matki:</span> ANDŻELIKA</div>
+  </div>
 
-  <a class="shortcut" href="https://google.com" target="_blank" rel="noreferrer">
-    <div class="icon-circle" aria-hidden="true"><img src="lock.png" alt="Zastrzeż"></div>
-    <div class="label">Zastrzeż<br>PESEL</div>
-  </a>
-
-  <a class="shortcut" href="https://google.com" target="_blank" rel="noreferrer">
-    <div class="icon-circle" aria-hidden="true"><img src="more.png" alt="Więcej"></div>
-    <div class="label">Pozostałe<br>skróty</div>
-  </a>
-</nav>
-
-<!-- INFO CARD -->
-<section class="info-card container" aria-label="Szczegóły dokumentu">
-  <div class="info-inner">
-    <div class="info-row" style="align-items:flex-start;">
-      <div class="info-left">
-        <div class="info-label">Seria i numer</div>
-        <div id="pcrValue" class="info-value">PCR 154316</div>
-      </div>
-      <div><button id="copyBtn" class="copy-pill" title="Kopiuj serię">Kopiuj</button></div>
+  <!-- Dolny pasek -->
+  <div class="bottom-nav">
+    <div class="bottom-item active">
+      <img src="pulpit.png" alt="">
+      Pulpit
     </div>
-
-    <div class="info-row">
-      <div class="info-left">
-        <div class="info-label">Termin ważności</div>
-        <div class="info-value small">08.01.2035</div>
-      </div>
+    <div class="bottom-item">
+      <img src="dokumenty.png" alt="">
+      Dokumenty
     </div>
-
-    <div class="info-row">
-      <div class="info-left">
-        <div class="info-label">Data wydania</div>
-        <div class="info-value small">07.01.2025</div>
-      </div>
+    <div class="bottom-item">
+      <img src="uslugi.png" alt="">
+      Usługi
     </div>
-
-    <div class="info-row">
-      <div class="info-left">
-        <div class="info-label">Imię ojca</div>
-        <div class="info-value small">KAROL</div>
-      </div>
+    <div class="bottom-item">
+      <img src="kodqr.png" alt="">
+      Kod QR
     </div>
-
-    <div class="info-row">
-      <div class="info-left">
-        <div class="info-label">Imię matki</div>
-        <div class="info-value small">ANDŻELIKA</div>
-      </div>
+    <div class="bottom-item">
+      <img src="wiecej.png" alt="">
+      Więcej
     </div>
   </div>
-</section>
 
-<!-- TOAST -->
-<div id="toast" class="toast" role="status" aria-live="polite">Skopiowano</div>
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const pad = (n) => n.toString().padStart(2, "0");
+      const timeStr = 
+        pad(now.getHours()) + ":" + 
+        pad(now.getMinutes()) + ":" + 
+        pad(now.getSeconds()) + " " + 
+        pad(now.getDate()) + "." + 
+        pad(now.getMonth() + 1) + "." + 
+        now.getFullYear();
+      document.getElementById("clock").textContent = "Czas: " + timeStr;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
 
-<!-- BOTTOM NAV -->
-<nav class="bottom-nav" role="navigation" aria-label="Dolna nawigacja">
-  <a class="bottom-item active" href="#"><img src="confirm.png" alt=""><div>Pulpit</div></a>
-  <a class="bottom-item" href="#"><img src="card.png" alt=""><div>Dokumenty</div></a>
-  <a class="bottom-item" href="#"><img src="lock.png" alt=""><div>Usługi</div></a>
-  <a class="bottom-item" href="#"><img src="more.png" alt=""><div>Kod QR</div></a>
-  <a class="bottom-item" href="#"><img src="more.png" alt=""><div>Więcej</div></a>
-</nav>
-
-<script>
-/* CLOCK */
-function updateClock(){
-  const now = new Date();
-  const pad = n => n.toString().padStart(2,'0');
-  const timeStr = pad(now.getHours()) + ":" + pad(now.getMinutes()) + ":" + pad(now.getSeconds())
-    + " " + pad(now.getDate()) + "." + pad(now.getMonth()+1) + "." + now.getFullYear();
-  document.getElementById('clock').textContent = "Czas: " + timeStr;
-}
-setInterval(updateClock,1000);
-updateClock();
-
-/* BACK */
-function goBack(){
-  if(history.length>1) history.back();
-  else alert('Brak historii (test).');
-}
-
-/* COPY + TOAST */
-const copyBtn = document.getElementById('copyBtn');
-const toast = document.getElementById('toast');
-copyBtn.addEventListener('click', async ()=>{
-  const val = document.getElementById('pcrValue').innerText.trim();
-  try {
-    await navigator.clipboard.writeText(val);
-    showToast('Skopiowano: ' + val);
-  } catch(e) {
-    showToast('Kopiowanie nieudane');
-  }
-});
-let toastTimer = null;
-function showToast(msg){
-  toast.textContent = msg;
-  toast.classList.add('show');
-  if(toastTimer) clearTimeout(toastTimer);
-  toastTimer = setTimeout(()=> toast.classList.remove('show'), 1800);
-}
-
-/* ensure info-card margin bottom so it isn't hidden under bottom nav */
-function adjustBottomSpacing(){
-  const bottom = document.querySelector('.bottom-nav');
-  if(!bottom) return;
-  const h = bottom.offsetHeight;
-  const info = document.querySelector('.info-card');
-  if(info) info.style.marginBottom = (h + 40) + 'px';
-}
-window.addEventListener('load', adjustBottomSpacing);
-window.addEventListener('resize', adjustBottomSpacing);
-
-/* keyboard accessible shortcuts */
-document.querySelectorAll('.shortcut').forEach(el=>{
-  el.setAttribute('tabindex','0');
-  el.addEventListener('keydown', e=>{
-    if(e.key==='Enter' || e.key===' ') el.click();
-  });
-});
-</script>
 </body>
 </html>
+
