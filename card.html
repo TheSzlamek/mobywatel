@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>mDowód — mock (SAMPLE)</title>
 <style>
-/* ===================== RESET & BASE ===================== */
 :root{
   --bg:#f4f6fb;
   --card:#fff;
@@ -29,11 +28,9 @@ body{
   line-height:1.35;
 }
 .container{max-width:var(--maxw);margin:0 auto;padding-left:8px;padding-right:8px;}
-.row{display:flex;align-items:center;gap:12px;}
-.center{text-align:center;}
 .small{font-size:13px;color:var(--muted);}
 
-/* ===================== HEADER ===================== */
+/* HEADER */
 .header{
   position:sticky;top:0;z-index:40;
   display:flex;align-items:center;justify-content:space-between;
@@ -44,10 +41,10 @@ body{
 .header h1{margin:0;font-size:17px;font-weight:700}
 .header .help{width:34px;height:34px;display:flex;align-items:center;justify-content:center;border-radius:50%}
 
-/* clock */
+/* CLOCK */
 .clock{ text-align:center;color:var(--muted);font-size:13px;margin:12px 0; }
 
-/* ===================== TOP CARD (mock of ID) ===================== */
+/* TOP CARD */
 .card-top{
   background:var(--card);
   border-radius:var(--radius);
@@ -57,8 +54,6 @@ body{
   border:1px solid rgba(16,24,40,0.03);
   position:relative;
 }
-
-/* watermark to mark sample */
 .card-top::after{
   content:"SAMPLE — DO NOT USE";
   position:absolute;left:-8%;top:44%;
@@ -68,9 +63,9 @@ body{
   pointer-events:none;
 }
 
-/* plate area */
-.card-plate{ display:flex; gap:18px; padding:18px; position:relative;
-  /* background plate image - your file plate.png should be present */
+/* plate area (uses provided plate.png) */
+.card-plate{
+  display:flex; gap:18px; padding:18px; position:relative;
   background-image: url('plate.png');
   background-repeat: no-repeat;
   background-size: cover;
@@ -79,13 +74,17 @@ body{
 
 /* left column */
 .card-left{width:136px;flex-shrink:0;display:flex;flex-direction:column;align-items:flex-start}
-.photo { width:104px;height:124px;border-radius:8px;overflow:hidden;border:1px solid rgba(16,24,40,0.06);
-  background: linear-gradient(180deg,#fff,#f0f6ff); display:flex;align-items:center;justify-content:center; }
-.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.photo {
+  width:104px;height:124px;border-radius:8px;overflow:hidden;border:1px solid rgba(16,24,40,0.06);
+  background: linear-gradient(180deg,#fff,#f0f6ff); display:flex;align-items:center;justify-content:center;
+  box-shadow: 0 6px 18px rgba(16,24,40,0.04);
+}
+.photo img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(100%);}
 
 /* emblems */
 .emblems{margin-top:10px;display:flex;flex-direction:column;gap:8px}
 .flag{width:72px;height:44px;border-radius:6px;overflow:hidden}
+.flag img{width:100%;height:100%;object-fit:cover;display:block}
 .eagle-row{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:12px}
 .eagle-row img{height:18px}
 
@@ -96,23 +95,13 @@ body{
 .card-right .item{margin:6px 0}
 .pesel{font-size:18px;font-weight:800;margin-top:6px}
 
-/* status area */
+/* status */
 .status-bar{display:flex;align-items:center;gap:12px;padding:12px 16px;border-top:1px solid rgba(16,24,40,0.03);
   background:linear-gradient(180deg,rgba(255,255,255,0.98),rgba(255,255,255,0.98));}
 .status-dot{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid var(--success);color:var(--success)}
 .status-text{color:var(--success);font-weight:800}
 
-/* ===================== UPLOAD CONTROLS ===================== */
-.upload-row{margin:12px 8px;display:flex;gap:12px;align-items:center;justify-content:space-between}
-.upload-area{
-  flex:1;border-radius:12px;border:1px dashed rgba(16,24,40,0.06);background:transparent;padding:10px;display:flex;align-items:center;gap:10px;
-}
-.upload-area.drag{background:rgba(31,111,235,0.02);border-color:rgba(31,111,235,0.18)}
-.upload-area input{display:none}
-.btn{background:var(--accent);color:#fff;padding:8px 12px;border-radius:10px;border:none;cursor:pointer;font-weight:700}
-.btn.secondary{background:var(--card);color:var(--accent);border:1px solid rgba(31,111,235,0.12)}
-
-/* ===================== SHORTCUTS (circle icons) ===================== */
+/* SHORTCUTS */
 .shortcuts{
   display:flex;justify-content:space-around;gap:8px;margin:14px 8px;padding:12px 8px;
   background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);
@@ -123,9 +112,9 @@ body{
 .shortcut img{width:28px;height:28px}
 .shortcut .label{font-size:13px;color:var(--muted);text-align:center;line-height:1.05}
 
-/* ===================== INFO CARD (PCR + fields) ===================== */
+/* INFO CARD */
 .info-card{
-  margin:14px 8px 160px; /* leave space for bottom nav */
+  margin:14px 8px 160px;
   background:var(--card);border-radius:16px;box-shadow:var(--shadow);overflow:hidden;border:1px solid rgba(16,24,40,0.03);
 }
 .info-inner{padding:18px}
@@ -138,13 +127,13 @@ body{
 .copy-pill{background:var(--accent-soft);color:var(--accent);border:none;padding:8px 14px;border-radius:18px;font-weight:700;cursor:pointer}
 .copy-pill:active{transform:scale(.98)}
 
-/* bottom nav */
+/* BOTTOM NAV */
 .bottom-nav{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:space-around;align-items:center;gap:8px;padding:8px 8px;background:var(--card);border-top:1px solid rgba(16,24,40,0.03);box-shadow:0 -6px 18px rgba(16,24,40,0.03);z-index:50}
 .bottom-item{display:flex;flex-direction:column;align-items:center;font-size:12px;color:var(--muted);text-decoration:none}
 .bottom-item.active{color:var(--accent)}
 .bottom-item img{width:24px;height:24px;margin-bottom:6px}
 
-/* toast */
+/* TOAST */
 .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:140px;background:rgba(17,24,39,0.95);color:#fff;padding:10px 14px;border-radius:10px;font-size:14px;opacity:0;pointer-events:none;transition:opacity .15s,bottom .15s;z-index:999}
 .toast.show{opacity:1;bottom:160px;pointer-events:auto}
 
@@ -182,13 +171,13 @@ body{
     <div class="card-plate">
       <div class="card-left">
         <figure class="photo" aria-hidden="true">
-          <!-- photo initially loads from xddddd.png; will be replaced when user uploads -->
-          <img id="photoImg" src="xddddd.png" alt="Zdjęcie testowe (podmień xddddd.png)"/>
+          <!-- static photo file provided by you -->
+          <img src="xddddd.png" alt="Zdjęcie testowe (podmień plik xddddd.png)">
         </figure>
 
         <div class="emblems">
           <div class="flag" aria-hidden="true">
-            <img src="flag.webp" alt="Flaga (TEST)" style="width:100%;height:100%;object-fit:cover;display:block">
+            <img src="flag.webp" alt="Flaga (TEST)">
           </div>
 
           <div class="eagle-row">
@@ -199,13 +188,14 @@ body{
       </div>
 
       <div class="card-right" aria-hidden="true">
+        <!-- FIKCYJNE / TESTOWE DANE -->
         <div class="item">
-          <div id="givenName" class="name">TEST IMIĘ</div>
+          <div class="name">IMIĘ (TEST)</div>
           <div class="subtitle">Imię (imiona)</div>
         </div>
 
         <div class="item">
-          <div id="familyName" class="name">TEST NAZWISKO</div>
+          <div class="name">NAZWISKO (TEST)</div>
           <div class="subtitle">Nazwisko</div>
         </div>
 
@@ -215,17 +205,17 @@ body{
         </div>
 
         <div class="item">
-          <div id="birthDate" class="name">01.01.2000</div>
+          <div class="name">01.01.2000</div>
           <div class="subtitle">Data urodzenia</div>
         </div>
 
-        <div class="item pesel" id="peselField">00000000000
+        <div class="item pesel">00000000000
           <div class="subtitle" style="font-weight:400">Numer PESEL</div>
         </div>
       </div>
     </div>
 
-    <!-- status area with "valid" icon -->
+    <!-- status area -->
     <div class="status-bar">
       <div class="status-dot" aria-hidden="true">
         <img src="valid.png" alt="Valid" style="width:22px;height:22px">
@@ -233,26 +223,12 @@ body{
       <div class="status-text">Dokument ważny</div>
     </div>
 
+    <!-- subtle watermark label -->
     <div style="position:absolute;left:12px;top:10px;opacity:0.06;font-weight:900;font-size:13px;transform:rotate(-6deg);pointer-events:none;">
       SAMPLE — DO NOT USE
     </div>
   </div>
 </section>
-
-<!-- UPLOAD CONTROLS -->
-<div class="upload-row container">
-  <label class="upload-area" id="dropArea">
-    <input id="fileInput" type="file" accept="image/*">
-    <div style="display:flex;flex-direction:column;gap:6px;">
-      <strong>Dodaj zdjęcie</strong>
-      <div class="small">Przeciągnij upuść lub kliknij, by wybrać plik. Po wgraniu zdjęcie będzie automatycznie przycięte i zamienione na czarno-białe.</div>
-    </div>
-  </label>
-  <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end">
-    <button id="clearBtn" class="btn secondary">Usuń zdjęcie</button>
-    <button id="saveBtn" class="btn">Zapisz (test)</button>
-  </div>
-</div>
 
 <!-- SHORTCUTS -->
 <nav class="shortcuts container" role="navigation" aria-label="Skróty">
@@ -318,7 +294,7 @@ body{
   </div>
 </section>
 
-<!-- toast -->
+<!-- TOAST -->
 <div id="toast" class="toast" role="status" aria-live="polite">Skopiowano</div>
 
 <!-- BOTTOM NAV -->
@@ -331,7 +307,7 @@ body{
 </nav>
 
 <script>
-/* ======= CLOCK ======= */
+/* CLOCK */
 function updateClock(){
   const now = new Date();
   const pad = n => n.toString().padStart(2,'0');
@@ -342,14 +318,24 @@ function updateClock(){
 setInterval(updateClock,1000);
 updateClock();
 
-/* ======= NAV BACK ======= */
+/* BACK */
 function goBack(){
   if(history.length>1) history.back();
   else alert('Brak historii (test).');
 }
 
-/* ======= TOAST ======= */
+/* COPY + TOAST */
+const copyBtn = document.getElementById('copyBtn');
 const toast = document.getElementById('toast');
+copyBtn.addEventListener('click', async ()=>{
+  const val = document.getElementById('pcrValue').innerText.trim();
+  try {
+    await navigator.clipboard.writeText(val);
+    showToast('Skopiowano: ' + val);
+  } catch(e) {
+    showToast('Kopiowanie nieudane');
+  }
+});
 let toastTimer = null;
 function showToast(msg){
   toast.textContent = msg;
@@ -358,18 +344,7 @@ function showToast(msg){
   toastTimer = setTimeout(()=> toast.classList.remove('show'), 1800);
 }
 
-/* ======= COPY PCR ======= */
-document.getElementById('copyBtn').addEventListener('click', async ()=>{
-  const text = document.getElementById('pcrValue').innerText.trim();
-  try {
-    await navigator.clipboard.writeText(text);
-    showToast('Skopiowano: ' + text);
-  } catch(e) {
-    showToast('Kopiowanie nieudane');
-  }
-});
-
-/* ======= ADJUST BOTTOM MARGIN ======= */
+/* ensure info-card margin bottom so it isn't hidden under bottom nav */
 function adjustBottomSpacing(){
   const bottom = document.querySelector('.bottom-nav');
   if(!bottom) return;
@@ -380,128 +355,13 @@ function adjustBottomSpacing(){
 window.addEventListener('load', adjustBottomSpacing);
 window.addEventListener('resize', adjustBottomSpacing);
 
-/* ======= UPLOAD, CROP, GRAYSCALE =======
-   - target ratio: width:height = 5:6 (approx like photo area)
-   - target pixel size: 500x600 (kept for quality), final preview scaled by CSS
-   - on upload, process with canvas: center-crop, resize, convert to grayscale, produce dataURL
-=================================================*/
-const fileInput = document.getElementById('fileInput');
-const dropArea = document.getElementById('dropArea');
-const photoImg = document.getElementById('photoImg');
-const clearBtn = document.getElementById('clearBtn');
-
-function preventDefaults(e){ e.preventDefault(); e.stopPropagation(); }
-['dragenter','dragover','dragleave','drop'].forEach(evt => {
-  dropArea.addEventListener(evt, preventDefaults, false);
-});
-dropArea.addEventListener('dragover', ()=> dropArea.classList.add('drag'), false);
-dropArea.addEventListener('dragleave', ()=> dropArea.classList.remove('drag'), false);
-dropArea.addEventListener('drop', handleDrop, false);
-
-function handleDrop(e){
-  dropArea.classList.remove('drag');
-  const dt = e.dataTransfer;
-  const files = dt.files;
-  if(files && files.length) handleFile(files[0]);
-}
-
-fileInput.addEventListener('change', (e)=>{
-  if(e.target.files && e.target.files[0]) handleFile(e.target.files[0]);
-});
-
-clearBtn.addEventListener('click', ()=>{
-  // reset to default image file xddddd.png if exists
-  photoImg.src = 'xddddd.png';
-  showToast('Zdjęcie usunięte (test).');
-});
-
-async function handleFile(file){
-  if(!file.type.startsWith('image/')) { showToast('Wybierz plik obrazu.'); return; }
-  const img = await loadImageFromFile(file);
-  const processed = processImageToGrayscaleAndCrop(img, 500, 600); // 5:6 ratio
-  photoImg.src = processed;
-  showToast('Zdjęcie wgrane i przetworzone.');
-}
-
-// load image to HTMLImageElement
-function loadImageFromFile(file){
-  return new Promise((res, rej)=>{
-    const fr = new FileReader();
-    fr.onload = () => {
-      const img = new Image();
-      img.onload = () => res(img);
-      img.onerror = rej;
-      img.src = fr.result;
-    };
-    fr.onerror = rej;
-    fr.readAsDataURL(file);
-  });
-}
-
-// process: center-crop to ratio, resize, grayscale -> return dataURL
-function processImageToGrayscaleAndCrop(img, targetW, targetH){
-  // determine source crop to match target ratio
-  const srcW = img.naturalWidth;
-  const srcH = img.naturalHeight;
-  const targetRatio = targetW/targetH;
-  let sx, sy, sWidth, sHeight;
-
-  const srcRatio = srcW / srcH;
-  if(srcRatio > targetRatio){
-    // source is wider -> cut sides
-    sHeight = srcH;
-    sWidth = Math.round(srcH * targetRatio);
-    sx = Math.round((srcW - sWidth) / 2);
-    sy = 0;
-  } else {
-    // source is taller -> cut top/bottom
-    sWidth = srcW;
-    sHeight = Math.round(srcW / targetRatio);
-    sx = 0;
-    sy = Math.round((srcH - sHeight) / 2);
-  }
-
-  // create canvas and draw
-  const canvas = document.createElement('canvas');
-  canvas.width = targetW;
-  canvas.height = targetH;
-  const ctx = canvas.getContext('2d');
-
-  // draw cropped area into canvas resized
-  ctx.drawImage(img, sx, sy, sWidth, sHeight, 0, 0, targetW, targetH);
-
-  // get image data, convert to grayscale
-  const imageData = ctx.getImageData(0,0,targetW,targetH);
-  const data = imageData.data;
-  for(let i=0;i<data.length;i+=4){
-    // luminance formula
-    const r = data[i], g = data[i+1], b = data[i+2];
-    const l = Math.round(0.299*r + 0.587*g + 0.114*b);
-    data[i] = data[i+1] = data[i+2] = l;
-    // keep alpha
-  }
-  ctx.putImageData(imageData, 0, 0);
-
-  // optional subtle vignette or border could be added here if desired
-
-  // return data URL (png)
-  return canvas.toDataURL('image/png');
-}
-
-/* ======= OPTIONAL: saveBtn (demo) ======= */
-document.getElementById('saveBtn').addEventListener('click', ()=>{
-  showToast('Zapis (test) wykonany — brak zapisu na serwerze.');
-});
-
-/* Accessibility: enable keyboard activation on shortcuts */
+/* keyboard accessible shortcuts */
 document.querySelectorAll('.shortcut').forEach(el=>{
-  el.setAttribute('tabindex', '0');
+  el.setAttribute('tabindex','0');
   el.addEventListener('keydown', e=>{
-    if(e.key === 'Enter' || e.key === ' ') el.click();
+    if(e.key==='Enter' || e.key===' ') el.click();
   });
 });
-
 </script>
 </body>
 </html>
-
