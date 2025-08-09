@@ -70,7 +70,7 @@ body{
 
 /* plate area */
 .card-plate{ display:flex; gap:18px; padding:18px; position:relative;
-  /* background plate image */
+  /* background plate image - your file plate.png should be present */
   background-image: url('plate.png');
   background-repeat: no-repeat;
   background-size: cover;
@@ -79,7 +79,7 @@ body{
 
 /* left column */
 .card-left{width:136px;flex-shrink:0;display:flex;flex-direction:column;align-items:flex-start}
-.photo{ width:104px;height:124px;border-radius:8px;overflow:hidden;border:1px solid rgba(16,24,40,0.06);
+.photo { width:104px;height:124px;border-radius:8px;overflow:hidden;border:1px solid rgba(16,24,40,0.06);
   background: linear-gradient(180deg,#fff,#f0f6ff); display:flex;align-items:center;justify-content:center; }
 .photo img{width:100%;height:100%;object-fit:cover;display:block}
 
@@ -102,6 +102,16 @@ body{
 .status-dot{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid var(--success);color:var(--success)}
 .status-text{color:var(--success);font-weight:800}
 
+/* ===================== UPLOAD CONTROLS ===================== */
+.upload-row{margin:12px 8px;display:flex;gap:12px;align-items:center;justify-content:space-between}
+.upload-area{
+  flex:1;border-radius:12px;border:1px dashed rgba(16,24,40,0.06);background:transparent;padding:10px;display:flex;align-items:center;gap:10px;
+}
+.upload-area.drag{background:rgba(31,111,235,0.02);border-color:rgba(31,111,235,0.18)}
+.upload-area input{display:none}
+.btn{background:var(--accent);color:#fff;padding:8px 12px;border-radius:10px;border:none;cursor:pointer;font-weight:700}
+.btn.secondary{background:var(--card);color:var(--accent);border:1px solid rgba(31,111,235,0.12)}
+
 /* ===================== SHORTCUTS (circle icons) ===================== */
 .shortcuts{
   display:flex;justify-content:space-around;gap:8px;margin:14px 8px;padding:12px 8px;
@@ -115,7 +125,7 @@ body{
 
 /* ===================== INFO CARD (PCR + fields) ===================== */
 .info-card{
-  margin:14px 8px 140px; /* leave space for bottom nav */
+  margin:14px 8px 160px; /* leave space for bottom nav */
   background:var(--card);border-radius:16px;box-shadow:var(--shadow);overflow:hidden;border:1px solid rgba(16,24,40,0.03);
 }
 .info-inner{padding:18px}
@@ -135,8 +145,8 @@ body{
 .bottom-item img{width:24px;height:24px;margin-bottom:6px}
 
 /* toast */
-.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:120px;background:rgba(17,24,39,0.95);color:#fff;padding:10px 14px;border-radius:10px;font-size:14px;opacity:0;pointer-events:none;transition:opacity .15s,bottom .15s;z-index:999}
-.toast.show{opacity:1;bottom:140px;pointer-events:auto}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:140px;background:rgba(17,24,39,0.95);color:#fff;padding:10px 14px;border-radius:10px;font-size:14px;opacity:0;pointer-events:none;transition:opacity .15s,bottom .15s;z-index:999}
+.toast.show{opacity:1;bottom:160px;pointer-events:auto}
 
 /* responsive tweaks */
 @media (max-width:420px){
@@ -153,7 +163,6 @@ body{
 <header class="header container" role="banner" aria-label="Górny pasek">
   <div class="left">
     <div class="back" onclick="goBack()" role="button" aria-label="Wróć">
-      <!-- arrow svg -->
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M15 18l-6-6 6-6" stroke="#1f6feb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <span>Wróć</span>
     </div>
@@ -167,23 +176,21 @@ body{
 <!-- CLOCK -->
 <div id="clock" class="clock container">Czas: --:--:-- --.--.----</div>
 
-<!-- TOP CARD (LOOKS LIKE ORIGINAL but with SAMPLE watermark) -->
+<!-- TOP CARD -->
 <section class="card-top container" aria-label="Karta dowodu">
   <div style="position:relative;">
     <div class="card-plate">
       <div class="card-left">
-        <!-- PHOTO: replace the file xddddd.png in the same folder to use your test photo -->
         <figure class="photo" aria-hidden="true">
-          <img src="xddddd.png" alt="Zdjęcie (TEST) -- podmień plik xddddd.png lokalnie">
+          <!-- photo initially loads from xddddd.png; will be replaced when user uploads -->
+          <img id="photoImg" src="xddddd.png" alt="Zdjęcie testowe (podmień xddddd.png)"/>
         </figure>
 
         <div class="emblems">
-          <!-- FLAG -->
           <div class="flag" aria-hidden="true">
             <img src="flag.png" alt="Flaga (TEST)" style="width:100%;height:100%;object-fit:cover;display:block">
           </div>
 
-          <!-- EAGLE + text -->
           <div class="eagle-row">
             <img src="eagle.png" alt="Godło (TEST)">
             <div class="small">Rzeczpospolita<br>Polska</div>
@@ -192,14 +199,13 @@ body{
       </div>
 
       <div class="card-right" aria-hidden="true">
-        <!-- NOTE: all data below is TEST-only and fictitious -->
         <div class="item">
-          <div class="name">TEST IMIĘ</div>
+          <div id="givenName" class="name">TEST IMIĘ</div>
           <div class="subtitle">Imię (imiona)</div>
         </div>
 
         <div class="item">
-          <div class="name">TEST NAZWISKO</div>
+          <div id="familyName" class="name">TEST NAZWISKO</div>
           <div class="subtitle">Nazwisko</div>
         </div>
 
@@ -209,11 +215,11 @@ body{
         </div>
 
         <div class="item">
-          <div class="name">01.01.2000</div>
+          <div id="birthDate" class="name">01.01.2000</div>
           <div class="subtitle">Data urodzenia</div>
         </div>
 
-        <div class="item pesel">00000000000
+        <div class="item pesel" id="peselField">00000000000
           <div class="subtitle" style="font-weight:400">Numer PESEL</div>
         </div>
       </div>
@@ -227,40 +233,46 @@ body{
       <div class="status-text">Dokument ważny</div>
     </div>
 
-    <!-- small visible watermark (so it's obvious this is a mock) -->
     <div style="position:absolute;left:12px;top:10px;opacity:0.06;font-weight:900;font-size:13px;transform:rotate(-6deg);pointer-events:none;">
       SAMPLE — DO NOT USE
     </div>
   </div>
 </section>
 
+<!-- UPLOAD CONTROLS -->
+<div class="upload-row container">
+  <label class="upload-area" id="dropArea">
+    <input id="fileInput" type="file" accept="image/*">
+    <div style="display:flex;flex-direction:column;gap:6px;">
+      <strong>Dodaj zdjęcie</strong>
+      <div class="small">Przeciągnij upuść lub kliknij, by wybrać plik. Po wgraniu zdjęcie będzie automatycznie przycięte i zamienione na czarno-białe.</div>
+    </div>
+  </label>
+  <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end">
+    <button id="clearBtn" class="btn secondary">Usuń zdjęcie</button>
+    <button id="saveBtn" class="btn">Zapisz (test)</button>
+  </div>
+</div>
+
 <!-- SHORTCUTS -->
 <nav class="shortcuts container" role="navigation" aria-label="Skróty">
   <a class="shortcut" href="https://google.com" target="_blank" rel="noreferrer">
-    <div class="icon-circle" aria-hidden="true">
-      <img src="confirm.png" alt="Potwierdź (ikonka)">
-    </div>
+    <div class="icon-circle" aria-hidden="true"><img src="confirm.png" alt="Potwierdź"></div>
     <div class="label">Potwierdź<br>swoje dane</div>
   </a>
 
   <a class="shortcut" href="https://google.com" target="_blank" rel="noreferrer">
-    <div class="icon-circle" aria-hidden="true">
-      <img src="card.png" alt="Dane dowodu (ikonka)">
-    </div>
+    <div class="icon-circle" aria-hidden="true"><img src="card.png" alt="Dane"></div>
     <div class="label">Dane dowodu<br>osobistego</div>
   </a>
 
   <a class="shortcut" href="https://google.com" target="_blank" rel="noreferrer">
-    <div class="icon-circle" aria-hidden="true">
-      <img src="lock.png" alt="Zastrzeż PESEL (ikonka)">
-    </div>
+    <div class="icon-circle" aria-hidden="true"><img src="lock.png" alt="Zastrzeż"></div>
     <div class="label">Zastrzeż<br>PESEL</div>
   </a>
 
   <a class="shortcut" href="https://google.com" target="_blank" rel="noreferrer">
-    <div class="icon-circle" aria-hidden="true">
-      <img src="more.png" alt="Pozostałe skróty (ikonka)">
-    </div>
+    <div class="icon-circle" aria-hidden="true"><img src="more.png" alt="Więcej"></div>
     <div class="label">Pozostałe<br>skróty</div>
   </a>
 </nav>
@@ -311,26 +323,11 @@ body{
 
 <!-- BOTTOM NAV -->
 <nav class="bottom-nav" role="navigation" aria-label="Dolna nawigacja">
-  <a class="bottom-item active" href="#">
-    <img src="confirm.png" alt="" style="width:22px;height:22px;opacity:0.9">
-    <div>Pulpit</div>
-  </a>
-  <a class="bottom-item" href="#">
-    <img src="card.png" alt="" style="width:22px;height:22px;opacity:0.9">
-    <div>Dokumenty</div>
-  </a>
-  <a class="bottom-item" href="#">
-    <img src="lock.png" alt="" style="width:22px;height:22px;opacity:0.9">
-    <div>Usługi</div>
-  </a>
-  <a class="bottom-item" href="#">
-    <img src="more.png" alt="" style="width:22px;height:22px;opacity:0.9">
-    <div>Kod QR</div>
-  </a>
-  <a class="bottom-item" href="#">
-    <img src="more.png" alt="" style="width:22px;height:22px;opacity:0.9">
-    <div>Więcej</div>
-  </a>
+  <a class="bottom-item active" href="#"><img src="confirm.png" alt=""><div>Pulpit</div></a>
+  <a class="bottom-item" href="#"><img src="card.png" alt=""><div>Dokumenty</div></a>
+  <a class="bottom-item" href="#"><img src="lock.png" alt=""><div>Usługi</div></a>
+  <a class="bottom-item" href="#"><img src="more.png" alt=""><div>Kod QR</div></a>
+  <a class="bottom-item" href="#"><img src="more.png" alt=""><div>Więcej</div></a>
 </nav>
 
 <script>
@@ -338,45 +335,41 @@ body{
 function updateClock(){
   const now = new Date();
   const pad = n => n.toString().padStart(2,'0');
-  const timeStr = pad(now.getHours()) + ":" + pad(now.getMinutes()) + ":" + pad(now.getSeconds()) + " " + pad(now.getDate()) + "." + pad(now.getMonth()+1) + "." + now.getFullYear();
+  const timeStr = pad(now.getHours()) + ":" + pad(now.getMinutes()) + ":" + pad(now.getSeconds())
+    + " " + pad(now.getDate()) + "." + pad(now.getMonth()+1) + "." + now.getFullYear();
   document.getElementById('clock').textContent = "Czas: " + timeStr;
 }
 setInterval(updateClock,1000);
 updateClock();
 
-/* ======= BACK ======= */
+/* ======= NAV BACK ======= */
 function goBack(){
   if(history.length>1) history.back();
   else alert('Brak historii (test).');
 }
 
-/* ======= COPY PCR + TOAST ======= */
-const copyBtn = document.getElementById('copyBtn');
+/* ======= TOAST ======= */
 const toast = document.getElementById('toast');
-
-copyBtn.addEventListener('click', async () => {
-  const text = document.getElementById('pcrValue').innerText.trim();
-  try {
-    await navigator.clipboard.writeText(text);
-    showToast('Skopiowano: ' + text);
-  } catch(e) {
-    // fallback
-    const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta);
-    ta.select();
-    try { document.execCommand('copy'); showToast('Skopiowano: ' + text); } catch(err) { showToast('Kopiowanie nieudane'); }
-    document.body.removeChild(ta);
-  }
-});
-
 let toastTimer = null;
 function showToast(msg){
   toast.textContent = msg;
   toast.classList.add('show');
   if(toastTimer) clearTimeout(toastTimer);
-  toastTimer = setTimeout(()=>{ toast.classList.remove('show'); }, 1800);
+  toastTimer = setTimeout(()=> toast.classList.remove('show'), 1800);
 }
 
-/* ======= ensure info-card margin bottom (so it is not hidden by bottom nav) ======= */
+/* ======= COPY PCR ======= */
+document.getElementById('copyBtn').addEventListener('click', async ()=>{
+  const text = document.getElementById('pcrValue').innerText.trim();
+  try {
+    await navigator.clipboard.writeText(text);
+    showToast('Skopiowano: ' + text);
+  } catch(e) {
+    showToast('Kopiowanie nieudane');
+  }
+});
+
+/* ======= ADJUST BOTTOM MARGIN ======= */
 function adjustBottomSpacing(){
   const bottom = document.querySelector('.bottom-nav');
   if(!bottom) return;
@@ -387,12 +380,128 @@ function adjustBottomSpacing(){
 window.addEventListener('load', adjustBottomSpacing);
 window.addEventListener('resize', adjustBottomSpacing);
 
-/* keyboard accessibility for shortcuts (Enter/Space) */
+/* ======= UPLOAD, CROP, GRAYSCALE =======
+   - target ratio: width:height = 5:6 (approx like photo area)
+   - target pixel size: 500x600 (kept for quality), final preview scaled by CSS
+   - on upload, process with canvas: center-crop, resize, convert to grayscale, produce dataURL
+=================================================*/
+const fileInput = document.getElementById('fileInput');
+const dropArea = document.getElementById('dropArea');
+const photoImg = document.getElementById('photoImg');
+const clearBtn = document.getElementById('clearBtn');
+
+function preventDefaults(e){ e.preventDefault(); e.stopPropagation(); }
+['dragenter','dragover','dragleave','drop'].forEach(evt => {
+  dropArea.addEventListener(evt, preventDefaults, false);
+});
+dropArea.addEventListener('dragover', ()=> dropArea.classList.add('drag'), false);
+dropArea.addEventListener('dragleave', ()=> dropArea.classList.remove('drag'), false);
+dropArea.addEventListener('drop', handleDrop, false);
+
+function handleDrop(e){
+  dropArea.classList.remove('drag');
+  const dt = e.dataTransfer;
+  const files = dt.files;
+  if(files && files.length) handleFile(files[0]);
+}
+
+fileInput.addEventListener('change', (e)=>{
+  if(e.target.files && e.target.files[0]) handleFile(e.target.files[0]);
+});
+
+clearBtn.addEventListener('click', ()=>{
+  // reset to default image file xddddd.png if exists
+  photoImg.src = 'xddddd.png';
+  showToast('Zdjęcie usunięte (test).');
+});
+
+async function handleFile(file){
+  if(!file.type.startsWith('image/')) { showToast('Wybierz plik obrazu.'); return; }
+  const img = await loadImageFromFile(file);
+  const processed = processImageToGrayscaleAndCrop(img, 500, 600); // 5:6 ratio
+  photoImg.src = processed;
+  showToast('Zdjęcie wgrane i przetworzone.');
+}
+
+// load image to HTMLImageElement
+function loadImageFromFile(file){
+  return new Promise((res, rej)=>{
+    const fr = new FileReader();
+    fr.onload = () => {
+      const img = new Image();
+      img.onload = () => res(img);
+      img.onerror = rej;
+      img.src = fr.result;
+    };
+    fr.onerror = rej;
+    fr.readAsDataURL(file);
+  });
+}
+
+// process: center-crop to ratio, resize, grayscale -> return dataURL
+function processImageToGrayscaleAndCrop(img, targetW, targetH){
+  // determine source crop to match target ratio
+  const srcW = img.naturalWidth;
+  const srcH = img.naturalHeight;
+  const targetRatio = targetW/targetH;
+  let sx, sy, sWidth, sHeight;
+
+  const srcRatio = srcW / srcH;
+  if(srcRatio > targetRatio){
+    // source is wider -> cut sides
+    sHeight = srcH;
+    sWidth = Math.round(srcH * targetRatio);
+    sx = Math.round((srcW - sWidth) / 2);
+    sy = 0;
+  } else {
+    // source is taller -> cut top/bottom
+    sWidth = srcW;
+    sHeight = Math.round(srcW / targetRatio);
+    sx = 0;
+    sy = Math.round((srcH - sHeight) / 2);
+  }
+
+  // create canvas and draw
+  const canvas = document.createElement('canvas');
+  canvas.width = targetW;
+  canvas.height = targetH;
+  const ctx = canvas.getContext('2d');
+
+  // draw cropped area into canvas resized
+  ctx.drawImage(img, sx, sy, sWidth, sHeight, 0, 0, targetW, targetH);
+
+  // get image data, convert to grayscale
+  const imageData = ctx.getImageData(0,0,targetW,targetH);
+  const data = imageData.data;
+  for(let i=0;i<data.length;i+=4){
+    // luminance formula
+    const r = data[i], g = data[i+1], b = data[i+2];
+    const l = Math.round(0.299*r + 0.587*g + 0.114*b);
+    data[i] = data[i+1] = data[i+2] = l;
+    // keep alpha
+  }
+  ctx.putImageData(imageData, 0, 0);
+
+  // optional subtle vignette or border could be added here if desired
+
+  // return data URL (png)
+  return canvas.toDataURL('image/png');
+}
+
+/* ======= OPTIONAL: saveBtn (demo) ======= */
+document.getElementById('saveBtn').addEventListener('click', ()=>{
+  showToast('Zapis (test) wykonany — brak zapisu na serwerze.');
+});
+
+/* Accessibility: enable keyboard activation on shortcuts */
 document.querySelectorAll('.shortcut').forEach(el=>{
+  el.setAttribute('tabindex', '0');
   el.addEventListener('keydown', e=>{
     if(e.key === 'Enter' || e.key === ' ') el.click();
   });
 });
+
 </script>
 </body>
 </html>
+
