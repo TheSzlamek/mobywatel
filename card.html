@@ -1,353 +1,335 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>mDowód — demo</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>mDowód</title>
   <style>
-    :root{
-      --bg:#f5f7fa;
-      --card:#ffffff;
-      --muted:#8b96a3;
-      --primary:#0a64b8;
-      --accent:#e9f1fb;
-      --green:#2e7d32;
-      --radius:14px;
-      --shadow: 0 4px 14px rgba(16,24,40,0.06);
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background:var(--bg);
-      color:#111827;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      padding-bottom:84px; /* space for bottom nav */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f5f7fa;
     }
 
-    /* TOP BAR */
-    .top {
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:12px 14px;
-      background:var(--card);
-      border-bottom:1px solid #eef2f6;
+    /* Górny pasek */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px;
+      background: #fff;
+      border-bottom: 1px solid #ddd;
     }
-    .back {
-      display:flex;
-      align-items:center;
-      gap:8px;
-      color:var(--primary);
-      font-weight:600;
-      font-size:16px;
+    .header .back {
+      display: flex;
+      align-items: center;
+      font-size: 15px;
+      color: #007bff;
     }
-    .title { font-weight:700; font-size:18px; color:#263344; }
-    .help { width:28px; height:28px; display:flex; align-items:center; justify-content:center; border-radius:50%; }
+    .header .back img {
+      width: 20px;
+      height: 20px;
+      margin-right: 5px;
+    }
+    .header h1 {
+      font-size: 18px;
+      margin: 0;
+    }
+    .header .help img {
+      width: 20px;
+      height: 20px;
+    }
 
-    /* Action circle buttons row */
-    .actions-row {
-      display:flex;
-      gap:18px;
-      padding:18px 18px 12px;
-      align-items:center;
-      justify-content:space-between;
-      background:linear-gradient(180deg, rgba(245,247,251,0.8), rgba(245,247,251,1));
+    /* Czas */
+    .time {
+      text-align: center;
+      font-size: 14px;
+      color: #555;
+      margin: 10px 0;
     }
-    .action {
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:10px;
-      flex:1;
-      text-align:center;
-    }
-    .action .circle {
-      width:64px;
-      height:64px;
-      border-radius:50%;
-      background:var(--card);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      box-shadow: 0 4px 10px rgba(20,30,60,0.06);
-    }
-    .action span { font-size:13px; color:#374151; line-height:1.1; }
 
-    /* Card container (front of ID) */
+    /* Karta dokumentu */
     .card-container {
-      margin: 12px;
-      background:var(--card);
-      border-radius:var(--radius);
-      overflow:hidden;
-      box-shadow: var(--shadow);
+      background: #fff;
+      border-radius: 12px;
+      margin: 0 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      overflow: hidden;
     }
-    .card-top {
-      padding:14px;
-      display:flex;
-      gap:14px;
-      align-items:flex-start;
+    .card {
+      background: url('plate.png') no-repeat center center;
+      background-size: cover;
+      padding: 15px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 140px;
+      flex-shrink: 0;
     }
     .photo {
-      width:100px; height:120px; background:#fff; border-radius:6px; border:1px solid #e6e9ee;
-      overflow:hidden; display:flex; align-items:center; justify-content:center;
+      width: 100px;
+      height: 120px;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 10px;
+      background: #fff;
+      border: 1px solid #ccc;
     }
-    .photo img{ width:100%; height:100%; object-fit:cover; display:block; }
-    .id-right { flex:1; padding-right:8px; display:flex; flex-direction:column; gap:6px; }
-    .id-right .name { font-weight:800; font-size:18px; letter-spacing:0.2px; }
-    .id-right .label { font-size:12px; color:var(--muted); margin-top:2px; }
-    .id-right .small { font-size:13px; color:#24303b; }
-    .pesel { font-weight:800; font-size:18px; margin-top:6px; }
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .emblems {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-top: 5px;
+    }
+    .emblems .flag {
+      height: 20px;
+      margin-bottom: 5px;
+    }
+    .emblems .eagle-text {
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+    }
+    .emblems .eagle {
+      height: 20px;
+      margin-right: 4px;
+    }
+    .right {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex: 1;
+      padding-left: 15px;
+      font-size: 15px;
+    }
+    .right div {
+      margin: 4px 0;
+    }
+    .pesel {
+      font-size: 18px;
+      font-weight: bold;
+    }
 
-    .valid-bar { display:flex; gap:10px; align-items:center; padding:10px 14px; border-top:1px solid #f1f5f9; background:var(--card); }
-    .valid-dot { width:34px; height:34px; border-radius:8px; display:flex; align-items:center; justify-content:center; background:#fff; box-shadow:0 2px 8px rgba(16,24,40,0.04); }
+    /* Pasek "Dokument ważny" */
+    .valid-bar {
+      display: flex;
+      align-items: center;
+      background: #fff;
+      padding: 10px 15px;
+      border-top: 1px solid #eee;
+    }
+    .valid-bar img {
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+    }
+    .valid-bar span {
+      font-weight: bold;
+      color: #2e7d32;
+      font-size: 15px;
+    }
 
-    /* Info card like second screen */
+    /* Przyciski akcji */
+    .actions {
+      display: flex;
+      justify-content: space-around;
+      margin: 15px 10px;
+      background: #fff;
+      padding: 10px 0;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .action {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 12px;
+      color: #333;
+      text-align: center;
+      width: 70px;
+      text-decoration: none;
+    }
+    .action img {
+      width: 24px;
+      height: 24px;
+      margin-bottom: 5px;
+    }
+
+    /* Sekcja dolna */
     .info-card {
-      margin:14px 12px;
-      background:var(--card);
-      border-radius:var(--radius);
-      padding:18px 18px;
-      box-shadow: var(--shadow);
-      font-size:15px;
-      color:#1f2937;
+      background: #fff;
+      border-radius: 12px;
+      margin: 15px 10px;
+      padding: 15px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      font-size: 14px;
     }
-    .info-row { padding:12px 0; border-bottom:1px solid #f1f5f9; }
-    .info-row:last-child { border-bottom:0; padding-bottom:0; }
-    .info-title { color:var(--muted); font-size:14px; margin-bottom:6px; display:block; }
-    .big { font-weight:800; font-size:28px; margin:0 0 8px 0; }
-    .big.small { font-size:20px; font-weight:700; }
-
-    /* copy button */
-    .copy-btn {
-      background:linear-gradient(180deg,#e8f2ff,#dff0ff);
-      color:var(--primary);
-      border:none;
-      padding:8px 12px;
-      border-radius:18px;
-      font-weight:700;
-      cursor:pointer;
-      box-shadow:0 2px 6px rgba(10,100,184,0.08);
+    .info-card div {
+      margin: 5px 0;
+    }
+    .info-title {
+      font-weight: bold;
+      font-size: 16px;
     }
 
-    /* bottom nav */
+    /* Dolny pasek */
     .bottom-nav {
-      position:fixed;
-      left:0; right:0; bottom:0;
-      background:#fff; border-top:1px solid #e6eef6;
-      display:flex; justify-content:space-around; padding:8px 6px;
+      display: flex;
+      justify-content: space-around;
+      background: #fff;
+      border-top: 1px solid #ddd;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 5px 0;
     }
-    .nav-item { display:flex; flex-direction:column; align-items:center; font-size:11px; color:#374151; gap:4px; }
-    .nav-item.active { color:var(--primary); font-weight:700; }
-
-    /* responsive tweaks */
-    @media (max-width:420px){
-      .action .circle { width:56px; height:56px; }
-      .big { font-size:24px }
+    .bottom-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 11px;
+      color: #333;
+    }
+    .bottom-item img {
+      width: 22px;
+      height: 22px;
+      margin-bottom: 2px;
+    }
+    .active {
+      color: #007bff;
     }
   </style>
 </head>
 <body>
 
-  <!-- TOP -->
-  <div class="top">
-    <div class="back" role="button" aria-label="Wróć">
-      <!-- left arrow svg -->
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="transform:translateY(1px)">
-        <path d="M15 18l-6-6 6-6" stroke="#0a64b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+  <!-- Górny pasek -->
+  <div class="header">
+    <div class="back">
+      <img src="back_arrow.png" alt="Wróć">
       Wróć
     </div>
-    <div class="title">mDowód</div>
-    <div class="help" title="Pomoc">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-        <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z" stroke="#c7d2db" stroke-width="1.2"/>
-        <path d="M9.5 9.5a2.5 2.5 0 1 1 5 0c0 1.5-1 2-1.5 2.5C12.7 12.5 12 13 12 14" stroke="#7b8790" stroke-width="1.2" stroke-linecap="round"/>
-        <circle cx="12" cy="17.2" r="0.6" fill="#7b8790"/>
-      </svg>
+    <h1>mDowód</h1>
+    <div class="help">
+      <img src="help.png" alt="?">
     </div>
   </div>
 
-  <!-- actions row -->
-  <div class="actions-row">
-    <div class="action">
-      <div class="circle" aria-hidden="true">
-        <!-- scan icon -->
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M3 7V5a2 2 0 0 1 2-2h2" stroke="#0a64b8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 17v2a2 2 0 0 1-2 2h-2" stroke="#0a64b8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 17v2a2 2 0 0 0 2 2h2" stroke="#0a64b8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 7V5a2 2 0 0 0-2-2h-2" stroke="#0a64b8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-      <span>Potwierdź<br>swoje dane</span>
-    </div>
+  <div class="time" id="clock">Czas: --:--:-- --.--.--</div>
 
-    <div class="action">
-      <div class="circle">
-        <!-- id card icon -->
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="#0a64b8" stroke-width="1.6"/><circle cx="8.5" cy="12" r="2" stroke="#0a64b8" stroke-width="1.6"/><path d="M13 9h6" stroke="#0a64b8" stroke-width="1.6" stroke-linecap="round"/></svg>
-      </div>
-      <span>Dane<br>dowodu osobistego</span>
-    </div>
-
-    <div class="action">
-      <div class="circle">
-        <!-- lock icon -->
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="#0a64b8" stroke-width="1.6"/><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="#0a64b8" stroke-width="1.6" stroke-linecap="round"/></svg>
-      </div>
-      <span>Zastrzeż<br>PESEL</span>
-    </div>
-
-    <div class="action">
-      <div class="circle">
-        <!-- more icon -->
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="1.4" fill="#0a64b8"/><circle cx="6" cy="12" r="1.4" fill="#0a64b8"/><circle cx="18" cy="12" r="1.4" fill="#0a64b8"/></svg>
-      </div>
-      <span>Pozostałe<br>skróty</span>
-    </div>
-  </div>
-
-  <!-- front-of-id card -->
-  <div class="card-container" style="margin-top:8px;">
-    <div class="card-top">
-      <div class="photo" aria-hidden="true">
-        <!-- placeholder person svg -->
-        <svg width="100" height="120" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
-          <rect width="100" height="120" rx="4" fill="#f7fafc"/>
-          <g transform="translate(0,6)">
-            <circle cx="50" cy="36" r="22" fill="#e6eef8"/>
-            <rect x="18" y="70" width="64" height="34" rx="6" fill="#eef3fb"/>
-          </g>
-        </svg>
-      </div>
-
-      <div class="id-right">
-        <div>
-          <div class="name">ADRIAN</div>
-          <div class="label">Imię (imiona)</div>
+  <!-- Karta dokumentu -->
+  <div class="card-container">
+    <div class="card">
+      <div class="left">
+        <div class="photo">
+          <img src="xddddd.png" alt="Zdjęcie">
         </div>
-        <div>
-          <div class="name">KOWALSKI</div>
-          <div class="label">Nazwisko</div>
+        <div class="emblems">
+          <img class="flag" src="flag.webp" alt="Flaga">
+          <div class="eagle-text">
+            <img class="eagle" src="eagle.gif" alt="Orzeł">
+            <span>Rzeczpospolita<br>Polska</span>
+          </div>
         </div>
-        <div style="margin-top:6px;">
-          <div class="small">POLSKIE</div>
-          <div class="label">Obywatelstwo</div>
-        </div>
-        <div style="margin-top:6px;">
-          <div class="small">15.03.1996</div>
-          <div class="label">Data urodzenia</div>
-        </div>
-        <div class="pesel">96031567891<br><small style="color:var(--muted); font-size:12px;">Numer PESEL</small></div>
+      </div>
+      <div class="right">
+        <div><strong>{{IMIE}}</strong><br><small>Imię (imiona)</small></div>
+        <div><strong>{{NAZWISKO}}</strong><br><small>Nazwisko</small></div>
+        <div><strong>{{OBYWATELSTWO}}</strong><br><small>Obywatelstwo</small></div>
+        <div><strong>{{DATA_URODZENIA}}</strong><br><small>Data urodzenia</small></div>
+        <div class="pesel">{{PESEL}}<br><small>Numer PESEL</small></div>
       </div>
     </div>
-
     <div class="valid-bar">
-      <div class="valid-dot">
-        <!-- check icon -->
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#2e7d32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-      <div style="font-weight:700; color:var(--green)">Dokument ważny</div>
+      <img src="valid.png" alt="Valid">
+      <span>Dokument ważny</span>
     </div>
   </div>
 
-  <!-- second-screen style info card -->
-  <div class="info-card" role="region" aria-label="Szczegóły dowodu">
-    <div style="display:flex; justify-content:space-between; align-items:center;">
-      <div>
-        <div class="info-title">Seria i numer</div>
-        <div class="big">PCR 154316</div>
-      </div>
-      <div>
-        <button class="copy-btn" id="copySeries">Kopiuj</button>
-      </div>
-    </div>
-
-    <div class="info-row">
-      <div class="info-title">Termin ważności</div>
-      <div class="big small">08.01.2035</div>
-    </div>
-
-    <div class="info-row">
-      <div class="info-title">Data wydania</div>
-      <div class="big small">07.01.2025</div>
-    </div>
-
-    <div class="info-row">
-      <div class="info-title">Imię ojca</div>
-      <div class="big small">KAROL</div>
-    </div>
-
-    <div class="info-row">
-      <div class="info-title">Imię matki</div>
-      <div class="big small">ANDŻELIKA</div>
-    </div>
+  <!-- Przyciski akcji -->
+  <div class="actions">
+    <a href="#" class="action">
+      <img src="confirm.png" alt="">
+      Potwierdź<br>swoje dane
+    </a>
+    <a href="#" class="action">
+      <img src="card.png" alt="">
+      Dane<br>dowodu osobistego
+    </a>
+    <a href="#" class="action">
+      <img src="lock.png" alt="">
+      Zastrzeż<br>PESEL
+    </a>
+    <a href="#" class="action">
+      <img src="more.png" alt="">
+      Pozostałe<br>skróty
+    </a>
   </div>
 
-  <!-- bottom nav -->
-  <div class="bottom-nav" role="navigation" aria-label="Nawigacja dolna">
-    <div class="nav-item active">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 9.5L12 3l9 6.5V21a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1V9.5z" fill="#0a64b8"/></svg>
-      <div style="font-size:11px">Pulpit</div>
+  <!-- Sekcja informacji -->
+  <div class="info-card">
+    <div><span class="info-title">Seria i numer:</span> {{SERIA_NUMER}}</div>
+    <div><span class="info-title">Termin ważności:</span> {{TERMIN_WAZNOSCI}}</div>
+    <div><span class="info-title">Data wydania:</span> {{DATA_WYDANIA}}</div>
+    <div><span class="info-title">Imię ojca:</span> {{IMIE_OJCA}}</div>
+    <div><span class="info-title">Imię matki:</span> {{IMIE_MATKI}}</div>
+  </div>
+
+  <!-- Dolny pasek -->
+  <div class="bottom-nav">
+    <div class="bottom-item active">
+      <img src="pulpit.png" alt="">
+      Pulpit
     </div>
-    <div class="nav-item">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2" stroke="#374151" stroke-width="1.4"/></svg>
-      <div>Dokumenty</div>
+    <div class="bottom-item">
+      <img src="dokumenty.png" alt="">
+      Dokumenty
     </div>
-    <div class="nav-item">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 7h18M6 12h12M10 17h4" stroke="#374151" stroke-width="1.4" stroke-linecap="round"/></svg>
-      <div>Usługi</div>
+    <div class="bottom-item">
+      <img src="uslugi.png" alt="">
+      Usługi
     </div>
-    <div class="nav-item">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#374151" stroke-width="1.4"/></svg>
-      <div>Kod QR</div>
+    <div class="bottom-item">
+      <img src="kodqr.png" alt="">
+      Kod QR
     </div>
-    <div class="nav-item">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#374151" stroke-width="1.4"/></svg>
-      <div>Więcej</div>
+    <div class="bottom-item">
+      <img src="wiecej.png" alt="">
+      Więcej
     </div>
   </div>
 
   <script>
-    // live clock
-    function updateClock(){
+    function updateClock() {
       const now = new Date();
-      const pad = n=>String(n).padStart(2,'0');
-      const time = pad(now.getHours())+':'+pad(now.getMinutes())+':'+pad(now.getSeconds());
-      const date = pad(now.getDate())+'.'+pad(now.getMonth()+1)+'.'+now.getFullYear();
-      // we don't have a separate element, so inject into title area? create small element if needed
-      let el = document.getElementById('clockSmall');
-      if(!el){
-        el = document.createElement('div');
-        el.id = 'clockSmall';
-        el.style.fontSize='13px';
-        el.style.color='#6b7280';
-        el.style.textAlign='center';
-        el.style.padding='6px 0 0';
-        document.querySelector('.actions-row').after(el);
-      }
-      el.textContent = time + ' ' + date;
+      const pad = (n) => n.toString().padStart(2, "0");
+      const timeStr = 
+        pad(now.getHours()) + ":" + 
+        pad(now.getMinutes()) + ":" + 
+        pad(now.getSeconds()) + " " + 
+        pad(now.getDate()) + "." + 
+        pad(now.getMonth() + 1) + "." + 
+        now.getFullYear();
+      document.getElementById("clock").textContent = "Czas: " + timeStr;
     }
-    setInterval(updateClock,1000);
+    setInterval(updateClock, 1000);
     updateClock();
-
-    // copy series button
-    document.getElementById('copySeries').addEventListener('click', async function(){
-      const text = 'PCR 154316';
-      try {
-        await navigator.clipboard.writeText(text);
-        this.textContent = 'Skopiowano';
-        setTimeout(()=> this.textContent = 'Kopiuj', 1600);
-      } catch (e) {
-        // fallback
-        const ta = document.createElement('textarea');
-        ta.value = text; document.body.appendChild(ta);
-        ta.select(); document.execCommand('copy'); ta.remove();
-        this.textContent = 'Skopiowano';
-        setTimeout(()=> this.textContent = 'Kopiuj', 1600);
-      }
-    });
   </script>
 
 </body>
 </html>
+
 
 
 
