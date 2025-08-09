@@ -21,7 +21,7 @@
       border-bottom: 1px solid #ddd;
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 100;
     }
     .header .back {
       display: flex;
@@ -52,11 +52,11 @@
       margin: 10px 0;
     }
 
-    /* Pierwsza karta dokumentu (stary wygląd) */
+    /* Karta dokumentu */
     .card-container {
       background: #fff;
       border-radius: 12px;
-      margin: 0 10px 15px 10px;
+      margin: 0 10px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
       overflow: hidden;
     }
@@ -124,6 +124,8 @@
       font-size: 18px;
       font-weight: bold;
     }
+
+    /* Pasek "Dokument ważny" */
     .valid-bar {
       display: flex;
       align-items: center;
@@ -146,93 +148,72 @@
     .circle-actions {
       display: flex;
       justify-content: space-around;
-      padding: 15px 10px;
+      margin: 15px 10px;
       background: #fff;
-      margin: 0 10px 15px 10px;
+      padding: 15px 0;
       border-radius: 12px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      flex-wrap: wrap;
     }
     .circle-action {
       display: flex;
       flex-direction: column;
       align-items: center;
       font-size: 12px;
-      text-align: center;
-      width: 70px;
-      cursor: pointer;
-      text-decoration: none;
       color: #333;
-    }
-    .circle-action .icon {
-      background: #f0f0f0;
-      border-radius: 50%;
-      padding: 12px;
-      margin-bottom: 5px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      text-align: center;
+      width: 80px;
+      text-decoration: none;
     }
     .circle-action img {
-      width: 24px;
-      height: 24px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #f0f0f0;
+      padding: 10px;
+      margin-bottom: 5px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .circle-action span {
+      max-width: 80px;
     }
 
-    /* Druga karta z informacjami PCR */
-    .info-card {
+    /* Sekcja danych PCR */
+    .data-section {
       background: #fff;
       border-radius: 12px;
-      margin: 0 10px 80px 10px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      margin: 15px 10px;
       padding: 15px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
-    .info-row {
+    .data-row {
       display: flex;
       justify-content: space-between;
-      margin: 10px 0;
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .data-row:last-child {
+      border-bottom: none;
+    }
+    .data-label {
       font-size: 14px;
+      color: #555;
     }
-    .label {
-      color: #777;
-    }
-    .value {
+    .data-value {
       font-weight: bold;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
     }
     .copy-btn {
       background: #007bff;
-      border: none;
       color: #fff;
-      padding: 3px 8px;
-      font-size: 12px;
+      border: none;
+      padding: 2px 6px;
       border-radius: 4px;
+      font-size: 12px;
       cursor: pointer;
-    }
-
-    /* Dolny pasek */
-    .bottom-nav {
-      display: flex;
-      justify-content: space-around;
-      background: #fff;
-      border-top: 1px solid #ddd;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      padding: 5px 0;
-    }
-    .bottom-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      font-size: 11px;
-      color: #333;
-    }
-    .bottom-item img {
-      width: 22px;
-      height: 22px;
-      margin-bottom: 2px;
-    }
-    .active {
-      color: #007bff;
     }
   </style>
 </head>
@@ -241,7 +222,8 @@
   <!-- Górny pasek -->
   <div class="header">
     <div class="back">
-      <img src="back_arrow.png" alt="Wróć">Wróć
+      <img src="back_arrow.png" alt="Wróć">
+      Wróć
     </div>
     <h1>mDowód</h1>
     <div class="help">
@@ -251,7 +233,7 @@
 
   <div class="time" id="clock">Czas: --:--:-- --.--.--</div>
 
-  <!-- Pierwsza karta dokumentu -->
+  <!-- Karta dokumentu (oryginalna) -->
   <div class="card-container">
     <div class="card">
       <div class="left">
@@ -282,69 +264,52 @@
 
   <!-- Przyciski w kółkach -->
   <div class="circle-actions">
-    <a href="https://google.com" class="circle-action">
-      <div class="icon"><img src="confirm.png" alt=""></div>
-      Potwierdź<br>swoje dane
+    <a class="circle-action" href="https://google.com">
+      <img src="confirm.png" alt="">
+      <span>Potwierdź<br>swoje dane</span>
     </a>
-    <a href="https://google.com" class="circle-action">
-      <div class="icon"><img src="card.png" alt=""></div>
-      Dane<br>dowodu osobistego
+    <a class="circle-action" href="https://google.com">
+      <img src="card.png" alt="">
+      <span>Dane dowodu<br>osobistego</span>
     </a>
-    <a href="https://google.com" class="circle-action">
-      <div class="icon"><img src="lock.png" alt=""></div>
-      Zastrzeż<br>PESEL
+    <a class="circle-action" href="https://google.com">
+      <img src="lock.png" alt="">
+      <span>Zastrzeż<br>PESEL</span>
     </a>
-    <a href="https://google.com" class="circle-action">
-      <div class="icon"><img src="more.png" alt=""></div>
-      Pozostałe<br>skróty
+    <a class="circle-action" href="https://google.com">
+      <img src="more.png" alt="">
+      <span>Pozostałe<br>skróty</span>
     </a>
   </div>
 
-  <!-- Druga karta z informacjami -->
-  <div class="info-card">
-    <div class="info-row">
-      <span class="label">Seria i numer</span>
-      <span class="value">PCR 123456 <button class="copy-btn" onclick="copyText('PCR 123456')">Kopiuj</button></span>
+  <!-- Sekcja danych PCR -->
+  <div class="data-section">
+    <div class="data-row">
+      <span class="data-label">Seria i numer</span>
+      <span class="data-value">ABC123456</span>
     </div>
-    <div class="info-row">
-      <span class="label">Termin ważności</span>
-      <span class="value">01.01.2030</span>
+    <div class="data-row">
+      <span class="data-label">Termin ważności</span>
+      <span class="data-value">12.12.2030</span>
     </div>
-    <div class="info-row">
-      <span class="label">Data wydania</span>
-      <span class="value">01.01.2020</span>
+    <div class="data-row">
+      <span class="data-label">Data wydania</span>
+      <span class="data-value">12.12.2020</span>
     </div>
-    <div class="info-row">
-      <span class="label">Imię ojca</span>
-      <span class="value">JAN</span>
+    <div class="data-row">
+      <span class="data-label">Imię ojca</span>
+      <span class="data-value">JAN</span>
     </div>
-    <div class="info-row">
-      <span class="label">Imię matki</span>
-      <span class="value">ANNA</span>
+    <div class="data-row">
+      <span class="data-label">Imię matki</span>
+      <span class="data-value">ANNA</span>
     </div>
-  </div>
-
-  <!-- Dolny pasek -->
-  <div class="bottom-nav">
-    <div class="bottom-item active">
-      <img src="pulpit.png" alt="">
-      Pulpit
-    </div>
-    <div class="bottom-item">
-      <img src="dokumenty.png" alt="">
-      Dokumenty
-    </div>
-    <div class="bottom-item">
-      <img src="uslugi.png" alt="">
-      Usługi
-    </div>
-    <div class="bottom-item">
-      <img src="kodqr.png" alt="">
-      Kod QR
-    </div>
-    <div class="bottom-item">
-      <img src="wiecej.png" alt="">
-      Więcej
+    <div class="data-row">
+      <span class="data-label">PCR</span>
+      <span class="data-value">
+        1234-5678-9012
+        <button class="copy-btn" onclick="copyPCR()">Kopiuj</button>
+      </span>
     </div>
   </div>
 
@@ -364,13 +329,15 @@
     setInterval(updateClock, 1000);
     updateClock();
 
-    function copyText(text) {
-      navigator.clipboard.writeText(text).then(() => {
-        alert("Skopiowano: " + text);
+    function copyPCR() {
+      const pcrValue = "1234-5678-9012";
+      navigator.clipboard.writeText(pcrValue).then(() => {
+        alert("Skopiowano PCR: " + pcrValue);
       });
     }
   </script>
 
 </body>
 </html>
+
 
