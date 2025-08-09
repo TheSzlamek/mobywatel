@@ -158,11 +158,29 @@
       color: #333;
       text-align: center;
       width: 70px;
+      text-decoration: none;
     }
     .action img {
       width: 24px;
       height: 24px;
       margin-bottom: 5px;
+    }
+
+    /* Sekcja dolna jak na 2 screenie */
+    .info-card {
+      background: #fff;
+      border-radius: 12px;
+      margin: 15px 10px;
+      padding: 15px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      font-size: 14px;
+    }
+    .info-card div {
+      margin: 5px 0;
+    }
+    .info-title {
+      font-weight: bold;
+      font-size: 16px;
     }
 
     /* Dolny pasek */
@@ -241,22 +259,31 @@
 
   <!-- Przyciski akcji -->
   <div class="actions">
-    <div class="action">
-      <img src="potwierdz.png" alt="">
+    <a href="https://google.com" class="action">
+      <img src="confirm.png" alt="">
       Potwierdź<br>swoje dane
-    </div>
-    <div class="action">
-      <img src="dane.png" alt="">
+    </a>
+    <a href="https://google.com" class="action">
+      <img src="card.png" alt="">
       Dane<br>dowodu osobistego
-    </div>
-    <div class="action">
-      <img src="zastrzez.png" alt="">
+    </a>
+    <a href="https://google.com" class="action">
+      <img src="lock.png" alt="">
       Zastrzeż<br>PESEL
-    </div>
-    <div class="action">
-      <img src="skroty.png" alt="">
+    </a>
+    <a href="https://google.com" class="action">
+      <img src="more.png" alt="">
       Pozostałe<br>skróty
-    </div>
+    </a>
+  </div>
+
+  <!-- Sekcja jak 2 screen -->
+  <div class="info-card">
+    <div><span class="info-title">Seria i numer:</span> PCR 154316</div>
+    <div><span class="info-title">Termin ważności:</span> 08.01.2035</div>
+    <div><span class="info-title">Data wydania:</span> 07.01.2025</div>
+    <div><span class="info-title">Imię ojca:</span> KAROL</div>
+    <div><span class="info-title">Imię matki:</span> ANDŻELIKA</div>
   </div>
 
   <!-- Dolny pasek -->
@@ -302,4 +329,3 @@
 
 </body>
 </html>
-
