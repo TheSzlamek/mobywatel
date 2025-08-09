@@ -1,331 +1,379 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>mDowód</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f5f7fa;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>mDowód</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f5f7fa;
+}
 
-    /* Górny pasek */
-    .header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px;
-      background: #fff;
-      border-bottom: 1px solid #ddd;
-    }
-    .header .back {
-      display: flex;
-      align-items: center;
-      font-size: 15px;
-      color: #007bff;
-    }
-    .header .back img {
-      width: 20px;
-      height: 20px;
-      margin-right: 5px;
-    }
-    .header h1 {
-      font-size: 18px;
-      margin: 0;
-    }
-    .header .help img {
-      width: 20px;
-      height: 20px;
-    }
+/* Górny pasek */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+}
+.header .back {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  color: #007bff;
+  cursor: pointer;
+}
+.header .back img {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+.header h1 {
+  font-size: 18px;
+  margin: 0;
+}
+.header .help img {
+  width: 20px;
+  height: 20px;
+}
 
-    /* Czas */
-    .time {
-      text-align: center;
-      font-size: 14px;
-      color: #555;
-      margin: 10px 0;
-    }
+/* Czas */
+.time {
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+  margin: 10px 0;
+}
 
-    /* Karta dokumentu */
-    .card-container {
-      background: #fff;
-      border-radius: 12px;
-      margin: 0 10px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      overflow: hidden;
-    }
-    .card {
-      background: url('plate.png') no-repeat center center;
-      background-size: cover;
-      padding: 15px;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: flex-start;
-    }
-    .left {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      width: 140px;
-      flex-shrink: 0;
-    }
-    .photo {
-      width: 100px;
-      height: 120px;
-      border-radius: 4px;
-      overflow: hidden;
-      margin-bottom: 10px;
-      background: #fff;
-      border: 1px solid #ccc;
-    }
-    .photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .emblems {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      margin-top: 5px;
-    }
-    .emblems .flag {
-      height: 20px;
-      margin-bottom: 5px;
-    }
-    .emblems .eagle-text {
-      display: flex;
-      align-items: center;
-      font-size: 12px;
-    }
-    .emblems .eagle {
-      height: 20px;
-      margin-right: 4px;
-    }
-    .right {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      flex: 1;
-      padding-left: 15px;
-      font-size: 15px;
-    }
-    .right div {
-      margin: 4px 0;
-    }
-    .pesel {
-      font-size: 18px;
-      font-weight: bold;
-    }
+/* Karta dokumentu */
+.card-container {
+  background: #fff;
+  border-radius: 12px;
+  margin: 0 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+.card {
+  background: url('plate.png') no-repeat center center;
+  background-size: cover;
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 140px;
+  flex-shrink: 0;
+}
+.photo {
+  width: 100px;
+  height: 120px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  background: #fff;
+  border: 1px solid #ccc;
+}
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.emblems {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 5px;
+}
+.emblems .flag {
+  height: 20px;
+  margin-bottom: 5px;
+}
+.emblems .eagle-text {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+}
+.emblems .eagle {
+  height: 20px;
+  margin-right: 4px;
+}
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  padding-left: 15px;
+  font-size: 15px;
+}
+.right div {
+  margin: 4px 0;
+}
+.pesel {
+  font-size: 18px;
+  font-weight: bold;
+}
 
-    /* Pasek "Dokument ważny" */
-    .valid-bar {
-      display: flex;
-      align-items: center;
-      background: #fff;
-      padding: 10px 15px;
-      border-top: 1px solid #eee;
-    }
-    .valid-bar img {
-      width: 20px;
-      height: 20px;
-      margin-right: 8px;
-    }
-    .valid-bar span {
-      font-weight: bold;
-      color: #2e7d32;
-      font-size: 15px;
-    }
+/* Pasek "Dokument ważny" */
+.valid-bar {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 10px 15px;
+  border-top: 1px solid #eee;
+}
+.valid-bar img {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+.valid-bar span {
+  font-weight: bold;
+  color: #2e7d32;
+  font-size: 15px;
+}
 
-    /* Przyciski akcji */
-    .actions {
-      display: flex;
-      justify-content: space-around;
-      margin: 15px 10px;
-      background: #fff;
-      padding: 10px 0;
-      border-radius: 12px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    }
-    .action {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      font-size: 12px;
-      color: #333;
-      text-align: center;
-      width: 70px;
-      text-decoration: none;
-    }
-    .action img {
-      width: 24px;
-      height: 24px;
-      margin-bottom: 5px;
-    }
+/* Przyciski akcji - styl okrągły */
+.actions {
+  display: flex;
+  justify-content: space-around;
+  margin: 15px 10px;
+  padding: 10px 0;
+}
+.action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+  color: #333;
+  text-align: center;
+  width: 70px;
+  text-decoration: none;
+  transition: transform 0.1s ease;
+}
+.action:active {
+  transform: scale(0.92);
+}
+.action-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  margin-bottom: 5px;
+}
+.action-icon img {
+  width: 24px;
+  height: 24px;
+}
 
-    /* Sekcja dolna jak na 2 screenie */
-    .info-card {
-      background: #fff;
-      border-radius: 12px;
-      margin: 15px 10px;
-      padding: 15px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      font-size: 14px;
-    }
-    .info-card div {
-      margin: 5px 0;
-    }
-    .info-title {
-      font-weight: bold;
-      font-size: 16px;
-    }
+/* Sekcja informacji jak w aplikacji */
+.info-card {
+  background: #fff;
+  border-radius: 12px;
+  margin: 15px 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  font-size: 14px;
+  overflow: hidden;
+}
+.info-row {
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+}
+.info-row:last-child {
+  border-bottom: none;
+}
+.info-label {
+  font-size: 14px;
+  color: #333;
+}
+.info-value {
+  font-weight: bold;
+  font-size: 16px;
+  color: #000;
+}
+.copy-btn {
+  background: #eaf3ff;
+  color: #007bff;
+  border: none;
+  padding: 5px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.copy-btn:hover {
+  background: #d8e9ff;
+}
 
-    /* Dolny pasek */
-    .bottom-nav {
-      display: flex;
-      justify-content: space-around;
-      background: #fff;
-      border-top: 1px solid #ddd;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      padding: 5px 0;
-    }
-    .bottom-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      font-size: 11px;
-      color: #333;
-    }
-    .bottom-item img {
-      width: 22px;
-      height: 22px;
-      margin-bottom: 2px;
-    }
-    .active {
-      color: #007bff;
-    }
-  </style>
+/* Dolny pasek */
+.bottom-nav {
+  display: flex;
+  justify-content: space-around;
+  background: #fff;
+  border-top: 1px solid #ddd;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 5px 0;
+}
+.bottom-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 11px;
+  color: #333;
+}
+.bottom-item img {
+  width: 22px;
+  height: 22px;
+  margin-bottom: 2px;
+}
+.active {
+  color: #007bff;
+}
+</style>
 </head>
 <body>
 
-  <!-- Górny pasek -->
-  <div class="header">
-    <div class="back">
-      <img src="back_arrow.png" alt="Wróć">
-      Wróć
-    </div>
-    <h1>mDowód</h1>
-    <div class="help">
-      <img src="help.png" alt="?">
-    </div>
+<!-- Górny pasek -->
+<div class="header">
+  <div class="back">
+    <img src="back_arrow.png" alt="Wróć"> Wróć
   </div>
+  <h1>mDowód</h1>
+  <div class="help">
+    <img src="help.png" alt="?">
+  </div>
+</div>
 
-  <div class="time" id="clock">Czas: --:--:-- --.--.--</div>
+<div class="time" id="clock">Czas: --:--:-- --.--.--</div>
 
-  <!-- Karta dokumentu -->
-  <div class="card-container">
-    <div class="card">
-      <div class="left">
-        <div class="photo">
-          <img src="xddddd.png" alt="Zdjęcie">
-        </div>
-        <div class="emblems">
-          <img class="flag" src="flag.webp" alt="Flaga">
-          <div class="eagle-text">
-            <img class="eagle" src="eagle.gif" alt="Orzeł">
-            <span>Rzeczpospolita<br>Polska</span>
-          </div>
+<!-- Karta dokumentu -->
+<div class="card-container">
+  <div class="card">
+    <div class="left">
+      <div class="photo">
+        <img src="xddddd.png" alt="Zdjęcie">
+      </div>
+      <div class="emblems">
+        <img class="flag" src="flag.webp" alt="Flaga">
+        <div class="eagle-text">
+          <img class="eagle" src="eagle.gif" alt="Orzeł">
+          <span>Rzeczpospolita<br>Polska</span>
         </div>
       </div>
-      <div class="right">
-        <div><strong>KACPER</strong><br><small>Imię (imiona)</small></div>
-        <div><strong>LIGĘSKA</strong><br><small>Nazwisko</small></div>
-        <div><strong>POLSKIE</strong><br><small>Obywatelstwo</small></div>
-        <div><strong>07.01.2007</strong><br><small>Data urodzenia</small></div>
-        <div class="pesel">07211712323<br><small>Numer PESEL</small></div>
-      </div>
     </div>
-    <div class="valid-bar">
-      <img src="valid.png" alt="Valid">
-      <span>Dokument ważny</span>
+    <div class="right">
+      <div><strong>KACPER</strong><br><small>Imię (imiona)</small></div>
+      <div><strong>LIGĘSKA</strong><br><small>Nazwisko</small></div>
+      <div><strong>POLSKIE</strong><br><small>Obywatelstwo</small></div>
+      <div><strong>07.01.2007</strong><br><small>Data urodzenia</small></div>
+      <div class="pesel">07211712323<br><small>Numer PESEL</small></div>
     </div>
   </div>
-
-  <!-- Przyciski akcji -->
-  <div class="actions">
-    <a href="https://google.com" class="action">
-      <img src="confirm.png" alt="">
-      Potwierdź<br>swoje dane
-    </a>
-    <a href="https://google.com" class="action">
-      <img src="card.png" alt="">
-      Dane<br>dowodu osobistego
-    </a>
-    <a href="https://google.com" class="action">
-      <img src="lock.png" alt="">
-      Zastrzeż<br>PESEL
-    </a>
-    <a href="https://google.com" class="action">
-      <img src="more.png" alt="">
-      Pozostałe<br>skróty
-    </a>
+  <div class="valid-bar">
+    <img src="valid.png" alt="Valid">
+    <span>Dokument ważny</span>
   </div>
+</div>
 
-  <!-- Sekcja jak 2 screen -->
-  <div class="info-card">
-    <div><span class="info-title">Seria i numer:</span> PCR 154316</div>
-    <div><span class="info-title">Termin ważności:</span> 08.01.2035</div>
-    <div><span class="info-title">Data wydania:</span> 07.01.2025</div>
-    <div><span class="info-title">Imię ojca:</span> KAROL</div>
-    <div><span class="info-title">Imię matki:</span> ANDŻELIKA</div>
+<!-- Przyciski akcji -->
+<div class="actions">
+  <a href="https://google.com" class="action">
+    <div class="action-icon"><img src="confirm.png" alt=""></div>
+    Potwierdź<br>swoje dane
+  </a>
+  <a href="https://google.com" class="action">
+    <div class="action-icon"><img src="card.png" alt=""></div>
+    Dane<br>dowodu osobistego
+  </a>
+  <a href="https://google.com" class="action">
+    <div class="action-icon"><img src="lock.png" alt=""></div>
+    Zastrzeż<br>PESEL
+  </a>
+  <a href="https://google.com" class="action">
+    <div class="action-icon"><img src="more.png" alt=""></div>
+    Pozostałe<br>skróty
+  </a>
+</div>
+
+<!-- Sekcja informacji -->
+<div class="info-card">
+  <div class="info-row">
+    <div>
+      <div class="info-label">Seria i numer</div>
+      <div class="info-value">PCR 154316</div>
+    </div>
+    <button class="copy-btn" onclick="navigator.clipboard.writeText('PCR 154316')">Kopiuj</button>
   </div>
-
-  <!-- Dolny pasek -->
-  <div class="bottom-nav">
-    <div class="bottom-item active">
-      <img src="pulpit.png" alt="">
-      Pulpit
-    </div>
-    <div class="bottom-item">
-      <img src="dokumenty.png" alt="">
-      Dokumenty
-    </div>
-    <div class="bottom-item">
-      <img src="uslugi.png" alt="">
-      Usługi
-    </div>
-    <div class="bottom-item">
-      <img src="kodqr.png" alt="">
-      Kod QR
-    </div>
-    <div class="bottom-item">
-      <img src="wiecej.png" alt="">
-      Więcej
-    </div>
+  <div class="info-row">
+    <div class="info-label">Termin ważności</div>
+    <div class="info-value">08.01.2035</div>
   </div>
+  <div class="info-row">
+    <div class="info-label">Data wydania</div>
+    <div class="info-value">07.01.2025</div>
+  </div>
+  <div class="info-row">
+    <div class="info-label">Imię ojca</div>
+    <div class="info-value">KAROL</div>
+  </div>
+  <div class="info-row">
+    <div class="info-label">Imię matki</div>
+    <div class="info-value">ANDŻELIKA</div>
+  </div>
+</div>
 
-  <script>
-    function updateClock() {
-      const now = new Date();
-      const pad = (n) => n.toString().padStart(2, "0");
-      const timeStr = 
-        pad(now.getHours()) + ":" + 
-        pad(now.getMinutes()) + ":" + 
-        pad(now.getSeconds()) + " " + 
-        pad(now.getDate()) + "." + 
-        pad(now.getMonth() + 1) + "." + 
-        now.getFullYear();
-      document.getElementById("clock").textContent = "Czas: " + timeStr;
-    }
-    setInterval(updateClock, 1000);
-    updateClock();
-  </script>
+<!-- Dolny pasek -->
+<div class="bottom-nav">
+  <div class="bottom-item active">
+    <img src="pulpit.png" alt="">
+    Pulpit
+  </div>
+  <div class="bottom-item">
+    <img src="dokumenty.png" alt="">
+    Dokumenty
+  </div>
+  <div class="bottom-item">
+    <img src="uslugi.png" alt="">
+    Usługi
+  </div>
+  <div class="bottom-item">
+    <img src="kodqr.png" alt="">
+    Kod QR
+  </div>
+  <div class="bottom-item">
+    <img src="wiecej.png" alt="">
+    Więcej
+  </div>
+</div>
+
+<script>
+function updateClock() {
+  const now = new Date();
+  const pad = (n) => n.toString().padStart(2, "0");
+  const timeStr = pad(now.getHours()) + ":" + pad(now.getMinutes()) + ":" + pad(now.getSeconds()) + " " + pad(now.getDate()) + "." + pad(now.getMonth() + 1) + "." + now.getFullYear();
+  document.getElementById("clock").textContent = "Czas: " + timeStr;
+}
+setInterval(updateClock, 1000);
+updateClock();
+</script>
 
 </body>
 </html>
+
