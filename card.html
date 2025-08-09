@@ -1,379 +1,407 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>mDowód</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>mDowód — demo</title>
 <style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f5f7fa;
-}
+  /* ---------- Reset / podstawy ---------- */
+  :root{
+    --bg: #f5f7fa;
+    --muted: #6b7280;
+    --accent: #007bff;
+    --card-bg: #fff;
+    --soft-border: #eee;
+    --pill-bg: #eaf3ff;
+    --text: #111827;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+  }
 
-/* Górny pasek */
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px;
-  background: #fff;
-  border-bottom: 1px solid #ddd;
-}
-.header .back {
-  display: flex;
-  align-items: center;
-  font-size: 15px;
-  color: #007bff;
-  cursor: pointer;
-}
-.header .back img {
-  width: 20px;
-  height: 20px;
-  margin-right: 5px;
-}
-.header h1 {
-  font-size: 18px;
-  margin: 0;
-}
-.header .help img {
-  width: 20px;
-  height: 20px;
-}
+  /* ---------- Górny pasek ---------- */
+  .header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:12px 14px;
+    background:var(--card-bg);
+    border-bottom:1px solid #e6e9ee;
+  }
+  .back{
+    display:flex;
+    align-items:center;
+    color:var(--accent);
+    font-weight:600;
+    gap:8px;
+    cursor:pointer;
+  }
+  .back img{width:20px;height:20px}
+  .title{font-size:17px;font-weight:700}
+  .help img{width:20px;height:20px;opacity:.9}
 
-/* Czas */
-.time {
-  text-align: center;
-  font-size: 14px;
-  color: #555;
-  margin: 10px 0;
-}
+  /* ---------- Czas ---------- */
+  .time{
+    text-align:center;
+    color:#6b7280;
+    font-size:13px;
+    margin:12px 0;
+  }
 
-/* Karta dokumentu */
-.card-container {
-  background: #fff;
-  border-radius: 12px;
-  margin: 0 10px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  overflow: hidden;
-}
-.card {
-  background: url('plate.png') no-repeat center center;
-  background-size: cover;
-  padding: 15px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-.left {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 140px;
-  flex-shrink: 0;
-}
-.photo {
-  width: 100px;
-  height: 120px;
-  border-radius: 4px;
-  overflow: hidden;
-  margin-bottom: 10px;
-  background: #fff;
-  border: 1px solid #ccc;
-}
-.photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.emblems {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-top: 5px;
-}
-.emblems .flag {
-  height: 20px;
-  margin-bottom: 5px;
-}
-.emblems .eagle-text {
-  display: flex;
-  align-items: center;
-  font-size: 12px;
-}
-.emblems .eagle {
-  height: 20px;
-  margin-right: 4px;
-}
-.right {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  flex: 1;
-  padding-left: 15px;
-  font-size: 15px;
-}
-.right div {
-  margin: 4px 0;
-}
-.pesel {
-  font-size: 18px;
-  font-weight: bold;
-}
+  /* ---------- Karta dokumentu (górna) ---------- */
+  .card-container{
+    margin: 0 14px;
+    background:var(--card-bg);
+    border-radius:12px;
+    box-shadow:0 1px 3px rgba(16,24,40,0.05);
+    overflow:hidden;
+  }
+  .card{
+    display:flex;
+    gap:14px;
+    padding:14px;
+    align-items:flex-start;
+    background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(250,252,255,0.8));
+    /* możesz podać tło security plate: background-image: url('plate.png'); */
+  }
+  .left{
+    width:140px;
+    flex-shrink:0;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  .photo{
+    width:100px;height:120px;border-radius:6px;overflow:hidden;border:1px solid #e2e8f0;background:#fff;
+  }
+  .photo img{width:100%;height:100%;object-fit:cover;display:block}
+  .emblems{margin-top:8px; display:flex;flex-direction:column; gap:6px}
+  .flag{height:20px}
+  .eagle-text{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}
+  .eagle{height:18px}
 
-/* Pasek "Dokument ważny" */
-.valid-bar {
-  display: flex;
-  align-items: center;
-  background: #fff;
-  padding: 10px 15px;
-  border-top: 1px solid #eee;
-}
-.valid-bar img {
-  width: 20px;
-  height: 20px;
-  margin-right: 8px;
-}
-.valid-bar span {
-  font-weight: bold;
-  color: #2e7d32;
-  font-size: 15px;
-}
+  .right{flex:1;padding-right:6px; font-size:14px}
+  .right .line{margin:6px 0}
+  .right strong{font-size:18px;display:block}
+  .right small{color:var(--muted);font-size:12px}
+  .pesel{font-size:18px;font-weight:700;margin-top:6px}
 
-/* Przyciski akcji - styl okrągły */
-.actions {
-  display: flex;
-  justify-content: space-around;
-  margin: 15px 10px;
-  padding: 10px 0;
-}
-.action {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 12px;
-  color: #333;
-  text-align: center;
-  width: 70px;
-  text-decoration: none;
-  transition: transform 0.1s ease;
-}
-.action:active {
-  transform: scale(0.92);
-}
-.action-icon {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  margin-bottom: 5px;
-}
-.action-icon img {
-  width: 24px;
-  height: 24px;
-}
+  .valid-bar{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:12px 16px;
+    border-top:1px solid var(--soft-border);
+    background:var(--card-bg);
+  }
+  .valid-bar img{width:20px;height:20px}
+  .valid-bar span{color:#2e7d32;font-weight:700}
 
-/* Sekcja informacji jak w aplikacji */
-.info-card {
-  background: #fff;
-  border-radius: 12px;
-  margin: 15px 10px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  font-size: 14px;
-  overflow: hidden;
-}
-.info-row {
-  padding: 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #eee;
-}
-.info-row:last-child {
-  border-bottom: none;
-}
-.info-label {
-  font-size: 14px;
-  color: #333;
-}
-.info-value {
-  font-weight: bold;
-  font-size: 16px;
-  color: #000;
-}
-.copy-btn {
-  background: #eaf3ff;
-  color: #007bff;
-  border: none;
-  padding: 5px 12px;
-  border-radius: 12px;
-  font-size: 12px;
-  cursor: pointer;
-}
-.copy-btn:hover {
-  background: #d8e9ff;
-}
+  /* ---------- Akcje (okrągłe ikonki) ---------- */
+  .actions-wrap{
+    margin:12px 10px;
+    padding:10px;
+    background:transparent;
+  }
+  .actions{
+    display:flex;
+    justify-content:space-around;
+    gap:8px;
+  }
+  .action{
+    text-align:center;
+    width:72px;
+    color:#333;
+    text-decoration:none;
+    font-size:13px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+  }
+  .action:active{transform:scale(.96)}
+  .action-icon{
+    width:56px;height:56px;border-radius:50%;
+    background:var(--card-bg);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 2px 6px rgba(16,24,40,0.06);
+    transition:transform .12s ease, box-shadow .12s;
+  }
+  .action:hover .action-icon{transform:translateY(-3px)}
+  .action-icon img{width:26px;height:26px;display:block}
 
-/* Dolny pasek */
-.bottom-nav {
-  display: flex;
-  justify-content: space-around;
-  background: #fff;
-  border-top: 1px solid #ddd;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 5px 0;
-}
-.bottom-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 11px;
-  color: #333;
-}
-.bottom-item img {
-  width: 22px;
-  height: 22px;
-  margin-bottom: 2px;
-}
-.active {
-  color: #007bff;
-}
+  .action-label{font-size:13px;color:var(--muted);line-height:1.05}
+
+  /* ---------- Sekcja informacji (duża karta) ---------- */
+  .info-card{
+    margin:14px 10px 90px; /* dolne 90px żeby nie przykrywał bottom nav */
+    background:var(--card-bg);
+    border-radius:14px;
+    box-shadow:0 1px 6px rgba(16,24,40,0.05);
+    overflow:hidden;
+    border:1px solid #f0f3f7;
+  }
+
+  .info-inner{padding:14px}
+  .info-row{
+    padding:16px 4px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    border-bottom:1px solid var(--soft-border);
+  }
+  .info-row:last-child{border-bottom:none}
+  .info-left{max-width:66%}
+  .info-label{font-size:14px;color:var(--muted);margin-bottom:6px}
+  .info-value{font-size:22px;font-weight:800;letter-spacing:.4px}
+  .info-value.small{font-size:16px;font-weight:700}
+
+  .copy-pill{
+    background:var(--pill-bg);
+    color:var(--accent);
+    border:none;
+    padding:8px 14px;
+    border-radius:18px;
+    font-weight:700;
+    font-size:14px;
+    cursor:pointer;
+    box-shadow:none;
+  }
+  .copy-pill:active{transform:scale(.98)}
+
+  /* ---------- Toast (kopiowanie) ---------- */
+  .toast{
+    position:fixed;
+    left:50%;
+    transform:translateX(-50%);
+    bottom:76px;
+    background:#111827;
+    color:#fff;
+    padding:10px 16px;
+    border-radius:10px;
+    font-size:14px;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .22s, bottom .22s;
+    z-index:999;
+  }
+  .toast.show{opacity:1;pointer-events:auto;bottom:96px}
+
+  /* ---------- Dolny pasek nawigacji ---------- */
+  .bottom-nav{
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    display:flex;
+    justify-content:space-around;
+    background:var(--card-bg);
+    padding:8px 0;
+    border-top:1px solid #e6e9ee;
+    gap:6px;
+  }
+  .bottom-item{display:flex;flex-direction:column;align-items:center;font-size:12px;color:var(--muted);text-decoration:none}
+  .bottom-item img{width:24px;height:24px;margin-bottom:4px}
+  .bottom-item.active{color:var(--accent)}
+
+  /* ---------- Responsywność ---------- */
+  @media (max-width:420px){
+    .info-value{font-size:20px}
+    .info-row{padding:12px}
+    .action{width:64px}
+    .action-icon{width:48px;height:48px}
+  }
 </style>
 </head>
 <body>
 
-<!-- Górny pasek -->
-<div class="header">
-  <div class="back">
-    <img src="back_arrow.png" alt="Wróć"> Wróć
-  </div>
-  <h1>mDowód</h1>
-  <div class="help">
-    <img src="help.png" alt="?">
-  </div>
-</div>
+  <!-- Górny pasek -->
+  <header class="header" role="banner">
+    <div class="back" onclick="history.back()">
+      <!-- podmień obrazek back_arrow.png jeśli chcesz -->
+      <img src="back_arrow.png" alt="Wróć">
+      <span>Wróć</span>
+    </div>
+    <div class="title">mDowód</div>
+    <div class="help"><img src="help.png" alt="Pomoc"></div>
+  </header>
 
-<div class="time" id="clock">Czas: --:--:-- --.--.--</div>
+  <!-- Czas -->
+  <div class="time" id="clock">Czas: --:--:-- --.--.----</div>
 
-<!-- Karta dokumentu -->
-<div class="card-container">
-  <div class="card">
-    <div class="left">
-      <div class="photo">
-        <img src="xddddd.png" alt="Zdjęcie">
+  <!-- Karta dokumentu -->
+  <section class="card-container" aria-label="Karta dokumentu">
+    <div class="card">
+      <div class="left">
+        <div class="photo"><img src="xddddd.png" alt="Zdjęcie osoby"></div>
+        <div class="emblems">
+          <img class="flag" src="flag.webp" alt="Flaga Polski">
+          <div class="eagle-text">
+            <img class="eagle" src="eagle.gif" alt="Orzeł">
+            <div style="font-size:12px">Rzeczpospolita<br>Polska</div>
+          </div>
+        </div>
       </div>
-      <div class="emblems">
-        <img class="flag" src="flag.webp" alt="Flaga">
-        <div class="eagle-text">
-          <img class="eagle" src="eagle.gif" alt="Orzeł">
-          <span>Rzeczpospolita<br>Polska</span>
+
+      <div class="right">
+        <div class="line"><strong>KACPER</strong><small> — Imię (imiona)</small></div>
+        <div class="line"><strong>LIGĘSKA</strong><small> — Nazwisko</small></div>
+        <div class="line"><strong>POLSKIE</strong><small> — Obywatelstwo</small></div>
+        <div class="line"><strong>07.01.2007</strong><small> — Data urodzenia</small></div>
+        <div class="pesel">07211712323 <small style="display:block;color:var(--muted)">Numer PESEL</small></div>
+      </div>
+    </div>
+
+    <div class="valid-bar">
+      <img src="valid.png" alt="Ok">
+      <span>Dokument ważny</span>
+    </div>
+  </section>
+
+  <!-- Akcje (okrągłe ikonki) -->
+  <div class="actions-wrap" aria-hidden="false">
+    <nav class="actions" role="navigation" aria-label="Skróty">
+      <!-- każda <a> prowadzi gdzie chcesz — teraz do google.com -->
+      <a class="action" href="https://google.com" target="_blank" rel="noreferrer noopener">
+        <div class="action-icon"><img src="confirm.png" alt=""></div>
+        <div class="action-label">Potwierdź<br>swoje dane</div>
+      </a>
+
+      <a class="action" href="https://google.com" target="_blank" rel="noreferrer noopener">
+        <div class="action-icon"><img src="card.png" alt=""></div>
+        <div class="action-label">Dane<br>dowodu osobistego</div>
+      </a>
+
+      <a class="action" href="https://google.com" target="_blank" rel="noreferrer noopener">
+        <div class="action-icon"><img src="lock.png" alt=""></div>
+        <div class="action-label">Zastrzeż<br>PESEL</div>
+      </a>
+
+      <a class="action" href="https://google.com" target="_blank" rel="noreferrer noopener">
+        <div class="action-icon"><img src="more.png" alt=""></div>
+        <div class="action-label">Pozostałe<br>skróty</div>
+      </a>
+    </nav>
+  </div>
+
+  <!-- Sekcja informacji (duża karta, styl jak w aplikacji) -->
+  <main class="info-card" role="main" aria-label="Szczegóły dowodu">
+    <div class="info-inner">
+      <div class="info-row">
+        <div class="info-left">
+          <div class="info-label">Seria i numer</div>
+          <div id="pcrValue" class="info-value">PCR 154316</div>
+        </div>
+        <button class="copy-pill" id="copyPCR">Kopiuj</button>
+      </div>
+
+      <div class="info-row">
+        <div class="info-left">
+          <div class="info-label">Termin ważności</div>
+          <div class="info-value small">08.01.2035</div>
+        </div>
+      </div>
+
+      <div class="info-row">
+        <div class="info-left">
+          <div class="info-label">Data wydania</div>
+          <div class="info-value small">07.01.2025</div>
+        </div>
+      </div>
+
+      <div class="info-row">
+        <div class="info-left">
+          <div class="info-label">Imię ojca</div>
+          <div class="info-value small">KAROL</div>
+        </div>
+      </div>
+
+      <div class="info-row">
+        <div class="info-left">
+          <div class="info-label">Imię matki</div>
+          <div class="info-value small">ANDŻELIKA</div>
         </div>
       </div>
     </div>
-    <div class="right">
-      <div><strong>KACPER</strong><br><small>Imię (imiona)</small></div>
-      <div><strong>LIGĘSKA</strong><br><small>Nazwisko</small></div>
-      <div><strong>POLSKIE</strong><br><small>Obywatelstwo</small></div>
-      <div><strong>07.01.2007</strong><br><small>Data urodzenia</small></div>
-      <div class="pesel">07211712323<br><small>Numer PESEL</small></div>
-    </div>
-  </div>
-  <div class="valid-bar">
-    <img src="valid.png" alt="Valid">
-    <span>Dokument ważny</span>
-  </div>
-</div>
+  </main>
 
-<!-- Przyciski akcji -->
-<div class="actions">
-  <a href="https://google.com" class="action">
-    <div class="action-icon"><img src="confirm.png" alt=""></div>
-    Potwierdź<br>swoje dane
-  </a>
-  <a href="https://google.com" class="action">
-    <div class="action-icon"><img src="card.png" alt=""></div>
-    Dane<br>dowodu osobistego
-  </a>
-  <a href="https://google.com" class="action">
-    <div class="action-icon"><img src="lock.png" alt=""></div>
-    Zastrzeż<br>PESEL
-  </a>
-  <a href="https://google.com" class="action">
-    <div class="action-icon"><img src="more.png" alt=""></div>
-    Pozostałe<br>skróty
-  </a>
-</div>
+  <!-- Toast (kopiowanie) -->
+  <div id="toast" class="toast" role="status" aria-live="polite">Skopiowano</div>
 
-<!-- Sekcja informacji -->
-<div class="info-card">
-  <div class="info-row">
-    <div>
-      <div class="info-label">Seria i numer</div>
-      <div class="info-value">PCR 154316</div>
-    </div>
-    <button class="copy-btn" onclick="navigator.clipboard.writeText('PCR 154316')">Kopiuj</button>
-  </div>
-  <div class="info-row">
-    <div class="info-label">Termin ważności</div>
-    <div class="info-value">08.01.2035</div>
-  </div>
-  <div class="info-row">
-    <div class="info-label">Data wydania</div>
-    <div class="info-value">07.01.2025</div>
-  </div>
-  <div class="info-row">
-    <div class="info-label">Imię ojca</div>
-    <div class="info-value">KAROL</div>
-  </div>
-  <div class="info-row">
-    <div class="info-label">Imię matki</div>
-    <div class="info-value">ANDŻELIKA</div>
-  </div>
-</div>
-
-<!-- Dolny pasek -->
-<div class="bottom-nav">
-  <div class="bottom-item active">
-    <img src="pulpit.png" alt="">
-    Pulpit
-  </div>
-  <div class="bottom-item">
-    <img src="dokumenty.png" alt="">
-    Dokumenty
-  </div>
-  <div class="bottom-item">
-    <img src="uslugi.png" alt="">
-    Usługi
-  </div>
-  <div class="bottom-item">
-    <img src="kodqr.png" alt="">
-    Kod QR
-  </div>
-  <div class="bottom-item">
-    <img src="wiecej.png" alt="">
-    Więcej
-  </div>
-</div>
+  <!-- Dolny pasek -->
+  <footer class="bottom-nav" role="contentinfo">
+    <a class="bottom-item active" href="#">
+      <img src="pulpit.png" alt="">
+      <div>Pulpit</div>
+    </a>
+    <a class="bottom-item" href="#">
+      <img src="dokumenty.png" alt="">
+      <div>Dokumenty</div>
+    </a>
+    <a class="bottom-item" href="#">
+      <img src="uslugi.png" alt="">
+      <div>Usługi</div>
+    </a>
+    <a class="bottom-item" href="#">
+      <img src="kodqr.png" alt="">
+      <div>Kod QR</div>
+    </a>
+    <a class="bottom-item" href="#">
+      <img src="wiecej.png" alt="">
+      <div>Więcej</div>
+    </a>
+  </footer>
 
 <script>
-function updateClock() {
-  const now = new Date();
-  const pad = (n) => n.toString().padStart(2, "0");
-  const timeStr = pad(now.getHours()) + ":" + pad(now.getMinutes()) + ":" + pad(now.getSeconds()) + " " + pad(now.getDate()) + "." + pad(now.getMonth() + 1) + "." + now.getFullYear();
-  document.getElementById("clock").textContent = "Czas: " + timeStr;
-}
-setInterval(updateClock, 1000);
-updateClock();
-</script>
+  // ---------- Zegar ----------
+  function updateClock(){
+    const now = new Date();
+    const pad = (n)=>n.toString().padStart(2,'0');
+    const timeStr = pad(now.getHours()) + ":" + pad(now.getMinutes()) + ":" + pad(now.getSeconds()) + " " + pad(now.getDate()) + "." + pad(now.getMonth()+1) + "." + now.getFullYear();
+    document.getElementById('clock').textContent = "Czas: " + timeStr;
+  }
+  setInterval(updateClock, 1000);
+  updateClock();
 
+  // ---------- Kopiowanie i toast ----------
+  const copyBtn = document.getElementById('copyPCR');
+  const toast = document.getElementById('toast');
+  copyBtn.addEventListener('click', async () => {
+    const text = document.getElementById('pcrValue').innerText.trim();
+    try {
+      await navigator.clipboard.writeText(text);
+      showToast(`Skopiowano: ${text}`);
+    } catch (e) {
+      // fallback
+      const dummy = document.createElement('textarea');
+      dummy.value = text;
+      document.body.appendChild(dummy);
+      dummy.select();
+      try{ document.execCommand('copy'); showToast(`Skopiowano: ${text}`); } catch(err){ showToast('Kopiowanie nieudane') }
+      document.body.removeChild(dummy);
+    }
+  });
+
+  let toastTimer = null;
+  function showToast(message){
+    toast.textContent = message;
+    toast.classList.add('show');
+    if(toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(()=>{ toast.classList.remove('show'); }, 2000);
+  }
+
+  // ---------- Dodatkowe: Przyjazne kliki dla akcji ----------
+  // jeśli chcesz, możesz podpiąć akcje do konkretnych funkcji zamiast linków
+  // document.querySelectorAll('.action').forEach(a => a.addEventListener('click', e => { ... }));
+
+</script>
 </body>
 </html>
-
